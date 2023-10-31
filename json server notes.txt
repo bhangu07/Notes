@@ -1,0 +1,58 @@
+	
+	
+	1. after you have created the json data, we will convert the data into api which will be displayed on the browser
+	
+	2. We will do that using json-server (library available in node)
+		
+		npm install json-server -g
+		
+		
+	3. to start the json-server , open the terminal in the location where your data is:
+		
+			json-server -w employees.json
+			
+			
+		Operations we can do - Create (post) , Read (get), Update (put), Delete (delete) - CRUD operations
+		
+		adding a new user, adding a product , create a gmail acc
+		
+		http request - POST , GET, PUT , DELETE
+		
+		json-server - helps us to build api for all of the above transaction
+		
+		GET employees?empname=ben
+		
+		GET employees?address.city=Mumbai
+		
+		GET employees/4
+		
+		right now, the data is loading directly. But how to load the data on event handling?
+		
+		
+		<a href="contact.html">contact us </a>
+		
+		<button>Get Employees</button>
+		
+		
+		function get() {
+		
+			fetch('url',{
+			
+				method:'GET',
+				headers: {
+					
+					'Content-Type':'application/json'
+				}
+			
+			}).then
+		
+		
+		}
+		
+		
+		for building an API - installed json-server (library / dependency available in node )
+		npm install json-server -g
+		
+		to run the json-server 
+		
+		on the location of your json data (json-server --watch db.json)

@@ -1,0 +1,40 @@
+Promises
+Promises are the most common way of handling asynchronous operations in JavaScript. Before promises, developers have to use callbacks to handle the asynchronous operations. Therefore, they have to create multiple callbacks within the callbacks, and eventually this bad practice got a slang; "The Callback Hell." As a result, ES6 introduced Promises to handle multiple asynchronous operations easily.
+
+General behavior of Promises in JavaScript is; when we define a promise in JS, it will be resolved when the time comes, or it will get rejected. That is basically the whole idea behind the Promises.
+
+There are 3 states of the Promise object.
+
+Fulfilled: Indicates that the promised operation was successful.
+Rejected: Indicates that the promised operation was unsuccessful.
+Pending: Promise is still pending (not fulfilled or rejected yet).
+Let's see how we can use Promises in JS with a simple example.
+
+	function task() {
+		return true;
+	}
+
+	//creating a promise
+	const myPromise = new Promise((resolve, reject) => {
+		let condition = task();
+
+		if (condition === true) {
+			resolve('Promise is resolved successfully!!!');
+		} else {
+			reject('Promise is rejected!!!');
+		}
+	});
+
+	//using the promise
+	myPromise.then((message) => {
+		console.log(message);
+	}).catch((message) => {
+		console.log(message);
+	});
+
+Output:
+
+Promise is resolved successfully!!!
+As you can see on the gist, I have created a promise named as "myPromise" and it takes two parameters, one for success (resolve) and one for fail (reject). The "condition" variable gets the return value of the "task()" function. For the simplicity of explaining, the "task()" function always return "true" as the value.
+
+Then the Promise will check the condition, and if it is true, the Promise will be resolved, otherwise it will be rejected. When we using the Promise, "then( )" method will be called after the Promise is resolved. Then we can decide what to do with the resolved Promise. But if the Promise fails, then we need to use the "catch()" method. In this scenario, it met the condition of the promise, and as a result Promise will be resolved.

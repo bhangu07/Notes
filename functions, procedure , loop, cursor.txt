@@ -1,0 +1,231 @@
+
+
+CREATE PROCEDURE no_of_emps_citywise(i_city varchar2)
+AS
+BEGIN
+    DECLARE 
+        no_of_emp  NUMBER;
+    BEGIN
+        SELECT COUNT(employee_id)
+        INTO no_of_emp
+        FROM employees 
+        JOIN departments
+        USING (department_id)
+        JOIN locations
+        USING (location_id)
+        WHERE city = i_city;
+        
+        DBMS_OUTPUT.put_line('The total number of employees in ' || i_city || ' is: ' || no_of_emp);
+        
+        EXCEPTION -- used to start the exception
+            WHEN NO_DATA_FOUND THEN -- check if that exception is occured
+                DBMS_OUTPUT.put_line('Sorry, the city does not exist'); -- handle the exception
+            WHEN TOO_MANY_ROWS THEN
+                DBMS_OUTPUT.put_line('Returned more than 1 row of output');
+        
+    END;
+END;
+/
+
+---------------------------------------
+-- function in pl/sql
+CREATE OR REPLACE FUNCTION printname(nm VARCHAR2)
+RETURN VARCHAR2 AS
+BEGIN
+    return nm;
+END;
+/
+
+DECLARE
+    i_nm VARCHAR2(50) := '&i_nm';
+BEGIN
+    DBMS_OUTPUT.put_line('Hello, ' || printname(i_nm));
+END;
+/
+
+
+-- function of addition
+CREATE OR REPLACE FUNCTION add_of_twonumbers(num1 NUMBER, num2 NUMBER)
+RETURN NUMBER AS
+v_result NUMBER;
+
+BEGIN
+    v_result := num1+num2;
+    RETURN v_result;
+END;
+/
+
+DECLARE
+num1 NUMBER :=&num1;
+num2 NUMBER :=&num2;
+
+BEGIN
+    DBMS_OUTPUT.put_line('Addition is: ' || ADD_OF_TWONUMBERS(num1,num2));
+END;
+/
+
+---------------------------------------------
+CREATE OR REPLACE FUNCTION INSERTUSER(uname VARCHAR2, pass VARCHAR2, nm VARCHAR2)
+RETURN NUMBER AS
+BEGIN
+    
+    INSERT INTO userdetails values(uname,pass,nm);
+    COMMIT;
+    RETURN 1;
+    
+    EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+        RETURN 0;
+
+END;
+/
+
+DECLARE
+    v_result NUMBER;
+    uname userdetails.username%TYPE := '&uname';
+    pass userdetails.user_password%TYPE := '&pass';
+    nm userdetails.fullname%TYPE := '&nm';
+BEGIN
+    v_result := INSERTUSER(uname,pass,nm);
+    
+    IF v_result=1 THEN
+        DBMS_OUTPUT.put_line('Data inserted successfully');
+    ELSE
+        DBMS_OUTPUT.put_line('sorry, error occured, please check');
+    END IF;
+END;
+/
+
+SELECT * FROM userdetails;
+
+----------------------------------
+
+LOOP
+
+
+DECLARE
+    num NUMBER :=1; -- start position
+BEGIN
+    LOOP
+        DBMS_OUTPUT.put_line('Num: ' || num);
+        num := num+1; -- increment
+        EXIT WHEN num > 5; -- condition to exit the loop
+    END LOOP;
+END;
+/
+
+DECLARE
+    num NUMBER :=1; -- assignment
+BEGIN
+    WHILE num <=5 -- condition to break the loop
+    LOOP 
+        DBMS_OUTPUT.put_line('Num: ' || num);
+        num := num+1; -- increment
+    END LOOP;
+END;
+/
+
+------------------------------------------------------------------------------------
+-- print employee_id and first_name + " " + last_name from employee table
+
+DECLARE
+	empid employees.employee_id%TYPE;
+	empname employees.first_name%TYPE;
+	
+	cursor c_emp IS -- here the cursor is created
+		SELECT employee_id, first_name || ' ' || last_name FROM employees;
+	
+BEGIN
+	open c_emp; -- to fetch the records, we need to open the cursor
+	
+	LOOP
+		FETCH c_emp INTO empid, empname;
+		
+		EXIT WHEN c_emp%NOTFOUND --we are saying the loop should exit when it reached 107 rows and now no more rows are available
+		DBMS_OUTPUT.put_line('The Employee id: ' || empid || ' and the name is: ' || empname);
+	END LOOP;
+	CLOSE c_emp; -- here, the cursor is closed
+	
+END;
+/
+
+implicit cursor
+
+DECLARE
+	empid employees.employee_id%TYPE;
+	empname employees.first_name%TYPE;
+	
+BEGIN
+	FOR emp IN (SELECT employee_id, first_name || ' ' || last_name as full_nm FROM employees)
+	LOOP
+		empid := emp.employee_id;
+		empname := emp.full_nm;
+		DBMS_OUTPUT.put_line('The Employee id: ' || empid || ' and the name is: ' || empname);
+		
+	END LOOP;
+END;
+/
+
+------------------------------------
+explicit cursor
+
+print the department_id , count(*) of each department
+CREATE OR REPLACE PROCEDURE deptwiseemp
+AS
+DECLARE
+	deptid employees.department_id%TYPE;
+	count_of_emp NUMBER;
+	
+	cursor c_dept IS -- here the cursor is created
+		
+		SELECT department_id, count(*)
+		FROM employees
+		GROUP BY department_id;
+	
+BEGIN
+	open c_dept; -- to fetch the records, we need to open the cursor
+	
+	LOOP
+		FETCH c_dept INTO deptid, count_of_emp;
+		
+		EXIT WHEN c_dept%NOTFOUND --we are saying the loop should exit when it reached 107 rows and now no more rows are available
+		DBMS_OUTPUT.put_line('Dept ID: ' || deptid || ' and the count: ' || count_of_emp);
+	END LOOP;
+	CLOSE c_dept; -- here, the cursor is closed
+	
+END;
+/
+
+------------------------
+add this inside a procedure:
+
+CREATE OR REPLACE PROCEDURE deptwiseemp
+AS
+BEGIN
+    DECLARE
+        deptid employees.department_id%TYPE;
+        count_of_emp NUMBER;
+        
+        cursor c_dept IS -- here the cursor is created
+            
+            SELECT department_id, count(*)
+            FROM employees
+            GROUP BY department_id;
+        
+    BEGIN
+        open c_dept; -- to fetch the records, we need to open the cursor
+        
+        LOOP
+            FETCH c_dept INTO deptid, count_of_emp;
+            
+            EXIT WHEN c_dept%NOTFOUND; --we are saying the loop should exit when it reached 107 rows and now no more rows are available
+            DBMS_OUTPUT.put_line('Dept ID: ' || deptid || ' and the count: ' || count_of_emp);
+        END LOOP;
+        CLOSE c_dept; -- here, the cursor is closed
+        
+    END;
+END;
+/
+
+exec DEPTWISEEMP;

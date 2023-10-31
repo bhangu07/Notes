@@ -1,0 +1,79 @@
+
+Hooks in React:
+
+Hooks are the new feature introduced in the React 16.8 version. It allows you to use state and other React features without writing a class. Hooks are the functions which "hook into" React state and lifecycle features from function components.
+
+useState:
+
+Use useState to manage state in functional components without using class components.
+It returns an array with the current state value and a function to update it.
+Each call to useState corresponds to a single piece of state.
+When using objects or arrays as state, make sure to spread the previous state to avoid overwriting.
+
+
+useEffect:
+
+useEffect is used for handling side effects (doing something extra which is not part of react component) in functional components.
+It replaces lifecycle methods like componentDidMount, componentDidUpdate, and componentWillUnmount.
+You can have multiple useEffect hooks in a single component.
+Use the dependency array as the second argument to specify when the effect should run based on changes to dependencies.
+If the dependency array is empty, the effect runs only after the initial render.
+
+
+useContext:
+
+useContext allows functional components to access context values without wrapping in a higher-order component.
+It's useful for sharing data that needs to be accessed by many components.
+You need to pass a context object created with React.createContext() to the hook.
+
+
+useReducer:
+
+useReducer is an alternative to useState for managing more complex state logic.
+It accepts a reducer function and an initial state, returns the current state and a dispatch function.
+Dispatch functions send actions to the reducer, which specifies how the state should change based on the action type.
+
+
+useMemo:
+
+useMemo memoizes the result of a function so it's not recomputed unless its dependencies change.
+It's useful for optimizing expensive calculations or avoiding unnecessary re-renders.
+Only use useMemo when you need to optimize performance, as it adds complexity.
+
+
+useCallback:
+
+useCallback memoizes functions to prevent re-creation of the function reference across renders.
+It's beneficial when passing callbacks as props to child components to avoid unnecessary re-renders.
+Just like with useMemo, use useCallback when you need to optimize performance.
+
+
+useRef:
+
+useRef returns a mutable ref object that persists across renders and does not trigger re-renders.
+It's often used for accessing DOM elements directly, managing focus, or persisting values.
+
+
+-----------------------------------------------------------------------
+
+Formik and Yup are two popular libraries in the React ecosystem that work together to simplify the process of building and validating forms. They provide a powerful combination for managing form state and performing validation in React applications.
+
+Formik:
+
+Formik is a library that helps you manage form state, form submission, and form-related functions in a more organized and efficient manner.
+It provides a higher-level abstraction for handling form-related operations, reducing boilerplate code.
+Formik manages form values, validation, submission, touched fields, and error messages.
+It works well with both controlled and uncontrolled components.
+Formik makes it easy to handle asynchronous form submission and submission status.
+
+
+Yup:
+
+Yup is a library for schema validation, particularly focused on validating JavaScript objects and form values.
+It allows you to define validation schemas using a simple and expressive API.
+Yup supports various types of validation, including string validation, number validation, date validation, and more.
+It integrates seamlessly with Formik to perform validation on form values.
+Yup provides localization support, allowing you to customize error messages based on the user's locale.
+The combination of Formik and Yup is often used to create robust and user-friendly forms in React applications:
+
+--------------------------------------

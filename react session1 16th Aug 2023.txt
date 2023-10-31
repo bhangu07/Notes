@@ -1,0 +1,173 @@
+
+ReactJS
+
+What is REACT?
+REACT is an open source JavaScript Library for building user interfaces.
+It gives you the library to build your frontend.
+It uses JSX (Javascript extension) that makes it easy for developers to modify their DOM by using simple, HTML style code.
+JSX gives you the facility to write your javascript and html code together. Inside your javascript, you can add your HTML code.
+It is also used to create Single page App
+REACT is reffered to as V in the MVC concept.
+
+
+Why React?
+
+1. Developed and maintained by Facebook
+2. Popular among frontend developers
+3. Huge community
+4. Easy to use and maintained
+5. Lightweight as compared to other UI frameworks
+6. Virtual DOM . It helps us to make faster performance applications.
+
+How React works?
+
+What is virtual DOM?
+tradtional web pages, directly manipulates the DOM. It modifies the DOM of the page according to the script.
+In React, we use Virtual DOM. Whenever there is any change needed to be added to the DOM, it goes to the virtual DOM and then it goes to the real DOM.
+Everytime, it will compare the changes between the real DOM and the virtual DOM. And it will check for changes and it will patch those changes in the real DOM which makes it faster.
+This increases the performance of the app as it stops the iteration and avoids creating the DOM again and again. But it uses more memory.
+The process the comparing virutal DOM to real DOM is called reconciliation.
+
+React uses the component architecture. So the components are not tightly coupled to each other.
+
+Prerequisites:
+	HTML, CSS
+	JavaScript fundamentals
+	ES6 syntax
+	Basic Programming fundamentals
+	
+What we will learn?
+
+	Creating SPA app
+	Introducing TSX - Typescript extension - Mainly we will use Javascript but we will one example with typescript as well at the end.
+	Rendering elements
+	Components and Props
+	State and Effect Hooks
+	Handling Events
+	Logging Errors and Exception Handling
+	Routing
+	Authentication
+	Using Context for managing state
+	REACT testing with JEST
+	Redux
+	
+Setup:
+	NodeJs
+	VS Code
+	Latest Chrome Browser
+		Install React Developer Tools
+
+
+How to use REACT?
+	You can use CDN
+	Using Command Line - npx create-react-app my-app
+						 go to path - cd my-app
+						 to run - npm start
+
+CDNs to be added:
+	<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+Babel: It is a transpiler
+JSX is kind of a next generation javascript code. So we use Babel to convert the JSX code into plain javascript code.
+
+React-dom - is responsible for performing your DOM operations in your app. This is a bridge between your React library and DOM
+React - is responsible for other operations. Eg: create app
+
+	
+Add an extension to VS code - ES7+ React/Redux/React-Native snippets for autocomplete for react components
+
+-----------------------------------------
+
+
+ReactJS, often referred to simply as React, is an open-source JavaScript library used for building user interfaces (UIs) and single-page applications (SPAs). 
+It was developed by Facebook and is currently maintained by Facebook and a community of developers.
+
+React allows developers to create reusable UI components and manage the state of a web application efficiently. 
+Its core concept is the concept of a "virtual DOM" (Document Object Model), which is a lightweight representation of the actual DOM. 
+React uses this virtual DOM to optimize updates and efficiently render changes to the UI.
+
+Key features of React include:
+
+Component-Based Architecture: React encourages building UIs using components, which are modular and reusable pieces of code. Components can be nested within each other to create complex UI structures.
+
+Virtual DOM: React uses a virtual representation of the actual DOM to track changes and updates. 
+When there's a change, React calculates the difference between the previous and current virtual DOMs, and then applies these changes to the actual DOM in an optimized manner. 
+This minimizes the number of updates and improves performance.
+
+Unidirectional Data Flow: React follows a unidirectional data flow, where data flows in a single direction—from parent to child components. 
+This helps in maintaining a predictable and easy-to-understand data flow.
+
+JSX (JavaScript XML): React uses JSX, which is a syntax extension for JavaScript. 
+It allows developers to write HTML-like code within JavaScript, making the creation of UI components more intuitive.
+
+State Management: React components can have their own local state, which allows for encapsulation and reusability. For more complex state management needs, libraries like Redux or the Context API can be used.
+
+Component Lifecycle: React components have a lifecycle that consists of various methods that are called at different stages of a component's existence. 
+These methods allow developers to perform actions when a component mounts, updates, or unmounts.
+
+React Hooks: Introduced in React 16.8, hooks are functions that allow developers to use state and other React features without writing classes. Hooks enable more reusable and easier-to-understand code.
+
+React Router: React Router is a library that enables routing within a React application. It allows for creating multi-page applications while maintaining a single-page application feel.
+
+Community and Ecosystem: React has a vast and active community, which has led to the creation of numerous third-party libraries, tools, and extensions that enhance development and functionality.
+
+------------------------------------
+
+The Virtual DOM (Virtual Document Object Model) is a key concept in React that contributes to its efficiency and performance. It's an abstraction of the actual browser DOM, designed to optimize the process of updating and rendering user interfaces.
+
+1. **Initial Render:**
+   - When you create a React component and render it, React doesn't immediately update the browser's actual DOM.
+   - Instead, React creates a virtual representation of the DOM in memory, called the Virtual DOM.
+
+2. **Updating State:**
+   - When the state of a React component changes, a re-render is triggered.
+   - During this re-render, React constructs a new Virtual DOM tree that represents the updated component's structure.
+
+3. **Diffing:**
+   - React then compares the new Virtual DOM tree with the previous one using a process called "diffing" (also known as reconciliation).
+   - Diffing involves analyzing the differences between the old and new Virtual DOM trees to identify which parts of the UI need to be updated.
+
+4. **Minimizing DOM Updates:**
+   - Once the differences are identified, React generates a minimal set of changes needed to update the actual browser DOM.
+   - This is a critical step as it avoids unnecessary full-page re-renders and minimizes the number of DOM manipulations, leading to improved performance.
+
+5. **Batching Updates:**
+   - React batches multiple updates together and applies them all at once, rather than updating the DOM after every single change.
+   - This helps to further optimize performance by reducing the number of times the DOM is manipulated.
+
+6. **Updating the Actual DOM:**
+   - Finally, React applies the calculated changes to the real DOM efficiently, ensuring that the browser's display is in sync with the latest Virtual DOM representation.
+   
+
+In React, we can follow 2 types of approach for creating a component
+	
+	function based approach:
+	
+		function Header() {
+		
+		
+			return(
+				//add the elements you want
+				//only 1 parent element should be there
+			);
+		
+		}
+	
+	
+	class based approach:
+	
+		class Footer extends React.Component {
+		
+		
+			render() {
+			
+				return(
+					//add the elements which we want
+				);
+			
+			}
+		
+		
+		}

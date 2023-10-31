@@ -1,0 +1,693 @@
+NatWest Session 1  
+
+Linux:
+
+Linux is an open-source operating system based on the Unix operating system. 
+It is known for its stability, security, and flexibility, and is widely used in servers, supercomputers, and embedded systems. 
+Linux comes in many different distributions or "distros," such as Ubuntu, Debian, Fedora, and CentOS, among others.
+
+Advantages:
+	Open Source
+	Stability and Reliability
+	Security
+	Customization and Flexibility
+	Wide Range of Software
+	Hardware Compatibility
+	Cost-effective
+	Community and Support
+	Scalability
+	Compatibility with Command Line Interface (CLI)
+	Educational Value
+
+Ubuntu is one of the most popular Linux distributions, and is based on the Debian distribution. 
+It is known for its ease of use and user-friendliness, making it a popular choice for both desktop and server use. 
+Ubuntu is free and open-source software, and it has a large community of developers and users who contribute to its development and support.
+
+Ubuntu comes with a graphical user interface (GUI) and a wide range of pre-installed software, including office applications, web browsers, media players, and programming tools. 
+It also has a powerful package management system, which allows users to easily install, update, and remove software packages from the system.
+
+Start the mate terminal . Press "Ctrl+Alt+T" to open the Terminal.
+
+pwd
+This command displays the present working directory where you are currently in.
+
+ubuntu@ip-172-31-42-113:~$ pwd
+/home/ubuntu
+
+-------------------
+ls
+This command will display the contents of the directory
+
+ubuntu@ip-172-31-42-113:~$ ls
+ Desktop                          Pictures    eclipse
+ Documents                        Public      eclipse-workspace
+ Downloads                        Templates   snap
+'Instructions for Applications'   Videos      thinclient_drives
+ Music                            aws
+
+----------------------
+-l: Long format. Displays the files and directories in a detailed list format that includes file permissions, ownership, size, and modification time.
+-a: All files. Displays all files, including hidden files that begin with a dot (.).
+-h: Human-readable size. Displays file sizes in a human-readable format (e.g. 1K, 2M, 3G).
+-r: Reverse order. Displays files and directories in reverse order.
+-t: Sort by modification time. Displays files and directories sorted by the time they were last modified.
+
+ls: Lists the contents of the current working directory.
+ls /usr/bin: Lists the contents of the /usr/bin directory.
+ls -l /etc: Lists the contents of the /etc directory in long format.
+ls -alh: Lists all files in the current directory, including hidden files, in a long-format list with sizes in human-readable format.
+
+example:
+
+ubuntu@ip-172-31-42-113:/$ ls /etc -lah
+
+
+
+-----------------------
+The mkdir command in Linux is used to create a new directory (or multiple directories) within the file system. 
+
+-p: Create parent directories. Creates any necessary parent directories for the new directory (i.e., if the parent directories do not exist, they will be created).
+-m: Set directory permissions. Sets the permissions for the new directory using a symbolic or octal notation (e.g. -m 755).
+-v: Verbose output. Prints a message for each directory created.
+
+Examples:
+Here are some examples of how the mkdir command can be used:
+
+Create a directory called "mydir" in the current working directory:
+mkdir mydir
+
+Create a directory called "mydir" in the /home/user directory:
+mkdir /home/user/mydir
+
+Create a directory called "mydir" in the current working directory, and create any necessary parent directories:
+mkdir -p mydir/subdir
+
+Create a directory called "mydir" in the current working directory, and set its permissions to read, write, and execute for the owner and read and execute for others:
+
+mkdir -m 755 mydir
+
+Create a directory called "mydir" in the current working directory, and display a message for each directory created:
+mkdir -v mydir
+
+----------------------------------
+The rmdir command in Linux is used to remove an empty directory from the file system. 
+
+-p: Remove parent directories. Removes the specified directory and any empty parent directories up to the root directory.
+-v: Verbose output. Prints a message for each directory removed.
+
+
+Remove a directory called "mydir":
+rmdir mydir
+
+Remove a directory called "mydir" and any empty parent directories up to the root directory:
+rmdir -p /home/user/mydir
+
+Remove multiple directories at once:
+rmdir dir1 dir2 dir3
+
+Remove directories with verbose output to see a message for each directory removed:
+rmdir -v dir1 dir2 dir3
+
+-------------------------------
+The cd command in Linux is used to change the current working directory.
+
+-: Change to the previous directory you were in (also known as the "back" command).
+--: Marks the end of options, useful if you want to change to a directory that starts with a hyphen (-).
+
+cd directory_name
+
+ubuntu@ip-172-31-42-113:~$ cd Documents
+ubuntu@ip-172-31-42-113:~/Documents$ 
+
+ubuntu@ip-172-31-42-113:~/Documents$ cd payal
+ubuntu@ip-172-31-42-113:~/Documents/payal$ 
+
+ubuntu@ip-172-31-42-113:~/Documents$ cd .. (step out of the directory and to the parent directory)
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ cd - (go back to the previous directory)
+/home/ubuntu/Documents
+ubuntu@ip-172-31-42-113:~/Documents$
+
+-------------------------------
+The touch command in Linux is used to create a new file or update the modification and access times of an existing file.
+
+touch myfile.txt (creates the file if it does not exist)
+
+touch myfile.txt (as the file exist, it updates the timestamp)
+
+touch file1.txt file2.txt file3.txt (create multiple files)
+
+adding data into the files:
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ cat > file_name
+
+add the data
+
+press ctrl+d to save.
+
+----------------------------------
+
+The rm command in Linux is used to remove files and directories. It stands for "remove". 
+
+-f, --force: ignore non-existent files and never prompt for confirmation.
+-i: prompt before every removal.
+-r, -R, --recursive: remove directories and their contents recursively.
+-v, --verbose: explain what is being done.
+-h, --help: display help message and exit.
+--version: output version information and exit.
+
+rm example.txt (removes the file example.txt)
+
+Remove a directory:
+To remove a directory and its contents, you need to use the -r (recursive) option:
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ rm -r demo2
+ubuntu@ip-172-31-42-113:~/Documents/payal$ ls -l
+
+To remove a file with a prompt for confirmation, you can use the -i option with the rm command.
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ rm -i myfile_upper.txt
+rm: remove regular file 'myfile_upper.txt'? n
+ubuntu@ip-172-31-42-113:~/Documents/payal$ ls -l
+
+-I option to make the prompt more aggressive, by asking once before removing more than three files or recursively removing a directory. 
+
+rm -I mydir
+
+Remove a file without prompt:
+If you want to remove a file without being prompted for confirmation, you can use the -f (force) option:
+rm -f example.txt
+
+rm file1.txt file2.txt file3.txt (remove multiple files)
+
+Display verbose output:
+rm -v example.txt
+
+$ rm -r example
+rm -rf directory
+This command forcefully and recursively deletes a directory along with its content.
+
+-------------------------------
+cp command. The cp command in Linux is used to copy files and directories.
+
+-a, --archive: copy files and directories recursively and preserve permissions, ownership, and timestamps.
+-f, --force: overwrite the destination file(s) without prompting for confirmation.
+-i, --interactive: prompt for confirmation before overwriting the destination file(s).
+-n, --no-clobber: do not overwrite the destination file(s) if they already exist.
+-p, --preserve: preserve permissions, ownership, and timestamps of the source file(s).
+-r, --recursive: copy directories recursively.
+-u, --update: copy the source file(s) to the destination only if the source file(s) is newer than the destination file(s).
+-v, --verbose: display the name of each file being copied.
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ touch file1 file2 (creating 2 files file1 and file2)
+ubuntu@ip-172-31-42-113:~/Documents/payal$ echo "adding content to file 1" >> file1 (adding content to file1)
+ubuntu@ip-172-31-42-113:~/Documents/payal$ cat file1 (print the contents of the file)
+adding content to file 1
+ubuntu@ip-172-31-42-113:~/Documents/payal$ echo "adding another content to file1" >> file1 (adding more content to the file)
+ubuntu@ip-172-31-42-113:~/Documents/payal$ cat file1 print the contents of the file)
+adding content to file 1
+adding another content to file1
+ubuntu@ip-172-31-42-113:~/Documents/payal$ cp file1 file2 (copying content from file1 to file2)
+ubuntu@ip-172-31-42-113:~/Documents/payal$ cat file2 (reading content from file2)
+adding content to file 1
+adding another content to file1
+
+copy files to a folder
+
+ubuntu@ip-172-31-42-113:~/Documents/payal/folder1$ mkdir subfolder1
+ubuntu@ip-172-31-42-113:~/Documents/payal/folder1$ cp -p newfile subfolder1/
+
+copy files to parent folder or sibling folder
+ubuntu@ip-172-31-42-113:~/Documents/payal/folder1$ cp newfile ../folder2
+
+copy directory. it creates the directory if does not exist. Below example, copies content of folder1 to folder3. folder3 does not exist so it is created.
+ubuntu@ip-172-31-42-113:~/Documents/payal/folder1$ cd ..
+ubuntu@ip-172-31-42-113:~/Documents/payal$ cp -r folder1 folder3
+ubuntu@ip-172-31-42-113:~/Documents/payal$ ls -l
+
+----------------------------------------
+The mv command in Linux is used to move or rename files and directories.
+
+-f, --force: overwrite the destination file(s) without prompting for confirmation.
+-i, --interactive: prompt for confirmation before overwriting the destination file(s).
+-u, --update: move the source file(s) to the destination only if the source file(s) is newer than the destination file(s).
+-v, --verbose: display the name of each file being moved.
+
+Move a file:
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ mv folder1/myfile folder2/ (moving file from folder1 to folder 2)
+
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ ls folder2
+myfile
+ubuntu@ip-172-31-42-113:~/Documents/payal$ ls folder1
+subfolder1
+
+renaming the file
+ubuntu@ip-172-31-42-113:~/Documents/payal$ mv folder2/myfile folder2/updatedfilename
+
+-------------------
+Searching files and directories in Linux
+
+ls: This command lists the contents of a directory.
+
+cd: This command changes the current working directory.
+
+find: This command searches for files and directories within a specified directory hierarchy. For example, to search for a file named "example.txt" in the current directory and its subdirectories, you can use the following command: find . -name "example.txt".
+
+locate: This command searches for files and directories using a pre-built index of the file system. It can be faster than find, but the index may not always be up-to-date. To search for a file named "example.txt" using locate, you can use the following command: locate example.txt.
+
+grep: This command searches for a specific pattern or text within files. For example, to search for the string "hello world" within all files in the current directory and its subdirectories, you can use the following command: grep -r "hello world" ..
+
+whereis: This command locates the binary, source, and manual page files for a specified command or program. For example, to locate the files for the ls command, you can use the following command: whereis ls.
+
+which: This command shows the location of the executable file for a specified command or program. For example, to show the location of the ls command, you can use the following command: which ls.
+
+-------------------------------------------------------------------------------
+
+find:
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ find -name "fol*"
+./folder3
+./folder1
+./folder2
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ find -name "*.txt"
+./myfile_upper.txt
+./myfile_upper2.txt
+
+Search for all files with a .txt extension in the current directory and compress them using gzip
+ubuntu@ip-172-31-42-113:~/Documents/payal$ find . -type f -name "*.txt" -exec gzip {} \; (f stands for file)
+ubuntu@ip-172-31-42-113:~/Documents/payal$ ls -la
+
+Find all empty files in the current directory and its subdirectories:
+find . -type f -empty (The dot (.) represents the current directory, so the search will start from the current directory.)
+
+Find all files modified within the last 24 hours in the current directory and its subdirectories:
+find . -type f -mtime -1 (mtime is modification time and 1 is 1 day)
+
+-atime is an option in the find command in Linux that is used to search for files based on their access time.
+-ctime is an option in the find command in Linux that is used to search for files based on their creation time.
+
+Find all the directories
+find . -type d -name "*example*" (searches for directories with word example in the name)
+
+
+---------------------------
+The locate command in Linux is used to search for files and directories in a fast and efficient way. Unlike the find command, which searches for files by traversing the file system hierarchy, the locate command uses a pre-built database of file names and paths to quickly locate files that match a given pattern.
+
+-i: Performs a case-insensitive search.
+-l N: Limits the number of results to N.
+-c: Prints the number of matching files instead of the file names.
+-e: Requires an exact match of the search pattern.
+-b: Matches the search pattern only at the beginning of the file name.
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ locate file2
+/home/ubuntu/Documents/payal/file2
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ locate -e folder2 (e stands for exact)
+/home/ubuntu/Documents/payal/folder2
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ locate -b file -l 5 (search file having file name in it and limit the search by 5)
+/boot/grub/i386-pc/configfile.mod
+/boot/grub/i386-pc/file.mod
+/boot/grub/i386-pc/search_fs_file.mod
+/boot/grub/x86_64-efi/configfile.mod
+/boot/grub/x86_64-efi/file.mod
+
+------------------------------------------
+The filter is a command-line tool or utility that is used to transform or process text input in some way. Filters take input from a data stream, process it, and then send output to the console or another command.
+
+Here are some common filters in Linux:
+
+grep: This filter is used to search for specific text patterns in a file or output. It can be used with regular expressions to perform more complex searches. It stands for "Global Regular Expression Print".
+
+sed: This filter is used to perform text transformations on a file or input stream. It can be used to find and replace text, delete lines, and perform other manipulations.
+
+awk: This filter is a powerful tool for working with structured text data. It can be used to filter, process, and reformat data based on specific patterns and rules.
+
+cut: This filter is used to extract columns or fields of data from a file or input stream. It can be used to split lines into parts based on delimiters.
+	-c : Extracts characters from a file based on character positions or ranges.
+	-f : Extracts fields from a file based on a delimiter.
+
+sort: This filter is used to sort data in a file or input stream. It can be used to sort alphabetically, numerically, or based on other criteria.
+	-b : Ignores leading white space.
+	-c : Checks if a file is already sorted.
+	-d : Sorts by dictionary order, which ignores non-alphanumeric characters.
+	-f : Sorts case-insensitively.
+	-n : Sorts numerically instead of alphabetically.
+	-r : Reverses the sort order.
+	-t : Specifies the field delimiter. By default, it uses whitespace.
+
+more/less: page by page output
+
+wc - to count lines, words, characters
+tr: This filter is used to translate or replace characters in a file or input stream. It can be used to change the case of text, remove specific characters, or perform other transformations.
+
+-----------------------------
+grep / cut / sort
+
+search for directories. Added exponent for the start position. Showing files starting from d
+ubuntu@ip-172-31-42-113:/etc$ ls -l | grep "^d"
+
+to get the total number of directories
+ubuntu@ip-172-31-42-113:/etc$ ls -l | grep "^d" | wc -l
+162
+
+search for directories. Added dollar for the end position. Showing files ending with d
+ubuntu@ip-172-31-42-113:/etc$ ls -l | grep "d$"
+
+for count
+ubuntu@ip-172-31-42-113:/etc$ ls -l | grep -c "d$"
+49
+
+adding the delimiter to view only 1 and 9 column (-f : Extracts fields from a file based on a delimiter)
+ubuntu@ip-172-31-42-113:/etc$ ls -l |tr -s " " | cut -d " " -f1,9
+
+ubuntu@ip-172-31-42-113:/etc$ echo "hello world" | cut -c 1-5
+hello
+
+ubuntu@ip-172-31-42-113:/etc$ ls -l |tr -s " " | cut -d " " -f1,9 | sort -r (for reverse sort)
+
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ grep adding file1 (search for pattern "adding" in the file1 document)
+adding content to file 1
+adding another content to file1
+ubuntu@ip-172-31-42-113:~/Documents/payal$ 
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ grep adding * (search for the pattern "adding" in all files in the current directory)
+grep: demo1: Is a directory
+file:adding content to file 1
+file1:adding content to file 1
+file1:adding another content to file1
+file2:adding content to file 1
+file2:adding another content to file1
+grep: folder1: Is a directory
+grep: folder2: Is a directory
+grep: folder3: Is a directory
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ grep -r modify . (search for the pattern "modify" in all files in the current directory and its subdirectories)
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ grep -l modify * (search for the patter "modify" in all files in the current directory and print only the names of the files that contain the pattern)
+grep: demo1: Is a directory
+file1
+grep: folder1: Is a directory
+grep: folder2: Is a directory
+grep: folder3: Is a directory
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ grep -c adding * (search and count)
+grep: demo1: Is a directory
+demo1:0
+file:1
+file1:2
+file2:2
+grep: folder1: Is a directory
+folder1:0
+grep: folder2: Is a directory
+folder2:0
+grep: folder3: Is a directory
+folder3:0
+myfile_upper.txt.gz:0
+myfile_upper2.txt.gz:0
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ grep -v adding file1 (To search for all lines in a file called file1 document that do not contain the pattern )
+
+-----------------------------
+sed is a command-line tool in Linux used for text processing and transformations. It stands for "stream editor". sed reads one or more input files and performs editing operations on them based on a set of commands specified in a script.
+
+s: Substitute command, used to find and replace text in a file or input stream.
+d: Delete command, used to delete lines from a file or input stream.
+p: Print command, used to print lines from a file or input stream.
+a: Append command, used to add text after a line.
+i: Insert command, used to add text before a line.
+r: Read command, used to read text from a file and append it after a line.
+w: Write command, used to write a range of lines to a file.
+y: Transliterate command, used to replace one set of characters with another.
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ sed 's/adding/added/' file1
+added content to file 1
+added another content to file1
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ sed 's/OPTIONS/OPT/gx' file1 (To replace all occurrences)
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ sed '/OPTIONS/d' file1 (to delete all the occurrences)
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ sed '1 a\new line' file1  (add the text 'new line' after the first line)
+adding content to file 1
+new line
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ sed '1 i\new line' file1
+new line
+adding content to file 1
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ echo "adding data" >> file4
+ubuntu@ip-172-31-42-113:~/Documents/payal$ cat file4
+adding data
+ubuntu@ip-172-31-42-113:~/Documents/payal$ sed '1 r file' file4
+adding data
+adding content to file 1
+
+-----------------------------------
+tr is a command-line utility in Linux that is used to translate or delete characters in a stream of text. The name "tr" stands for "translate".
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ cat file | tr "[a-z]" "[A-Z]" (convert lower case to upper case)
+ADDING CONTENT TO FILE 1
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ tr '[:upper]' '[:lower]' < file
+adding content to file 1
+
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ tr '[:lower:]' '[:upper:]' < file > myfile_upper2.txt
+
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ echo 'this   is   a text   with a lot of spaces   ' >> file
+ubuntu@ip-172-31-42-113:~/Documents/payal$ cat file
+adding content to file 1
+this   is   a text   with a lot of spaces   
+ubuntu@ip-172-31-42-113:~/Documents/payal$ tr -s ' ' < file (s is used to remove all consecutive spaces and replace them with a single space)
+adding content to file 1
+this is a text with a lot of spaces
+
+-------------------------------------
+more and less
+more and less are commands used in Linux to view the contents of a file or the output of a command. They are both similar in functionality, but less offers more features and is more user-friendly than more.
+
+ubuntu@ip-172-31-42-113:~$ ls -l /etc | more
+
+ubuntu@ip-172-31-42-113:~$ ls -la | less
+
+press q for exit
+
+------------------------------
+wc is a command in Linux used to count the number of lines, words, and characters in a file or input stream. The command stands for "word count".
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ cat file | wc
+      2      14      70
+
+count only lines.
+ubuntu@ip-172-31-42-113:~/Documents/payal$ cat file | wc -l
+2
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ cat file | wc -w
+14
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ cat file | wc -c
+70
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ wc file file1 file2 file4
+   2   14   70 file
+   6  174  973 file1
+   2   10   57 file2
+   2    4   24 file4
+  12  202 1124 total
+  
+----------------------------------
+head and tail
+head - display the data from the beginning of the file.
+tail - display the data from the bottom of the file
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ cat file | head -2 (display the top 2 line)
+ubuntu@ip-172-31-42-113:~/Documents/payal$ cat file | tail -2
+
+----------------------------------
+
+examples:
+
+Find the 10 most frequently occurring words in a text file:
+cat file.txt | tr '[:upper:]' '[:lower:]' | tr -s '[:space:]' '\n' | sort | uniq -c | sort -rn | head -10
+
+In this example, we first use the "cat" command to output the contents of the file
+then use two "tr" commands to convert all the text to lowercase
+replace any consecutive whitespace characters with a newline character. 
+We then use "sort" to sort the lines alphabetically 
+"uniq -c" to count the number of occurrences of each line
+"sort -rn" to sort the lines by the count in descending order 
+"head -10" to output only the first 10 lines.
+
+---------------------------------------------------
+Permissions
+
+chmod - it is used to give permissions
+chown - it is used to change the owner of the file
+chgrp - it is used to change the group name of the file
+
+Read (r): Allows a user to view the contents of a file or directory.
+Write (w): Allows a user to modify or delete a file or directory.
+Execute (x): Allows a user to run a program or script.
+
+For each file or directory, there are three sets of permissions:
+
+User (u): The owner of the file or directory.
+Group (g): A group of users who have access to the file or directory.
+Others (o): Any other user on the system.
+
+Symbolic mode
+In the symbolic mode, you can use letters to represent the user(s) you want to change the permissions for and symbols to specify the changes you want to make. The letters that can be used are:
+
+u for the owner of the file
+g for the group that owns the file
+o for others (users who are neither the owner nor in the group)
+a for all users (equivalent to specifying ugo)
+
+The symbols that can be used are:
+
++ to add permissions
+- to remove permissions
+= to set the permissions exactly as specified
+
+Numeric mode
+In the numeric mode, you use a three-digit number to specify the permissions. Each digit represents the permissions for the owner, group, and others respectively. Each digit is calculated by adding the values of the following symbols:
+
+4 for read permission
+2 for write permission
+1 for execute permission
+
+------------------------------------------------------
+to remove all permissions
+ubuntu@ip-172-31-42-113:~/Documents/payal$ chmod ugo-rwx file
+
+to add read permission
+ubuntu@ip-172-31-42-113:~/Documents/payal$ chmod ugo+r file
+
+to use numeric to remove the permission
+ubuntu@ip-172-31-42-113:~/Documents/payal$ chmod 000 file
+
+to give complete permission
+ubuntu@ip-172-31-42-113:~/Documents/payal$ chmod 777 file
+
+chmod 755 file.txt # Give the owner read, write and execute permission, and read and execute permission to the group and others
+chmod 600 file.txt # Give the owner read and write permission, and no permission to the group and others
+
+create a user
+ubuntu@ip-172-31-42-113:~/Documents/payal$ sudo useradd test1
+ubuntu@ip-172-31-42-113:~/Documents/payal$ sudo passwd test1
+
+add the password and user will be created.
+
+change the user to test1
+ubuntu@ip-172-31-42-113:~/Documents/payal$ chown test1 file
+chown: changing ownership of 'file': Operation not permitted
+
+we need to use sudo for admin rights.
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ sudo chown test1 file
+
+user permission changed for file
+
+ubuntu@ip-172-31-42-113:~/Documents/payal$ ls -l file
+-rwxrwxrwx 1 test1 ubuntu 1141 Mar 27 12:31 file
+
+---------------------------------------
+install software in Linux:
+
+There are several ways to install software in Linux, but the most common way is through the package manager. Here is an example of how to install software using the package manager on a Debian-based Linux distribution like Ubuntu:
+
+	Open the Terminal: Press "Ctrl+Alt+T" to open the Terminal.
+
+	Update the package list: Enter the command sudo apt update to update the package list.
+
+	Search for the software: Enter the command apt search software-name to search for the software you want to install. Replace "software-name" with the name of the software you want to install.
+
+	Install the software: Enter the command sudo apt install software-name to install the software. Replace "software-name" with the name of the software you want to install.
+
+	Enter your password: You will be prompted to enter your password to confirm the installation.
+
+	Wait for the installation to complete: The package manager will download and install the software and its dependencies.
+
+	Launch the software: Once the installation is complete, you can launch the software from the application menu or by running the command in the Terminal.
+
+For example, to install the VLC media player on Ubuntu, you can follow these steps:
+
+	Open the Terminal.
+
+	Enter the command sudo apt update.
+
+	Enter the command apt search vlc.
+
+	Enter the command sudo apt install vlc.
+
+	Enter your password to confirm the installation.
+
+	Wait for the installation to complete.
+
+	Launch VLC media player from the application menu or by running the command vlc in the Terminal.
+
+
+--------------------------------
+sudo apt-get install bsdmainutils
+
+
+type cal to print  the calendar
+
+type cal month year to print particular month or year calendar. (cal 4 2022)
+
+Display the current date and time:
+date
+
+
+print in particular format
+date +"%Y-%m-%d %H:%M:%S"
+
+change the date format
+sudo date -s "YYYY-MM-DD HH:MM:SS"
+
+
+
+
+check if software is installed:
+
+sudo apt list vlc
+
+or 
+
+Open the application menu and look for the software you want to check. If the software is installed, you should see it in the menu. If it is not installed, it will not appear in the menu.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

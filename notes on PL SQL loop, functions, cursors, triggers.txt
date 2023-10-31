@@ -1,0 +1,475 @@
+PL/SQL LOOP syntax
+The PL/SQL LOOP statement has the following structure:
+
+<<label>> LOOP
+    statements;
+END LOOP loop_label;
+
+Code language: SQL (Structured Query Language) (sql)
+This structure is the most basic of all the loop constructs including FOR LOOP and WHILE LOOP. This basic LOOP statement consists of a LOOP keyword, a body of executable code, and the END LOOP keywords.
+
+The LOOP statement executes the statements in its body and returns control to the top of the loop. Typically, the body of the loop contains at least one EXIT or EXIT WHEN statement for terminating the loop. Otherwise, the loop becomes an infinite loop.
+
+The LOOP statement can have an optional label that appears at the beginning and the end of the statement.
+
+It is a good practice to use the LOOP statement when:
+
+You want to execute the loop body at least once.
+You are not sure the number of times you want the loop to execute.
+ EXIT statement
+The EXIT statement allows you to unconditionally exit the current iteration of a loop.
+
+LOOP
+    EXIT;
+END LOOP; 
+
+Code language: SQL (Structured Query Language) (sql)
+Typically, you use the EXIT statement with an IF statement to terminate a loop when a condition is true:
+
+LOOP
+    IF condition THEN
+        EXIT;
+    END IF;
+END LOOP;
+
+Code language: SQL (Structured Query Language) (sql)
+The following example illustrates how to use the LOOP statement to execute a sequence of code and EXIT statement to terminate the loop.
+
+DECLARE
+  l_counter NUMBER := 0;
+BEGIN
+  LOOP
+    l_counter := l_counter + 1;
+    IF l_counter > 3 THEN
+      EXIT;
+    END IF;
+    dbms_output.put_line( 'Inside loop: ' || l_counter )  ;
+  END LOOP;
+  -- control resumes here after EXIT
+  dbms_output.put_line( 'After loop: ' || l_counter );
+END;
+
+
+Code language: SQL (Structured Query Language) (sql)
+Here is the output:
+
+Inside loop: 1
+Inside loop: 2
+Inside loop: 3
+After loop: 4
+
+
+Code language: SQL (Structured Query Language) (sql)
+The following explains the logic of the code:
+
+First, declare and initialize a variable l_counter to zero.
+Second, increase the l_counter by one inside the loop and exit the loop if the l_counter is greater than three. If the l_counter is less than or equal three, show the l_counter value. Because the initial value of  l_counter is zero, the code in the body of the loop executes three times before it is terminated.
+Third, display the value of the l_counter after the loop.
+EXIT WHEN statement
+The EXIT WHEN statement has the following syntax:
+
+EXIT WHEN condition;
+Code language: SQL (Structured Query Language) (sql)
+The EXIT WHEN statement exits the current iteration of a loop when the condition in the WHEN clause is TRUE. Essentially, the EXIT WHEN statement is a combination of an EXIT and an IF THEN statement.
+
+Each time the control reaches the EXIT WHEN statement, the condition is evaluated. If the condition evaluates to TRUE, then the loop terminates. Otherwise, the EXIT WHEN clause does nothing. Inside the loop body, you must make the condition TRUE at some point to prevent an infinite loop.
+
+The following example uses the EXIT WHEN statement to terminate a loop.
+
+SET SERVEROUTPUT ON
+
+DECLARE
+  l_counter NUMBER := 0;
+BEGIN
+  LOOP
+    l_counter := l_counter + 1;
+    IF l_counter > 3 THEN
+      EXIT;
+    END IF;
+    dbms_output.put_line( 'Inside loop: ' || l_counter )  ;
+  END LOOP;
+  -- control resumes here after EXIT
+  dbms_output.put_line( 'After loop: ' || l_counter );
+END;
+
+
+The WHILE loop syntax
+Here is the syntax for the WHILE loop statement:
+
+WHILE condition
+LOOP
+    statements;
+END LOOP;
+Code language: SQL (Structured Query Language) (sql)
+The condition in the WHILE is a Boolean expression that evaluates to TRUE, FALSE or NULL.
+
+The WHILE loop statement continues to execute the statements between the LOOP and END LOOP as long as the condition in the WHILE clause evaluates to TRUE.
+
+PL/SQL evaluates the condition in the WHILE clause before each loop iteration. If the condition is TRUE, then the loop body executes. In case it is FALSE or NULL, the loop terminates.
+
+If the condition is FALSE before entering the loop, the WHILE loop does not execute at all. This behavior is different from the LOOP statement whose loop body always executes once.
+
+To terminate the loop prematurely, you use an EXIT or EXIT WHEN statement.
+--------------------------------------------------
+A) Simple WHILE loop example
+The following example illustrates how to use the WHILE loop statement:
+
+DECLARE
+  n_counter NUMBER := 1;
+BEGIN
+  WHILE n_counter <= 5
+  LOOP
+    DBMS_OUTPUT.PUT_LINE( 'Counter : ' || n_counter );
+    n_counter := n_counter + 1;
+  END LOOP;
+END;
+
+-------------------------
+PL/SQL FOR LOOP executes a sequence of statements a specified number of times. The PL/SQL FOR LOOP statement has the following structure:
+
+FOR index IN lower_bound .. upper_bound
+LOOP 
+    statements; 
+END LOOP;
+Code language: SQL (Structured Query Language) (sql)
+The index is an implicit variable. It is local to the FOR LOOP statement. In other words, you cannot reference it outside the loop.
+
+Inside the loop, you can reference index but you cannot change its value. After the FOR LOOP statement executes, the index becomes undefined.
+
+Both lower_bound and upper_bound are numbers or expressions that evaluate to numbers. The lower_bound and upper_bound are evaluated once when the FOR LOOP statement starts. Their values are stored as temporary PLS_INTEGER values. The results of lower_bound and upper_bound are rounded to the nearest integer if necessary.
+
+If you modify the values of lower_bound or upper_bound inside the loop, the change will have no effect because they are evaluated once only before the first loop iteration starts.
+
+Typically, lower_bound is less than upper_bound. In this case, index is set to lower_bound, the statements execute, and control returns to the top of the loop, where index is compared to upper_bound. If index is less than upper_bound, index is incremented by one, the statements execute, and control again returns to the top of the loop. When index is greater than upper_bound, the loop terminates, and control transfers to the statement after the FOR LOOP statement.
+
+If lower_bound is equal to upper_bound, the statements execute only once. When lower_bound is greater than upper_bound, the statements do not execute at all.
+
+PL/SQL FOR LOOP examples
+Let’s take some examples of using the FOR LOOP statement to understand how it works.
+
+A) Simple PL/SQL FOR LOOP example
+In this example, the loop index is l_counter, lower_bound is one, and upper_bound is five. The loop shows a list of integers from 1 to 5.
+
+BEGIN
+  FOR l_counter IN 1..5
+  LOOP
+    DBMS_OUTPUT.PUT_LINE( l_counter );
+  END LOOP;
+END;
+
+----------------
+DECLARE
+  l_step  PLS_INTEGER := 2;
+BEGIN
+  FOR l_counter IN 1..5 LOOP
+    dbms_output.put_line (l_counter*l_step);
+  END LOOP;
+END;
+
+--------------------------
+
+In this chapter, we will discuss the cursors in PL/SQL. Oracle creates a memory area, known as the context area, for processing an SQL statement, which contains all the information needed for processing the statement; for example, the number of rows processed, etc.
+
+A cursor is a pointer to this context area. PL/SQL controls the context area through a cursor. A cursor holds the rows (one or more) returned by a SQL statement. The set of rows the cursor holds is referred to as the active set.
+
+You can name a cursor so that it could be referred to in a program to fetch and process the rows returned by the SQL statement, one at a time. There are two types of cursors −
+
+Implicit cursors
+Explicit cursors
+
+Implicit Cursors
+Implicit cursors are automatically created by Oracle whenever an SQL statement is executed, when there is no explicit cursor for the statement. Programmers cannot control the implicit cursors and the information in it.
+
+Whenever a DML statement (INSERT, UPDATE and DELETE) is issued, an implicit cursor is associated with this statement. For INSERT operations, the cursor holds the data that needs to be inserted. For UPDATE and DELETE operations, the cursor identifies the rows that would be affected.
+
+In PL/SQL, you can refer to the most recent implicit cursor as the SQL cursor, which always has attributes such as %FOUND, %ISOPEN, %NOTFOUND, and %ROWCOUNT. The SQL cursor has additional attributes, %BULK_ROWCOUNT and %BULK_EXCEPTIONS, designed for use with the FORALL statement. The following table provides the description of the most used attributes
+
+A cursor is a pointer that points to a result of a query. PL/SQL has two types of cursors: implicit cursors and explicit cursors.
+
+Implicit cursors
+Whenever Oracle executes an SQL statement such as SELECT INTO, INSERT, UPDATE, and DELETE, it automatically creates an implicit cursor.
+
+Oracle internally manages the whole execution cycle of implicit cursors and reveals only the cursor’s information and statuses such as SQL%ROWCOUNT, SQL%ISOPEN, SQL%FOUND, and SQL%NOTFOUND.
+
+The implicit cursor is not elegant when the query returns zero or multiple rows which cause NO_DATA_FOUND or TOO_MANY_ROWS exception respectively.
+-----------------------------------------
+Declare a cursor
+Before using an explicit cursor, you must declare it in the declaration section of a block or package as follows:
+
+CURSOR cursor_name IS query;
+Code language: SQL (Structured Query Language) (sql)
+In this syntax:
+
+First, specify the name of the cursor after the CURSOR keyword.
+Second, define a query to fetch data after the IS keyword.
+
+
+DECLARE
+   -- cursor
+  CURSOR c_emp IS
+  SELECT  *  FROM emp  
+  ORDER BY salary DESC;
+   -- record    
+   r_emp c_emp%ROWTYPE;
+BEGIN
+
+  -- reset comission of all customers
+  UPDATE emp SET commission_pct = 0;
+  OPEN c_emp;
+
+  LOOP
+    FETCH  c_emp  INTO r_emp;
+    EXIT WHEN c_emp%NOTFOUND;
+
+    -- update credit for the current customer
+    UPDATE 
+        emp
+    SET  
+        commission_pct = 0.10
+            
+    WHERE 
+        employee_id = r_emp.employee_id;
+
+   
+
+    DBMS_OUTPUT.PUT_LINE( 'Customer id: ' ||r_emp.employee_id || 
+'Commission: ' || r_emp.commission_pct );
+
+    -- check the budget
+    
+  END LOOP;
+
+  CLOSE c_emp;
+END;
+
+------------------------------------
+Creating a PL/SQL function
+Similar to a procedure, a PL/SQL function is a reusable program unit stored as a schema object in the Oracle Database. The following illustrates the syntax for creating a function:
+
+CREATE [OR REPLACE] FUNCTION function_name (parameter_list)
+    RETURN return_type
+IS
+    
+Code language: SQL (Structured Query Language) (sql)
+[declarative section]
+
+BEGIN
+
+[executable section]
+
+[EXCEPTION]
+
+[exception-handling section]
+
+END;
+
+A function consists of a header and body.
+
+The function header has the function name and a RETURN clause that specifies the datatype of the returned value. Each parameter of the function can be either in the IN, OUT, or INOUT mode. For more information on the parameter mode, check it out the PL/SQL procedure tutorial
+
+The function body is the same as the procedure body which has three sections: declarative section, executable section, and exception-handling section.
+
+The declarative section is between the IS and BEGIN keywords. It is where you declare variables, constants, cursors, and user-defined types.
+The executable section is between the BEGIN and END keywords. It is where you place the executable statements. Unlike a procedure, you must have at least one RETURN statement in the executable statement.
+The exception-handling section is where you put the exception handler code.
+In these three sections, only the executable section is required, the others are optional.
+
+-----------------------------------------
+CREATE OR REPLACE Function AnnualSalary
+   ( n_salary IN NUMBER )
+   RETURN number
+IS
+   annualsalary number;
+
+   cursor c1 is
+   SELECT (salary+(salary*commission_pct))*12
+     FROM emp
+     WHERE salary = n_salary;
+
+BEGIN
+
+   open c1;
+   fetch c1 into annualsalary;
+
+   if c1%notfound then
+      annualsalary := 0;
+   end if;
+
+   close c1;
+
+RETURN annualsalary;
+
+EXCEPTION
+WHEN OTHERS THEN
+   raise_application_error(-20001,'An error was encountered - '||SQLCODE||' -ERROR- '||SQLERRM);
+END;
+
+select employee_id, salary, ANNUALSALARY(salary) from emp;
+
+---------------------------------------------
+What is an Oracle trigger
+A trigger is a named PL/SQL block stored in the Oracle Database and executed automatically when a triggering event takes place. The event can be any of the following:
+
+A data manipulation language  (DML) statement executed against a table e.g., INSERT, UPDATE, or DELETE. For example, if you define a trigger that fires before an INSERT statement on the customers table, the trigger will fire once before a new row is inserted into the customers table.
+A data definition language (DDL) statement executes e.g., CREATE or ALTER statement. These triggers are often used for auditing purposes to record changes of the schema.
+A system event such as startup or shutdown of the Oracle Database.
+A user event such as login or logout.
+The act of executing a trigger is also known as firing a trigger. We say that the trigger is fired.
+
+Oracle trigger usages
+Oracle triggers are useful in many cases such as the following:
+
+Enforcing complex business rules that cannot be established using integrity constraint such as UNIQUE, NOT NULL, and CHECK.
+Preventing invalid transactions.
+Gathering statistical information on table accesses.
+Generating value automatically for derived columns.
+Auditing sensitive data.
+How to create a trigger in Oracle
+To create a new trigger in Oracle, you use the following CREATE TRIGGER statement:
+
+CREATE [OR REPLACE] TRIGGER trigger_name
+{BEFORE | AFTER } triggering_event ON table_name
+[FOR EACH ROW]
+[FOLLOWS | PRECEDES another_trigger]
+[ENABLE / DISABLE ]
+[WHEN condition]
+DECLARE
+    declaration statements
+BEGIN
+    executable statements
+EXCEPTION
+    exception_handling statements
+END;
+
+1) CREATE OR REPLACE
+The CREATE keyword specifies that you are creating a new trigger. The OR REPLACE keywords are optional. They are used to modify an existing trigger.
+
+Even though the OR REPLACE keywords are optional, they appear with the CREATE keyword in most cases.
+
+For example, if today you define a new trigger named trigger_example:
+
+CREATE TRIGGER trigger_example
+    ...
+Code language: SQL (Structured Query Language) (sql)
+And on the next day, you decide to modify this trigger.
+
+If you do not include the OR REPLACE keywords, you will receive an error message indicating that the name of your trigger is already used by another object:
+
+CREATE TRIGGER trigger_example
+    ...
+Code language: SQL (Structured Query Language) (sql)
+Therefore, the CREATE OR REPLACE keywords will replace an existing trigger if it already exists and create a new trigger if the trigger does not:
+
+CREATE OR REPLACE trigger_example
+    ....
+Code language: SQL (Structured Query Language) (sql)
+2) Trigger name
+Specify the name of the trigger that you want to create after the CREATE OR REPLACE keywords.
+
+3) BEFORE | AFTER
+The BEFORE or AFTER option specifies when the trigger fires, either before or after a triggering event e.g., INSERT, UPDATE, or DELETE
+
+4) ON table_name
+The table_name is the name of the table associated with the trigger.
+
+5) FOR EACH ROW
+The clause FOR EACH ROW specifies that the trigger is a row-level trigger. A row-level trigger fires once for each row inserted, updated, or deleted.
+
+Besides the row-level triggers, we have statement-level triggers. A statement-trigger fire once regardless of the number of rows affected by the triggering event. If you omit the FOR EACH ROW clause, the CREATE TRIGGER statement will create a statement-level trigger.
+
+6) ENABLE / DISABLE
+The ENABLE / DISABLE option specifies whether the trigger is created in the enabled or disabled state. Note that if a trigger is disabled, it is not fired when the triggering event occurs.
+
+By default, if you don’t specify the clause ENABLE / DISABLE , the trigger is created with the enabled state.
+
+7) FOLLOWS | PRECEDES another_trigger
+For each triggering event e.g., INSERT, UPDATE, or DELETE, you can define multiple triggers to fire. In this case, you need to specify the firing sequence using the FOLLOWS or PRECEDES option.
+
+Let’s create a trigger to see understand how it works.
+
+Creating an Oracle trigger example
+Suppose we want to record actions against the customers table whenever a customer is updated or deleted. In order to do this:
+
+First, create a new table for recording the UPDATE and DELETE events:
+
+CREATE TABLE audits (
+      audit_id number primary key,
+      table_name       VARCHAR2(255),
+      transaction_name VARCHAR2(10),
+      by_user          VARCHAR2(30),
+      transaction_date DATE
+);
+
+CREATE SEQUENCE audit_id_seq;
+
+CREATE TRIGGER audit_bi
+BEFORE INSERT ON audits
+FOR EACH ROW
+BEGIN
+  SELECT audit_id_seq.nextval
+  INTO :new.audit_id
+  FROM dual;
+END;
+
+CREATE OR REPLACE TRIGGER emp_audit_trg
+    AFTER 
+    UPDATE OR DELETE 
+    ON emp
+    FOR EACH ROW    
+DECLARE
+   l_transaction VARCHAR2(10);
+BEGIN
+   -- determine the transaction type
+   l_transaction := CASE  
+         WHEN UPDATING THEN 'UPDATE'
+         WHEN DELETING THEN 'DELETE'
+   END;
+
+   -- insert a row into the audit table   
+   INSERT INTO audits (table_name, transaction_name, by_user, transaction_date)
+   VALUES('emp', l_transaction, USER, SYSDATE);
+END;
+/
+
+update emp set salary = 25000 where employee_id = 100;
+
+select * from audits;
+
+--------------------------------------------------
+CREATE TABLE emp_1
+  AS (SELECT employee_id,department_id FROM employees);
+
+CREATE TABLE dept_1
+  AS (SELECT department_id,department_name FROM departments);
+  
+create view vw_emp as
+select employee_id, dept_1.department_id, department_name
+from emp_1 inner join dept_1 on emp_1.department_id = dept_1.department_id;
+
+
+select * from vw_emp;
+
+insert into vw_emp values (1,1234,'Newdept');
+drop view vw_emp;
+
+
+CREATE OR REPLACE TRIGGER new_emp_insert
+    INSTEAD OF INSERT ON vw_emp
+    FOR EACH ROW
+DECLARE
+    l_dept_id NUMBER;
+BEGIN
+    -- insert a new customer first
+    INSERT INTO dept_1 (department_id,department_name)
+    VALUES(:NEW.department_id, :NEW.department_name)
+    RETURNING department_id INTO l_dept_id;
+    
+    -- insert the contact
+    INSERT INTO emp_1(employee_id, department_id)
+    VALUES(:NEW.employee_id, l_dept_id);
+END;
+
+---------------------------------------------
+https://www.dnsstuff.com/oracle-performance-tuning
+
+

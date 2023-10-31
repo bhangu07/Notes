@@ -1,0 +1,18 @@
+ubuntu@ip-172-31-36-32:~$ cd payal
+ubuntu@ip-172-31-36-32:~/payal$ mkdir Assignment
+ubuntu@ip-172-31-36-32:~/payal$ cd Assignment
+ubuntu@ip-172-31-36-32:~/payal/Assignment$ mkdir -p folder1/subfolder1 folder1/subfolder2 folder1/subfolder3 folder2 folder3
+ubuntu@ip-172-31-36-32:~/payal/Assignment$ touch folder1/subfolder2/myfile1.txt
+ubuntu@ip-172-31-36-32:~/payal/Assignment$ cat >> folder1/subfolder2/myfile1.txt
+Hi
+hello
+bye
+ubuntu@ip-172-31-36-32:~/payal/Assignment$ cat >> folder1/subfolder2/myfile1.txt
+Good evening
+Good night
+ubuntu@ip-172-31-36-32:~/payal/Assignment$ cat folder1/subfolder2/myfile1.txt
+Hi
+hello
+bye
+Good evening
+Good night

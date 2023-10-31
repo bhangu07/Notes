@@ -1,0 +1,197 @@
+	
+	different ways of programming:
+	
+	
+	lowest number
+	
+	directly write or
+	
+	create a function and add the entire program into it (a block of code which will execute as whole)
+	
+	{
+		//block
+	
+	}
+	
+	functions are behaviors of logic
+	reusablity of code
+	
+		printlowestnumber()
+		printhighestnumber()
+		
+		//creation of the function
+		isEven(num1) {
+		
+			if(num1%2==0) {
+				print("even number")
+			}
+			else {
+				print("odd numbers")
+			}
+		
+		}
+		
+		//execution
+		add(20,30) = 50
+		add(100,200) = 300
+		add(20.5,19.5) = 40
+		
+		isEven(4) = even numbers
+		isEven(11) = odd numbers
+		------------------------------------
+		a=100
+		b=200
+		sum=a+b
+		print sum
+		
+		
+		subtract()
+		
+		
+		------------------------------------------
+		Employees (group) - Preeti is an object , Payal is an object , ACC143343 is an object , TR353232 is an object
+		
+		
+		In java - collection of objects which will have attributes (id, name, emailid, phoneno,salary) and behavior (attendance , leaves , profile , login , logout , breaks)
+		
+		
+		class - blueprint of the project
+		objects - 
+		
+		
+		Customers - clsss
+		CustomerA - object
+		
+		Accounts - class
+		
+		A2423232 - object
+		
+		
+		Animal - class
+		Dog - class
+		pug - object
+	
+		Employee is a class
+		payal is object of class employee (instance of class employee)
+		emp1 is instance of Employee
+		emp2 is instance of Employee
+		
+		
+		object oriented programming
+		
+		in java
+		--------------------------------
+		
+		public class Book {
+		
+		datatype reference/variable/attribute
+		
+			String bookid;
+			String bookname;
+			String bookType;
+			int noOfPages;
+			String author;
+			String publisher;
+			boolean inStock;
+			String language;
+			float price;
+			
+			
+			//behavior & operations can a book perform
+			getBooks() {
+			
+			
+			}
+			
+			read() {
+			
+			
+			}
+			
+			write() {
+			
+			
+			}
+			
+			noOfBooksRead() {
+			
+			
+			}
+			
+			bestSeller() {
+			
+			
+			}
+		}
+		
+----------------------------------------------------		
+		public class Employee {
+		
+			//attributes can a employee have
+			String empID;
+			String empname;
+			Date dob;
+			String contactNo;
+			String emailId;
+			String address;
+			Date doj;
+			String bloodType
+			int salary
+			
+			//behaviors or operations
+			
+			calculateWorkHours() {}
+			
+			login()
+			
+			logout()
+			
+			register(String empID, String empname, Date dob, String contactNo, String emailID, String address, Date doj, String bloodType, int salary) {
+			
+			
+			
+			}
+			
+			calculateBonus()
+			
+			getEmployeeList()
+			
+			getEmployee() {
+				
+				System.out.println(empname + " " + address);
+				System.out.println(dob);
+				
+			
+			}
+			
+			overtime()
+			
+			leaveTracking()
+			
+			
+			int (whole numbers)
+			56.43 (float , double)
+			
+		
+		}
+		
+		//create object in java
+		classname objectname = new classname();
+		Employee E342353 = new Employee();
+		
+		instantiation = creating the object
+		Employee akshat = new Employee();
+		Employee raj = new Employee();
+		Employee emp3 = new Employee();
+		Employee emp4 = new Employee();
+		Employee emp5 = new Employee();
+		Employee emp6 = new Employee();
+		Employee emp7 = new Employee();
+		Employee emp8 = new Employee();
+		
+		raj - object
+		register - function
+		
+		raj.register("NAT42323","Raj","1991-07-21","+91997979798",....)
+		
+		raj.getEmployee("Raj");

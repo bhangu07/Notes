@@ -1,0 +1,30 @@
+ubuntu@ip-172-31-36-32:~/payal$ cat file1 | head -2
+Hi
+hello
+ubuntu@ip-172-31-36-32:~/payal$ cat file1 | wc -l
+95
+ubuntu@ip-172-31-36-32:~/payal$ cat file1 | tail -5 
+RSS
+Computer Hope home page© 2023 Computer Hope
+Legal Disclaimer - Privacy Statement
+Back to Top
+
+ubuntu@ip-172-31-36-32:~/payal$ cat file1 | tr -s '\n' | tail -5 
+YouTube
+RSS
+Computer Hope home page© 2023 Computer Hope
+Legal Disclaimer - Privacy Statement
+Back to Top
+ubuntu@ip-172-31-36-32:~/payal$ cat file1 | tr -s '\n' | tail -5 | tr "[a-z]" "[A-Z]"
+YOUTUBE
+RSS
+COMPUTER HOPE HOME PAGE© 2023 COMPUTER HOPE
+LEGAL DISCLAIMER - PRIVACY STATEMENT
+BACK TO TOP
+ubuntu@ip-172-31-36-32:~/payal$ cat file1 | tr -s "\n" | tail -5 | tr "[a-z]" "[A-Z]"
+YOUTUBE
+RSS
+COMPUTER HOPE HOME PAGE© 2023 COMPUTER HOPE
+LEGAL DISCLAIMER - PRIVACY STATEMENT
+BACK TO TOP
+ubuntu@ip-172-31-36-32:~/payal$ 

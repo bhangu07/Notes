@@ -1,0 +1,405 @@
+MongoDB
+----------------------------------
+
+Learning outcome:
+
+1. No SQL
+2. Why No SQL
+3. Features of No SQL
+4. No SQL Types
+5. Introduction to MongoDB
+6. Basic operations using MongoDB
+
+
+RDBMS is structured Database.
+Data is structured, number of rows and columns are limited.
+RDBMS cannot handle data beyond a particular limit.
+Everyday there will be flow of large volume of unstructured data.
+Applications are mainly distributed, RDBMS cannot able to handle
+	the database that is distributed.
+
+No SQL
+
+NoSQL (Not Only SQL) is a type of database management system that is used to store and retrieve data that does not fit well into the traditional relational database model. 
+NoSQL databases are designed to handle a variety of data types and structures, including unstructured and semi-structured data, which makes them suitable for use in many modern web and mobile applications.
+
+
+
+	It is basically a database used to manage huge sets of unstructured data.
+	Data is not stored in tabular relations
+	- It is a non-relational DMS, does not require fixed schema
+	- can be used for distributed database
+	- used for Big Data, real-time apps
+	- collect terrabytes of user data every day
+	
+	Ex: Facebook, Google
+
+Some key features of NoSQL databases include:
+
+Flexible data models: NoSQL databases offer flexible data models that can handle a variety of data types and structures, including unstructured and semi-structured data.
+
+Horizontal scalability: NoSQL databases are designed to scale horizontally, which means that they can easily handle increases in data volume and user traffic by adding more nodes to the system.
+
+	Horizontal scalability, also known as scale-out, is a type of scalability that involves adding more machines or nodes to a system in order to increase its capacity and handle more traffic or workload. 
+	In this approach, rather than upgrading existing hardware, more machines are added to the existing setup in order to distribute the load among them.
+	
+
+High availability: NoSQL databases are designed to provide high availability and fault tolerance, which means that they can continue to function even if some nodes in the system fail.
+
+Distributed architecture: NoSQL databases are designed to be distributed across multiple nodes, which allows for faster data retrieval and processing.
+
+	Distributed architecture is a key feature of NoSQL databases, and it is achieved through various techniques such as sharding, replication, and consistent hashing. 
+	
+	Sharding involves partitioning the data into smaller chunks and distributing them across multiple nodes. 
+	
+	Replication involves creating copies of data and distributing them across multiple nodes to ensure high availability and fault tolerance. 
+	Consistent hashing is used to ensure that data is evenly distributed across the cluster, and to avoid hotspots or overloaded nodes.
+
+	Distributed architecture provides several advantages for NoSQL databases. 
+		It allows for horizontal scalability, which means that the database can handle more data and traffic by adding more nodes to the cluster. 
+		It also allows for fault tolerance and high availability, as the data is replicated across multiple nodes and can be retrieved even if some nodes fail. 
+		Additionally, distributed architecture allows for better performance, as queries can be executed in parallel across multiple nodes.
+
+	Distributed architecture also has some challenges, 
+		Need for proper coordination and synchronization between nodes, as well as the complexity of managing a distributed system. 
+		Ensuring data consistency and avoiding conflicts can also be more difficult in a distributed system.
+
+Schema-less design: NoSQL databases do not require a fixed schema, which means that data can be added or removed from the database without the need for schema changes.
+
+		In a schema-less NoSQL database, data is stored in a more flexible and dynamic format, such as JSON or BSON documents. 
+		These documents can have different structures and fields, and can be modified or extended as needed. This allows for greater agility and flexibility in data modeling, and makes it easier to adapt to changing business requirements.
+
+		The schema-less design of NoSQL databases has several advantages. It allows for more flexibility and agility in data modeling, which can help to reduce development time and costs. 
+		It also allows for faster iterations and prototyping, as data can be added or modified without the need for schema changes. Additionally, the schema-less design makes it easier to handle unstructured or semi-structured data, which can be difficult to model in a fixed schema.
+
+		The lack of a fixed schema can also pose some challenges
+			The need for data validation and verification to ensure data quality and consistency. 
+			It can also make it more difficult to perform complex queries or join data from multiple sources.
+
+Why No SQL:
+	Scalability: NoSQL databases can handle a large volume of data and traffic by adding more nodes to the cluster.
+	Flexibility: NoSQL databases are schema-less, allowing for more flexibility and agility in data modeling.
+	High availability: NoSQL databases use techniques such as data replication and sharding to ensure data availability, even if some nodes fail.
+	Performance: NoSQL databases can offer better performance for certain types of workloads and can be optimized for specific use cases.
+	Cost-effectiveness: NoSQL databases can be more cost-effective, as they can be deployed on commodity hardware and often run on open-source software.
+	The system response time as huge volume of data flows in.
+	To resolve this problem, we either increase the hardware which is expensive.
+	to distribute the database, load on the multiple hosts
+	performance will be good in No SQL. Load will not be on the single server.
+	
+History of No SQL:
+
+1998 - Carlo Strozzi No SQL Lightweight, opensource
+2000 - Graph Database (Neo4j) was launched
+2004 - Google BigTable
+2005 - CouchDB
+2007 - Amazon released DynamoDB
+2008 - Facebook released Cassandra
+2009 - No SQL
+
+NoSQL databases emerged in the late 2000s as a response to the limitations of traditional relational databases for certain types of applications and workloads.
+The term "NoSQL" originally referred to "non-SQL" or "non-relational" databases, but has since come to mean "not only SQL".
+The first NoSQL databases were developed by large web companies such as Google, Amazon, and Facebook to handle their massive scale and high traffic.
+In 2009, the first NoSQL conference was held in San Francisco, which brought together developers and users of NoSQL databases.
+In 2010, the term "NoSQL" gained wider recognition and adoption, as more companies started using NoSQL databases and vendors began offering commercial products.
+There are several types of NoSQL databases, including document databases, key-value stores, column-family stores, and graph databases.
+Some popular NoSQL databases include MongoDB, Cassandra, Redis, HBase, and Neo4j.
+Today, NoSQL databases are widely used for modern web applications, big data analytics, and real-time processing, among other use cases.
+
+Features of No SQL
+	- Non relational
+	- Schema free
+	- Distrubuted
+	- response time is less
+	- performance is high
+	
+Types of No SQL:
+
+1. key-value pair based : Risk, Redis
+2. Document based : MongoDB, CouchDB,  RavenDB 
+3. Column based Database : BigTable, Cassandra
+4. Graph-based Database : Neo4j, InfoGrid
+
+Document databases: These databases store and manage semi-structured data as documents, typically using formats such as JSON or BSON. Examples include MongoDB and Couchbase.
+
+Documents can have nested structures and can be indexed for fast retrieval. Document databases are often used for content management, e-commerce, and mobile applications.
+
+
+Key-value stores: These databases store data as simple key-value pairs, making them ideal for high-speed data access and caching. Examples include Redis and Riak.
+
+They are highly scalable and can provide extremely fast data access, making them ideal for high-performance applications and caching. 
+Key-value stores are often used for real-time analytics, session management, and message queuing.
+
+
+Column-family stores: These databases store data in column families, which are groups of related columns that are stored together. They are optimized for write-heavy workloads and large-scale data processing. Examples include Apache Cassandra and HBase.
+
+They store data in column families, which are groups of related columns that are stored together, allowing for fast data retrieval and query processing. 
+Column-family stores are often used for big data processing, real-time analytics, and content management.
+
+
+Graph databases: These databases store and manage data in terms of nodes and edges, making them ideal for handling complex and interconnected data. Examples include Neo4j and ArangoDB.
+
+They store data as nodes (representing entities such as people or products) and edges (representing relationships between nodes), and provide powerful querying capabilities for analyzing complex data structures. 
+Graph databases are often used for social networking, recommendation engines, and fraud detection.
+
+
+Object-oriented databases: These databases store data as objects, making them well-suited for object-oriented programming languages and applications. Examples include db4o and Versant.
+They provide features such as inheritance and polymorphism, making them well-suited for object-oriented programming languages and applications. Object-oriented databases are often used for scientific simulations, engineering design, and real-time control systems.
+
+MongoDB:
+MongoDB is a popular open-source NoSQL document database that was first released in 2009. 
+It is designed to be highly scalable, flexible, and developer-friendly, allowing for fast and easy development of modern applications. Here are some key features of MongoDB:
+
+Document-based model: 
+	MongoDB stores data as flexible, JSON-like documents that can have nested structures and can be indexed for fast retrieval. 
+	This allows for easy handling of semi-structured data and avoids the need for complex data models and schema migrations.
+
+High scalability: 
+	MongoDB is designed to be highly scalable, allowing for easy scaling out across multiple servers and data centers. 
+	It provides features such as sharding and replication for easy horizontal scaling.
+
+Flexible querying: 
+	MongoDB provides a powerful querying language and supports rich queries over documents, including support for aggregation, indexing, and geospatial queries.
+
+ACID transactions: 
+	MongoDB supports ACID transactions, allowing for data consistency and integrity across multiple operations.
+	MongoDB follows the ACID transaction model through a technique called multi-version concurrency control (MVCC). 
+	MVCC ensures that each transaction works with its own snapshot of the data, which is isolated from the snapshot of other concurrent transactions. 
+	This means that transactions can execute concurrently without interfering with each other, while still maintaining data consistency and integrity.
+	
+		Atomicity: MongoDB's transactions are atomic, meaning that either all the changes made in the transaction are committed, or none of them are. If any part of the transaction fails, the entire transaction is rolled back, and any changes made are undone.
+
+		Consistency: MongoDB's transactions maintain consistency by ensuring that the data is in a valid state both before and after the transaction is executed. If the transaction fails, any changes made are rolled back, and the data is returned to its original state.
+
+		Isolation: MongoDB's transactions use snapshot isolation, which ensures that each transaction works with its own snapshot of the data, which is isolated from other transactions. This means that transactions can execute concurrently without interfering with each other.
+
+		Durability: MongoDB's transactions are durable, meaning that once a transaction is committed, the changes made are stored permanently and cannot be lost due to a system failure.
+
+
+
+Here are some important terminologies in MongoDB:
+
+	Document: In MongoDB, data is stored in documents, which are similar to JSON objects. A document is a key-value pair structure, where each key represents a field and each value represents the data stored in that field.
+	
+	BSON: BSON (Binary JSON) is a binary representation of JSON data used by MongoDB. BSON is used to store and transmit data between MongoDB clients and servers.
+
+	Collection: A collection is a group of documents that are stored in MongoDB. Collections are analogous to tables in a relational database.
+
+	Database: A database is a container for collections in MongoDB. Each database can contain multiple collections.
+
+	Index: An index is a data structure that enables efficient querying of data in a collection. Indexes can be created on one or more fields in a collection to improve query performance.
+
+	Shard: A shard is a horizontal partition of data in MongoDB. A sharded cluster consists of multiple shards, which allows for high scalability and performance.
+			In sharding, the data is partitioned across multiple servers or nodes, with each node storing a distinct subset of the data. 
+			This means that different data is stored across different servers or nodes, rather than the same data being stored across all servers. 
+			Each server or node is responsible for storing and managing a specific subset of the data. When a query is issued, the MongoDB system routes the query to the appropriate shard or set of shards, which then return the relevant data to the client. 
+			By partitioning data in this way, sharding helps to distribute the workload across multiple servers, making it possible to handle large volumes of data and high levels of traffic.
+
+	Replica set: A replica set is a group of MongoDB servers that maintain the same data set. Replica sets provide high availability and automatic failover in case of a server failure.
+
+	Aggregation pipeline: The aggregation pipeline is a framework for performing complex data analysis in MongoDB. The pipeline consists of multiple stages, each of which performs a specific operation on the data.
+
+	
+	
+For ubuntu:
+	
+check the status: sudo service mongod status
+
+start the server : sudo service mongod start
+---------------------------------------------
+
+commands:
+
+
+show all database : show dbs;
+
+
+create a database : use database_name;
+
+ 
+current active database : db;
+ 
+
+create the collection. (collection in mongoDB is nothing but a table)
+db.emp.insert({
+
+"empno":101,
+"ename":"Payal",
+"salary":3000
+
+})
+
+Now check the database.
+show all database : show dbs;
+
+ 
+check the records: db.emp.find();
+
+ 
+for pretty format : db.emp.find().pretty();
+
+for dropping the database: db.dropDatabase();
+
+for inserting one record:
+db.emp.insertOne({"empno":102 ,"ename":"Paru","salary":10000,"gender":"F"});
+
+for inserting multiple records:
+
+db.emp.insertMany([
+{"empno":4343,
+"ename":"Sagar",
+"salary":14000},
+{
+"empno":433,
+"ename":"Ajay",
+"salary":12000,
+"Gender":"Male"
+}
+]);
+
+update an record:
+
+db.emp.update({"empno":433},{$set:{"ename":"Ajay S"}});
+
+to delete an record:
+
+db.emp.remove({"empno":433});
+
+to drop a collection
+db.emp.drop();
+
+----------------------------------------------------------
+Creating a new database:
+use myDatabase
+
+Dropping a database:
+db.dropDatabase()
+
+------------------------------------------------------------
+
+Creating a new collection:
+db.createCollection("myCollection")
+
+Dropping a collection:
+db.myCollection.drop()
+
+Counting documents in a collection:
+db.myCollection.count()
+
+Counting the number of documents that match a condition:
+db.myCollection.count({ "field": { $gt: 5 } })
+
+--------------------------------------------------------------
+
+db.collection_name.insert(document)
+db.collection_name.insertOne({key1:value1, key2:value2, ...})
+db.collection_name.insertMany([{key1:value1, key2:value2, ...}, {key1:value1, key2:value2, ...}, ...])
+
+
+Inserting data into a collection:
+db.myCollection.insert({ "name": "John", "age": 30 })
+
+----------------------------------------------------------------------------------
+
+db.collection_name.find(query, projection)
+db.employees.find({},{age:1,name:1}); //to include use 1
+db.employees.find({},{age:1,name:1,_id:0}); //to exclude use 0
+
+db.collection_name.find({field:value})
+db.employees.find({"department":{$in: ['Marketing','Engineering']}});
+db.employees.find({"department":{$regex: /^M/}}); // start with M
+db.employees.find({"department":{$regex: /g$/}}); //end with g
+db.employees.find({"department":{$regex: /g/}});
+
+db.collection_name.find()
+
+You can also use the projection parameter to include or exclude specific fields from the result set. Here is an example of how to include only specific fields:
+db.collection_name.find({field:value}, {field1:1, field2:1})
+
+
+To exclude fields from the result set, you can use the projection parameter with the _id field set to 0.
+db.collection_name.find({field:value}, {field1:0, field2:0, _id:0})
+
+db.collection_name.find().limit(10)
+
+
+db.collection_name.find().sort({field: -1})
+db.employees.find().sort({department: -1})
+
+db.collection_name.find().skip(10).limit(10)
+db.collection_name.find({field: "value1"}).count()
+
+db.collection_name.distinct("field")
+db.employees.distinct("department");
+
+db.collection_name.findOne({field: "value1"})
+db.collection_name.find({field: "value1"}).explain()
+
+db.collection_name.find({}).forEach(function(doc) {
+  print(doc.field);
+});
+db.employees.find({}).forEach(function(doc) {   print(doc.name); });
+
+
+Querying a collection:
+db.myCollection.find({ "name": "John" })
+
+Limiting query results:
+db.myCollection.find().limit(10)
+
+Sorting query results:
+db.myCollection.find().sort({ "age": 1 })
+
+Finding the maximum value of a field:
+db.myCollection.find().sort({ "field": -1 }).limit(1)
+
+Finding the minimum value of a field:
+db.myCollection.find().sort({ "field": 1 }).limit(1)
+
+Finding the documents that match a condition and projecting only certain fields:
+db.myCollection.find({ "field": { $lt: 5 } }, { "name": 1, "age": 1 })
+
+db.students.find({ $and: [ { age: { $gte: 18 } }, { grade: "A" } ] }) //using and operator
+
+Updating a document:
+db.myCollection.update({ "name": "John" }, { $set: { "age": 35 } })
+
+Updating multiple documents:
+db.myCollection.updateMany({ "age": { $lt: 18 } }, { $set: { "status": "minor" } })
+This command updates the "status" field of all documents where the "age" field is less than 18 in the "myCollection" collection.
+
+
+Adding a new field to all documents in a collection:
+db.myCollection.updateMany({}, { $set: { "newField": "newValue" } })
+db.employees.updateMany({},{$set: {timestamp: new Date()}}); //new field timestamp with current date
+db.employees.updateMany({},{$currentDate: {timestamp2:true}});
+
+add a new field according to a condition:
+db.myCollection.updateMany(
+  { },
+  [
+    {
+      $addFields: {
+        "status": {
+          $cond: {
+            if: { $lt: [ "$age", 18 ] },
+            then: "minor",
+            else: "adult"
+          }
+        }
+      }
+    }
+  ]
+)
+
+
+Removing a document:
+db.myCollection.remove({ "name": "John" })
+
+Removing all documents from a collection:
+db.myCollection.deleteMany({})
+db.myCollection.deleteOne({ "status": "inactive" })
+db.myCollection.remove({ "status": "inactive" })
+db.myCollection.deleteMany({ "status": "inactive" })
+
+Remove is a method that can remove documents from a collection, and it can take additional options. deleteOne and deleteMany are methods that specifically remove one or multiple documents from a collection that match a specified filter.

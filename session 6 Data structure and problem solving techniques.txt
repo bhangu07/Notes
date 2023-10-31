@@ -1,0 +1,448 @@
+NatWest - Data structures and problem solving techniques:
+
+
+Data Structure:
+
+
+Data needs to be stored, worked on it. There has to be a structure to it to make it possible to store and fetch the data in the most optimize way smoothly. That is data structure. It helps you store the data in proper structure and format for effectiently fetching and modifying it. 
+
+Data Structure is the foundation for working on any data.
+
+Why data structure is required?
+
+1. Efficiency: using proper data structure will enable the programmers to write code that consumes less time and space, making it memory friendly.
+
+2. Reusablity: Using standard data structures helps the developers to absract the basic operations which are performed over various data structures.
+
+3. Optimization: Writing optimized code is important. Using data structure and algorithm you write the optimized solution in terms of time and space. You can choose the appropriate data structure according to the requirement.
+
+
+Basic operations on data structures
+There are 6 basic operations that can be performed on any data structure. They are:
+
+Search: Finding an element inside the data structure.
+Sort: Rearranging all the elements in an ascending or descending order.
+Traverse: Printing all the elements in a particular manner.
+Insertion: Inserting an element in a data structure at any Position.
+Deletion: Deleting any element from the data structure.
+Update: Updating any element from the data structure.
+
+Type of Data structures:
+
+Linear															
+When the elements are arranged in sequence, one after the other, the elements are arranged in particular order are called as Linear data structure.
+Examples: Arrays, stacks, queues, LinkedList
+
+
+Non Linear:
+When the elements are not in sequence but arranged in hierarical manner, that type of data structure is called as non-linear data structure. When the data gets complex, we shift from linear to non-linear data structure.
+Examples: Graphs, Trees
+
+-------------------------------------------
+How to determine the algorithm is efficient?
+Asymptotic Notation is used to describe the running time of an algorithm - how much time an algorithm takes with a given input, n. There are three different notations: big O, big Theta (Θ), and big Omega (Ω).
+They are the mathemetical notations used to descrie the running time of an algorithm.
+Performance may vary according to the different size of input. With the increase in the input size, the performance will change. The study of change in performance of the algorithm with the change of the order of the input size is called as Asymptotic analysis.
+
+	Big-O notation
+	Omega notation
+	Theta notation
+	
+	Big-O notation is one of the most fundamental tool for developers to analyze the cost of an algorithm. Developers need to have complete knowledge of the same.
+	Big-O notation describes the complexcity of your code using algebric terms.
+	
+	
+	Big O is sometimes referred to as the algorithm’s upper bound, meaning that it deals with the worst-case scenario.
+	The best-case scenario doesn’t really tell us anything — it will be finding our item in the first pass. We use worst-case to remove uncertainty — the algorithm will never perform worse than we expect.
+	
+	When we write Big O notation, we look for the fastest-growing term as the input gets larger and larger. We can simplify the equation by dropping constants and any non-dominant terms. 
+
+So what is Big-O?
+Big-O notation is the language we use for talking about how long an algorithm takes to run (time complexity) or how much memory is used by an algorithm (space complexity). Big-O notation can express the best, worst, and average-case running time of an algorithm. For our purposes here, we are going to focus primarily on Big-O as it relates to time complexity.
+
+As a software engineer, you’ll find that most discussions of Big-O focus on the “upper-bound” running time of an algorithm, which is often termed the worst-case. An important piece to note is the “running time” when using Big-O notation does not directly equate to time as we know it (e.g., seconds, milliseconds, microseconds, etc.). 
+Analysis of running times does not take certain things into account, such as the processor, the language, or the run time environment. Instead, we can think of time as the number of operations or steps it takes to complete a problem of size n. 
+
+In other words, Big-O notation is a way to track how quickly the runtime grows relative to the size of the input.
+
+When we are thinking about the worst-case, the question becomes — what are the most operations/steps that could happen for an input of size n?
+
+O(1) → Constant Time
+O(1) means that it takes a constant time to run an algorithm, regardless of the size of the input.
+
+Bookmarks are a great example of how constant time would play out in the “real world.” Bookmarks allow a reader to find the last page that you read in a quick, efficient manner. It doesn’t matter if you are reading a book that has 30 pages or a book that has 1000 pages. As long as you’re using a bookmark, you will find that last page in a single step.
+
+In programming, a lot of operations are constant. Here are some examples:
+
+	math operations
+	accessing an array via the index
+	accessing a hash via the key
+	pushing and popping on a stack
+	insertion and removal from a queue
+	returning a value from a function
+	
+Take a look at findFirstIndex, listed below. Passing smallCollection or giganticCollection will produce the same runtime of O(1) when accessing the 0 index. The return of firstIndex is also a constant time operation. Regardless of the size of n, both of these operations will take a constant amount of time.
+
+
+O(n) → Linear Time
+O(n) means that the run time increases at the same pace as the input.
+
+The act of reading a book is an example of how linear time would play out in the “real world.” Let’s assume that it takes me exactly 1 minute to read a single page of a large print book. Given that, a book that has 30 pages will take me 30 minutes to read. Likewise, a book that has 1000 pages = 1000 minutes of reading time. Now, I don’t force myself to finish books that aren’t great — so there is always a chance that I won’t get through that 1,000-page book. However, before I start reading it, I can know that my worst-case reading time is 1000 minutes for a 1000 page book.
+
+In programming, one of the most common linear-time operations is traversing an array. In JavaScript, methods like forEach, map, and reduce run through the entire collection of data, from start to finish.
+
+Take a look at our printAllValues function below. The number of operations that it will take to loop through n is directly related to the size of n. Generally speaking (but not always), seeing a loop is a good indicator that the particular chunk of code you’re examining has a run time of O(n).
+
+O(n²) → Quadratic Time
+O(n²) means that the calculation runs in quadratic time, which is the squared size of the input data.
+
+In programming, many of the more basic sorting algorithms have a worst-case run time of O(n²):
+
+	Bubble Sort
+	Insertion Sort
+	Selection Sort
+Let’s look at countOperations below. Here we have two nested loops that are incrementing the operations variable after each iteration. If n is our smallCollection, we will end up with a count of 16 operations. Not horrible. But what about if n is our gigantic collection? A billion times a billion is a quintillion — or 1,000,000,000,000,000,000. Yikes. 😬 That’s a LOT of operations. Even an array with as little as 1,000 elements would end up creating a million operations.
+
+
+
+O(log N) is a common runtime complexity. Examples include binary searches, finding the smallest or largest value in a binary search tree, and certain divide and conquer algorithms.
+
+The most common attributes of logarithmic running-time function are that:
+
+the choice of the next element on which to perform some action is one of several possibilities, and
+only one will need to be chosen.
+or
+
+the elements on which the action is performed are digits of n
+This is why, for example, looking up people in a phone book is O(log n). You don't need to check every person in the phone book to find the right one; instead, you can simply divide-and-conquer by looking based on where their name is alphabetically, and in every section you only need to explore a subset of each section before you eventually find someone's phone number.
+
+
+Problem solving techniques:
+----------------------------------------
+Problem-solving techniques refer to the methods and processes that are used to identify, analyze, and solve problems. 
+These techniques can be applied to various types of problems, including technical, social, personal, or business-related problems.
+
+Steps:
+
+Defining the problem: This involves identifying the problem and understanding its nature and scope. It is important to clearly define the problem, so that the right solution can be developed.
+
+Generating alternative solutions: This involves brainstorming and generating different ideas and solutions to the problem. It is important to consider all possible solutions, even those that seem unlikely or unconventional.
+
+Evaluating solutions: This involves analyzing the different solutions generated in the previous step and selecting the best one. The evaluation process should take into account factors such as feasibility, cost, and effectiveness.
+
+Implementing the solution: This involves putting the selected solution into action. It is important to ensure that the implementation process is well-planned and executed, and that any potential roadblocks are addressed.
+
+Monitoring and adjusting the solution: This involves monitoring the effectiveness of the solution and making any necessary adjustments. This step is important to ensure that the problem does not recur and that the solution remains effective over time.
+
+The three problem solving techniques:
+
+	1. Algorithm
+	2. Flowcharts
+	3. Pseudocode (writing a code but using plain english)
+
+
+An algorithm is a set of instructions or a step-by-step procedure for solving a problem or completing a task. 
+It is a well-defined sequence of computational steps that transforms an input into an output. 
+Algorithms can be used to solve a wide range of problems, from simple mathematical calculations to complex data analysis tasks.
+
+In computer programming, algorithms are used to solve problems and automate tasks. 
+A good algorithm should be efficient, reliable, and easy to understand. 
+It should also be designed to handle a wide range of inputs and produce accurate outputs. 
+Algorithms can be expressed in various forms, including pseudocode, flowcharts, or programming code.
+
+
+The characteristics of an algorithm include:
+
+	Well-defined: An algorithm must be well-defined, meaning that it should have a clear and unambiguous set of steps that can be followed to solve a problem or complete a task. 
+	This ensures that the algorithm can be executed correctly and produces accurate results.
+
+	Input and output: An algorithm should have defined inputs and outputs. 
+	The inputs are the data or information that the algorithm needs to solve the problem, and the output is the result or solution produced by the algorithm.
+
+	Finiteness: An algorithm must be finite, meaning that it should terminate after a finite number of steps. 
+	This ensures that the algorithm will produce a result within a reasonable amount of time and will not run indefinitely.
+
+	Unambiguous: An algorithm should be unambiguous, meaning that each step should have a clear and precise meaning. 
+	This ensures that the algorithm can be executed correctly and produces accurate results.
+
+	Effective: An algorithm should be effective, meaning that it should solve the problem or complete the task it is designed for. 
+	This ensures that the algorithm is useful and provides value to the user.
+
+	Efficient: An algorithm should be efficient, meaning that it should solve the problem or complete the task in a reasonable amount of time and using a reasonable amount of resources. 
+	This ensures that the algorithm is practical and can be used in real-world situations.
+
+	Language independent: An algorithm should be language independent, meaning that it can be implemented in any programming language. 
+	This ensures that the algorithm is versatile and can be used in a wide range of applications.
+	
+	
+Levels of Algorithm:
+		Macro - This contains brief number of steps
+		Micro - This contains detailed number of steps
+		
+Example 1:
+
+Algorithm for finding the sum of two numbers:
+
+Start
+Input the first number, call it num1
+Input the second number, call it num2
+Add num1 and num2, store the result in a variable, call it sum
+Output the sum
+End
+
+Example 2:
+
+Algorithm for finding the sum of two numbers that does not accept negative numbers:
+
+Start
+Input the first number, call it num1
+Input the second number, call it num2
+If num1 is negative or num2 is negative, output an error message and return to step 2
+Add num1 and num2, store the result in a variable, call it sum
+Output the sum
+End
+
+
+Example 3
+
+Algorithm for finding the sum of all even numbers between 1 and a given number
+
+1. Start
+2. Read the input number n
+3. Initialize a variable sum to 0
+4. Initialize a variable i to 1
+5. While i is less than or equal to n, do steps 6-9
+6. If i is even, add i to sum
+7. Increment i by 1
+8. End of the loop
+9. Print the value of sum
+10. End
+
+Algorithm of user registration:
+
+	Collect user information: Collect user information such as name, email address, username, and password.
+
+	Validate user information: Validate the user information to ensure that it meets certain requirements, such as:
+
+	Name: Ensure that the name field is not empty and only contains alphabetic characters.
+	Email format: The email address should be in a valid format (e.g., [username]@[domain].com).
+	Email uniqueness: Check if the email address is already registered in the system.
+	Username format: The username should not contain any special characters and should be within a specific character length range.
+	Username uniqueness: Check if the chosen username is already in use by another user.
+	Password strength: Passwords should typically be a minimum length (e.g., 8 characters), contain a mix of upper and lowercase letters, numbers, and special characters to make them harder to guess or crack.
+	Password confirmation: Ensure that the password and password confirmation fields match.
+	If any of these validations fail, prompt the user to correct the errors and allow them to go back to the previous step to make changes.
+
+	Hash the password: Before storing the user's password, it's a good practice to hash it using a secure one-way algorithm, such as bcrypt or SHA-256, to protect it from being exposed in case of a data breach.
+
+	Create user account: If the user information passes validation, create a new account for the user by storing their information in a database. Typically, this involves creating a new row in a users table with columns for the user's name, email address, username, and hashed password.
+
+	Send confirmation email: Send a confirmation email to the user's email address to verify their account. This email should typically include a unique confirmation link or code that the user can click on or enter to confirm their account.
+
+	Confirm account: Once the user clicks on the confirmation link or enters the confirmation code, confirm their account and give them access to the system. This typically involves updating the user's row in the database to set a flag indicating that their account is now confirmed.
+
+	Optionally, additional steps such as setting up security questions, profile information, or other preferences could be added depending on the needs of the application.
+
+Flowcharts:
+
+Flowcharts are a graphical representation of a process or algorithm using symbols and arrows to show the flow of steps. 
+They are a visual way to represent a process and help to understand the logic of the steps involved.
+
+Flowchart symbols and their meanings:
+
+Start/End symbol: This symbol is used to indicate the beginning and ending of a process. It is represented by a rounded rectangle with the word "Start" or "End" inside.
+
+Input/Output symbol: This symbol is used to represent inputs or outputs in the process. It is represented by a parallelogram with the word "Input" or "Output" inside.
+
+Process symbol: This symbol is used to represent a process or action in the algorithm. It is represented by a rectangle with a brief description of the process inside.
+
+Decision symbol: This symbol is used to represent a decision point in the algorithm where the flow branches out based on a condition. It is represented by a diamond shape with a question inside.
+
+Flowlines: These are arrows that indicate the flow of the process from one step to the next.
+
+https://www.smartdraw.com/flowchart/flowchart-symbols.htm
+
+http://www.flowhelp.com/flowchart/flowchart_connector_detail.html
+
+Advantages:
+
+	Visual representation: Flowcharts are a visual representation of a process, making it easier for users to understand complex systems and processes.
+
+	Clarity: Flowcharts provide a clear and concise way to visualize a process, making it easier to identify and understand potential bottlenecks, flaws, and inefficiencies.
+
+	Standardization: Flowcharts provide a standardized way to represent a process, which helps to promote consistency and clarity across different teams and departments.
+
+	Communication: Flowcharts are an effective communication tool, allowing stakeholders to easily share and discuss ideas, processes, and workflows.
+
+	Problem-solving: Flowcharts can be used to identify and solve problems within a process, by providing a visual representation of the problem and potential solutions.
+
+	Documentation: Flowcharts can serve as a form of documentation for a process, making it easier to understand and maintain over time.
+
+Pseudocode:
+
+https://cheatography.com/lcheong/cheat-sheets/pseudocode/
+
+Pseudocode is a way of writing out the logic of a program in a way that is similar to a programming language, but more human-readable and less formal. 
+It is not an actual programming language, but rather a way of expressing the structure of a program using natural language phrases and simple code-like structures.
+
+Pseudocode allows programmers to sketch out the basic structure of their program and work through the logic of their code before they begin to write actual code in a specific programming language. 
+It is often used as a tool in the early stages of software development to help clarify and organize the overall structure of the program.
+
+Pseudocode can be written in many different ways, and there is no formal standard for it. 
+However, it generally includes elements such as conditional statements (if/else), loops (for/while), and function calls, along with basic programming constructs such as variables and data types. 
+The main idea is to create a rough outline of the logic of the program in a way that is easy to understand and modify.
+
+Advantages:
+
+	Easy to read and understand: Pseudocode is designed to be easy to read and understand, even for stakeholders who are not familiar with the specific programming language being used.
+
+	Enables collaboration: Because pseudocode is easy to understand, it can facilitate collaboration between technical and non-technical stakeholders, allowing for better communication and alignment of goals.
+
+	Simplifies complex logic: Pseudocode can help simplify complex program logic, making it easier to understand and maintain over time.
+
+	Reduces errors: By enabling stakeholders to better understand the program logic, pseudocode can help reduce errors and improve overall program quality.
+
+	Promotes structured programming: Pseudocode encourages the use of structured programming principles, such as breaking down complex programs into smaller, more manageable parts.
+
+	Platform-independent: Pseudocode is platform-independent, meaning that it can be used to describe program logic in a way that is not tied to any specific programming language or platform.
+
+
+Keywords in Pseudocode:
+
+	Begin/End: Marks the beginning and end of a block of code.
+	If/Then/Else: Used to evaluate a conditional statement and execute different code based on the result.
+	While/Do: Used to create a loop that continues while a certain condition is met.
+	For/To/Next: Used to create a loop that iterates over a range of values.
+	Repeat/Until: Used to create a loop that continues until a certain condition is met.
+	Function/Procedure: Used to define a reusable block of code.
+	Return: Used to return a value from a function or procedure.
+	Input/Output: Used to read input from the user or display output to the user.
+	Variables: Used to store data that can be manipulated or used in calculations.
+	Array: Used to store collections of data that can be accessed using an index.
+	Comments: Used to add explanatory text to the code that is ignored by the compiler or interpreter.
+	Declare: Used to declare a variable or constant, specifying its name and data type.
+	List: Used to define a list, which is a collection of related data items that can be modified.
+	Object: Used to define an object, which is an instance of a class that has specific properties and methods.
+	Try/Catch: Used to handle errors or exceptions that may occur during program execution.
+	Call/Invoke: Used to call or invoke a function or method.
+	Repeat/Until: Used to create a loop that repeats until a certain condition is met.
+	Exit/Quit: Used to exit a loop or program.
+	Boolean: Used to represent true/false or yes/no values.
+	And/Or/Not: Used to represent logical operations in a program.
+	Case/Switch: Used to represent a switch statement in a program, which allows different actions to be taken based on different values of a variable.
+
+Pseudocode for taking an input and printing it.
+
+1. Display "Enter a value: "
+2. Input value
+3. Display "You entered: " + value
+
+
+Pseudocode for sum of 2 numbers
+
+1. Display "Enter the first number: "
+2. Input num1
+3. Display "Enter the second number: "
+4. Input num2
+5. Set sum = num1 + num2
+6. Display "The sum is " + sum
+
+
+Pseudocode for largest number of 3 numbers.
+
+1. Display "Enter the first number: "
+2. Input num1
+3. Display "Enter the second number: "
+4. Input num2
+5. Display "Enter the third number: "
+6. Input num3
+7. Set max = num1
+8. If num2 > max Then
+9.     Set max = num2
+10. End If
+11. If num3 > max Then
+12.     Set max = num3
+13. End If
+14. Display "The largest number is " + max
+
+
+Write a pseudocode that accepts 2 numbers and a char (operator) to create a simple calculation 
+		of additon, division, subraction and multiplication and displays the output.
+		
+		begin
+			numeric num1, num2, results
+			character cChar
+			display 'Enter two numbers'
+			accept num1, num2
+			display 'Enter any operation symbol: + , - , / , *'
+			accept cChar
+			switch (cChar)
+				begin
+					case '+':
+						result = num1+num2
+						break
+					case '-':
+						result=num1-num2
+						break
+					case '/':
+						result = num1/num2
+						break
+					case '*':
+						result = num1*num2
+						break
+					default:
+						display 'You have entered an invalid character'
+				end
+			display result
+		end
+		
+Pseudocode example of print even numbers from 1 to 100
+
+
+Another way:
+
+1. Initialize variables num1, num2, num3, and max to 0.
+2. Prompt the user to enter the first number and store it in num1.
+3. Prompt the user to enter the second number and store it in num2.
+4. Prompt the user to enter the third number and store it in num3.
+5. If num1 is greater than num2 and num1 is greater than num3, set max to num1.
+6. If num2 is greater than num1 and num2 is greater than num3, set max to num2.
+7. If num3 is greater than num1 and num3 is greater than num2, set max to num3.
+8. Display the value of max.
+
+Write a funciton in pseudocode:
+
+FUNCTION calculate_sum(x, y):
+    sum = x + y
+    RETURN sum
+END FUNCTION
+
+
+Write a pseudocode program that takes in a list of strings from the user and prints the longest string in the list.
+
+FUNCTION find_longest_string(list_of_strings):
+    longest_string = ""
+    for string in list_of_strings do
+        if length(string) > length(longest_string) then
+            longest_string = string
+        end if
+    end for
+    PRINT "The longest string is: " + longest_string
+END FUNCTION
+
+# Main program
+DECLARE list_of_strings as list of strings
+READ list_of_strings from user
+CALL find_longest_string(list_of_strings)
+
+
+
+Exercise:
+
+Pseudocode for calculating the area of a rectangle.
+Pseudocode for a program that calculates the factorial of a number.
+Pseudocode for a simple conditional statement that checks if a number is even.
+Pseudocode for a program that reads in a list of numbers and calculates their average.
+Pseudocode program that takes in a string from the user and prints the number of vowels in the string.
+Pseudocode program for printing even numbers from 1 to 100
+

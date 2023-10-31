@@ -1,0 +1,57 @@
+bash: cd: assignment: No such file or directory
+ubuntu@ip-172-31-35-76:~/assignment/folder3$ cd ..
+ubuntu@ip-172-31-35-76:~/assignment$ ls
+folder1  folder2  folder3
+ubuntu@ip-172-31-35-76:~/assignment$ ls folder1
+subfolder1  subfolder2  subfolder3
+ubuntu@ip-172-31-35-76:~/assignment$ ls subfolder2
+ls: cannot access 'subfolder2': No such file or directory
+ubuntu@ip-172-31-35-76:~/assignment$ ls folder1/subfolder2
+myfile1.txt  myfile2.txt
+ubuntu@ip-172-31-35-76:~/assignment$ ls folder1/subfolder3
+ubuntu@ip-172-31-35-76:~/assignment$ ls folder2
+subfolder1
+ubuntu@ip-172-31-35-76:~/assignment$ ls folder3
+myfile.txt  practicecommands
+ubuntu@ip-172-31-35-76:~/assignment$ rmdir folder2/subfolder1
+ubuntu@ip-172-31-35-76:~/assignment$ cd folder3
+ubuntu@ip-172-31-35-76:~/assignment/folder3$ mv practicecommands commands
+ubuntu@ip-172-31-35-76:~/assignment/folder3$ cat >> myfile.txt
+Hello stackroute Indiaubuntu@ip-172-31-35-76:~/assignment/folder3$ 
+ubuntu@ip-172-31-35-76:~/assignment/folder3$ cat myfile.txt
+Hello stackroute Indiaubuntu@ip-172-31-35-76:~/assignment/folder3$ cat > myfil.txt
+hello stackroute india
+ubuntu@ip-172-31-35-76:~$ cd assignment
+ubuntu@ip-172-31-35-76:~/assignment$ cd folder3
+ubuntu@ip-172-31-35-76:~/assignment/folder3$ cat >> myfile.txt
+hello stackroute india
+
+ubuntu@ip-172-31-35-76:~/assignment/folder3$ cat myfile.txt
+Hello stackroute Indiahello stackroute india
+
+ubuntu@ip-172-31-35-76:~/assignment/folder3$ cat > myfile.txt
+hello stackroute india
+ubuntu@ip-172-31-35-76:~/assignment/folder3$ cat myfile.txt
+hello stackroute india
+ubuntu@ip-172-31-35-76:~/assignment/folder3$ cd ..
+ubuntu@ip-172-31-35-76:~/assignment$ cat >> folder1/subfolder2/myfile2.txt
+text first line
+ubuntu@ip-172-31-35-76:~/assignment$ cat folder1/subfolder2/myfile2.txt
+text first line
+ubuntu@ip-172-31-35-76:~/assignment$ cat >> folder1/subfolder2/myfile2.txt
+text second line       
+ubuntu@ip-172-31-35-76:~/assignment$ cat folder1/subfolder2/myfile2.txt
+text first line
+text second line
+ubuntu@ip-172-31-35-76:~/assignment$ rmdir folder3/commands
+ubuntu@ip-172-31-35-76:~/assignment$ 
+ubuntu@ip-172-31-35-76:~/assignment$ ls folder3
+myfile.ttxt  myfile.txt
+ubuntu@ip-172-31-35-76:~/assignment$ rmdir folder3/myfile.ttxt
+rmdir: failed to remove 'folder3/myfile.ttxt': Not a directory
+ubuntu@ip-172-31-35-76:~/assignment$ cat folder3/myfile.txt 
+hello stackroute india
+ubuntu@ip-172-31-35-76:~/assignment$ cd folder3
+ubuntu@ip-172-31-35-76:~/assignment/folder3$ rm -rf myfile.ttxt
+ubuntu@ip-172-31-35-76:~/assignment/folder3$ ls
+myfile.txt

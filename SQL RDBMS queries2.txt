@@ -1,0 +1,43 @@
+-- count of emlpoyees
+select count(employee_id)  from employees;
+
+-- sum of salary
+select sum(salary) as total_salary from employees;
+
+--alias with space
+-- which employee has received the highest salary
+select max(salary) from employees;
+
+select first_name fname, last_name lname from employees;
+
+-- sorting your data
+select first_name, department_id from employees
+order by 1 ;
+
+-- each department how many employees
+select department_id, count(employee_id) from employees
+group by department_id
+order by 1 ;
+
+-- maximum salary per department
+select department_id, max(salary) max_salary from employees
+group by department_id
+order by 1;
+
+select salary from employees
+where department_id = 30;
+
+
+-- maximum salary per department with department names
+select department_name, max(salary) max_salary  -- projection
+from employees e join departments d ON (e.department_id = d.department_id) -- joining
+where department_name like 'A%' -- restriction
+group by  department_name -- how to group
+order by 1;
+
+-- maximum salary per department with department names
+select department_name, max(salary) max_salary  -- projection
+from employees e join departments d using(department_id) -- joining
+where department_name like 'A%' -- restriction
+group by  department_name -- how to group
+order by 1;

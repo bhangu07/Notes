@@ -1,0 +1,334 @@
+NatWest - Agile and JIRA
+
+Agile:
+
+	Agile is a software development methodology that has a iterative approach to development. It builds and releases software incremently from the start of the project rather than delivery everything right at the end.
+	
+	This iterative approach involves planning a development iteration, implementing the work planned for that iteration and delivering the version of the product by the end of it.
+	Then, feedback is gathered and used to plan the next iteration and the process continues until the product is fully polished.
+	
+	This process allows the team to adapt to changing requirements as the feedback loop starts at the very early stage.
+	So, if some requirement change because the iterations are really short, these changes can be fed into the next iteration, thereby keeping the overall development flexible.
+	
+	At the end of each iteration, there has to be a shipable product or a group of features. This frequent delivery of the product results in customer satisfaction and they are able to monitor the progress of development and are able to test and provide feedback early on, thereby ensuring that their requirements are met and the team is on track.
+	
+	The goal is to keep requirements and documentation lightweight and flexible. And this can only be achieved by ensuring close colloration between team members. Especially between business people and the developers.
+	
+	There are many agile methodologies, all of which follow the agile principles to some extent.
+	JIRA supports 2 methodologies:
+--------------------------------------------------------------------
+	
+SCRUM
+
+Scrum is probably most highly recognized agile methodology.
+
+It works by breaking projects down into smaller bits of user functionality represented by epics and user stories.
+Epics can be defined as a larger body of work or work that cannot be completed in a given iteration.
+It usually gets broken into multiple user stories.
+A user story or just story is basically the smallest unit of work and can represent a feature that is to be developed.
+As an example, this foundation training is an epic and the individual user stories within the epic are each of the sessions within this trainnig.
+Stories are usuall defined using a particular format by specifying the type of user involved, what the user is trying to achieve, and the benefit for achieving it.
+	customers - as a customer, I need to complete my assignment
+	trainer - as a trainer, I need to deliver the sessions , as a trainer, I need to evaluate the assignments , as a trainer, I need to resolve the doubts
+	lead mentor - as a lead mentor, I need to keep track of how all the batches are doing , as a lead mentor, I need to present the overall assignment completion to NatWest
+	khemu - as a part of operations team, I need to ensure there is no login issue faced by the customer
+	
+
+Ex:
+As a manager, I would like to learn about JIRA so I can use it to manage projects using agile workflows
+So, once features for a project are gathered and corressponding user stories are defined, then they are prioritized and coninously implemented and delivered in short cycles known as sprints.
+
+Workflow of Scrum:
+	
+	1. Product backlog
+	2. Sprint backlog
+	3. Sprint
+	4. Release of shippable product
+
+	
+	You start off with the product backlog that contains the features you want to build in the form of user stories. These features of stories get prioritized, so the most important features are at the top of the backlog.
+	
+	It's also important that these features at the top of the backlog are in a ready state with all the requirements and details laid out, which essentially means it is ready for development.
+	
+		The product backlog in Scrum is an ordered list of all the work that needs to be done to complete a product. It's essentially a prioritized to-do list that outlines the requirements, features, bug fixes, enhancements, and other items that need to be delivered in the product.
+
+		The product backlog is owned and managed by the product owner, who is responsible for ensuring that the backlog is up-to-date, prioritized, and reflective of the overall goals and vision for the product. The items in the backlog are typically expressed as user stories, which describe the product requirements from the perspective of the end-user.
+
+		The product backlog is dynamic and constantly evolving throughout the project. As the product evolves and feedback is received, items may be added, removed, or reprioritized in the backlog. The team uses the product backlog to plan and execute the work during the sprint, with the goal of delivering the highest value items first.
+
+		The product backlog is an essential component of the Scrum framework, as it provides a clear understanding of the work to be done and helps the team stay focused on delivering the most important items.
+	
+	A group of features is then selected from the product backlog and made into the sprint backlog, basically representing that these features are what the team will implement during this sprint.
+	
+	What is a sprint?
+		A sprint is a predetermined length of time, usually between 2 to 4 weeks where the development team takes the tickets from the sprint backlog and gets them to a done state by the end of the sprint.
+		During the sprint, the team has a daily 10 to 15 minutes scrum meeting at the same place and time every day to discuss the progress of the sprint and make sure things are on track.
+		And by the end of the sprint, the team should be able to have a shoppable group of features that can be reviewed by customers or relevant stackholders.
+	
+
+	
+	SCRUM Roles:
+		Product owner:
+			Defines vision of the product.
+			What should be built and why.
+			
+			The product owner basically owns the product, has a vision of the product and how it should look like, and defines what should be built and why.
+			As a result, product owner is responsible for defining what goes into the product backlog.
+			He/she also creates the user stories, prioritized them, and ensures they are groomed with all relevant details.
+		
+		Development team:
+			Builds the product.
+			It is responsible for providing shippable features at the end of the sprint.
+		
+		Scrum master:
+			Facilitates the scrum process.
+			He/she makes sure the team is on track during a sprint and there are no blockers on anyone that would prvent the sprint goal from being achieved.
+
+
+	SCRUM Events:
+		1. Sprint Planning
+		2. Daily Scrum
+		3. Sprint Review and Retrospective
+	
+	During the scrum process, there are a few events that are critical to being sucessful.
+	
+		Sprint Planning:
+			Sprint backlog created from the product backlog
+			Dev team provides estimates - story points or hours
+			
+			The sprint planning is where the sprint backlog is created by selecting the fully groomed and highest priority features from the product backlog that the dev team can work on during the next sprint.
+			The development team then goes ahead and provides their estimates for time and effort to implement the features.
+			All this happens during the sprint planning meeting.
+			
+			How to estimate?
+			
+			We can either estimate in hours or story points.
+			 
+			Story points estimation is basically done where estimates are made relative to the smallest component or item with known level of difficulty.
+			After a few sprints, the team will know how many story points they can complete in a sprint, also known as Team Velocity.
+			They can use this method to predict how many story points they are going to be able to fit in the next sprint.
+			 
+			Story point estimate is a technique used in agile project management to estimate the complexity and effort required to complete a particular task or user story. It is a relative sizing technique where the size or effort of a user story is compared to other user stories in the product backlog.
+
+			A story point estimate is typically a number assigned to a user story, based on the level of complexity, the amount of work involved, and any other relevant factors. The actual numerical value of the story point is arbitrary and can vary from team to team.
+
+			Story point estimates are useful because they allow the team to estimate the amount of work they can complete in a given sprint or iteration, and they can help to identify potential bottlenecks or areas of risk in the development process. 
+			By using story points instead of hours, the team can focus on the overall complexity of the work rather than getting bogged down in specific details or technical considerations.
+			
+			Example:
+			
+				Let's say that the development team is working on a new e-commerce website, and they have a backlog of user stories to work on. One of the user stories in the backlog is to create a login and registration page for the website. The team would estimate the complexity and effort required to complete this user story by assigning it a certain number of story points, based on their experience and understanding of the work involved.
+
+				For example, they might decide that the login and registration page is a moderately complex user story, and assign it 5 story points. Another user story in the backlog might be to implement a search bar on the website, which they might estimate as a less complex user story and assign it 2 story points.
+
+				During sprint planning, the team would use these story point estimates to determine how much work they can realistically complete in the upcoming sprint. They might decide that they can complete user stories totaling up to 20 story points in the sprint, and then choose which user stories to prioritize based on their estimates.
+
+				As they work through the sprint, the team would track their progress against the estimated story points to see if they are on track to complete their planned work. They can also use the story point estimates to identify any user stories that are taking longer than expected, and to discuss and resolve any issues that arise during development.
+					
+		Daily Scrum:
+			What I did yesterday?
+			What I plan to do today?
+			Do I have any backlogs?
+			
+			Once the sprint planning meeting is complete, and a sprint starts, a daily 15 minute scrum meeting is held with all the members of the team and mainly facilitated by the Scrum master.
+			This meeting is always limited to 15 minutes or it should be.
+			The team members usually stand up while doing it to ensure that it doesn't go any longer.
+			During this meeting, every team member gets a turn to talk about what the person is did yesterday, what he plans for today and if there are any blockers.
+			If there are blockers, the scrum master can step in and discuss with the team member to get things unblocked and moving again.
+			So the stand up scrum meeting occurs every day of the sprint and at the end of the sprint there is a sprint review and retrospective.
+		
+		Sprint Review and Retrospective:
+			Review - what went well during the sprint and what could be improved for the next sprint.
+			Retrospective - What went well during the Sprint, and what could be improved during the next sprint.
+			
+			The review part of the meeting basically entails reviewing the features or stories that were completed  or not completed and working with the product owner on shipping the completed features if required.
+			The retrospective part of the meeting is to simply reflect on the last meeting and talk about potential to improve the overall process.
+			
+		
+	Scrum Sprint board:
+	
+		The team can monitor and update the progress of work through a sprint board or scrum board.
+		
+		A scrum board is typically structured in a form of columns and the goals of the sprint is to basically to move all the tickets from the left most column to the right.
+		
+		We can physically create the scrum boards by using the whiteboards, draw the columns on there, and use sticky notes to represent the user stories and manually move the sticky notes from one column to another.
+		
+		We use JIRA to digitize it for us.
+		
+		The example in the image:
+		The to do column represents the sprint backlog and developers would start working on tickets and move them to the In progress column. And once the implementation is complete, they are moved to the done column.
+		The goal of the sprint, obviously, is to have all tickets in the done column.
+		
+		This board can look different for every team. Some teams may want to have more statuses or columns.
+		Eg: after the In progress, we can add column - Code review.
+			Once the code review is completed, it will go in the testing column.
+			Then it is finally moved to the done column.
+			
+		Every team can change the board and add columns to represent their unique workflow steps. JIRA allows you to do this.
+		
+
+Summary:
+-------------------
+The product owner creates and manages the product backlog by filling it with PBIS or product backlog items, also known as user stories which can represent a feature to be developed.
+
+A sprint planning meeting is then held with the entire team, including developers where the highest priority stories, which are usually at the top of the backlog, the product backlog are put into the Sprint backlog.
+
+During this process, the developers also provide an estimate of effort for each of the stories.
+
+The sprint then begins and every day there is a 15 minute standard meeting to discuss the progress of the sprint.
+
+The Scrum master facilitates this and ensures the team is on track and unblocked and at the end of the sprint, a review and retrospective meeting is held with all the team members and the product owner works with the team to package the completed features into a potentially shippable product.
+
+This is basically the essence of Scrum workflow.
+
+-------------------------------------------------------------------
+
+Kanban:
+
+Kanban is another and more simpler form of agile development.
+It also entails having a board to visualize the flow of work. However, there are no sprints involved in this case.
+The main goal is to have a smooth flow of work from start to the completion without any stoppage or bottlenecks.
+In order to do this, the team must define what the work or flow entails. 
+
+Like, how does a particular work item go from start to completion?
+What are the various steps or stages that it would go through?
+What is involved with transitioning the work items through each stage and ultimately getting it to a done state?
+
+All this would be represented through a Kanban board where the goal is to move all work items from left to right just like on a scrum board.
+
+Kanban teams can also set a limit on the number of work items in each column of the board.
+These limits basically represent the capacity of the team as the work starts flowing through the Cameron board.
+The team can monitor the state of the board to adapt their processes, identify bottlenecks and make improvements.
+
+Kanban board:
+It looks exactly like a Scrum board.
+Here, there are four columns, so the backlog can reprent all the tickets or features that need to be worked on.
+But the selected for deveopment column would only include the highest priority tickets, and developers would only start working on the tickets that are in this column.
+The in-progress column is highlighted in red and this is actually a JIRA feature.
+Kanban teams can set a work in progress limit and in this case the limit is set to one.
+It says, maximum limit of one.
+If there are more than one ticket in progress, JIRA alerts you about it and this is where the team can collobrate to look at potential bottlenecks and work to get the board back to normal state.
+
+This is basically the essence of Kanban workflow.
+
+----------------------------------------------------------
+Scrum vs Kanban
+
+1. 
+
+Scrum use for projects with defined features that can be estimated by the development team. 
+This could be a completely new product or a project or a group of features where the requirements are fully laid out.
+
+Kanban use for support, unpredictable development. It would be good to follow for things like support tickets.
+For bugs that are found in the system or support requests sent by the end users.
+The reason is because most of these things, most of the time are difficult to estimate or predict. So the best way to get them done would be to keep the highest priority tickets at the top of the backlog and have your support development team work on them one by one and get them to a done state in the quickest manner possible while monitoring the work in progress.
+
+Jira:
+
+Why Jira?
+
+It is the number 1 project management tool out there.
+With a comprehensive set of abilities that it has.
+It focuses on helping the agile teams manage software project
+Companies are looking for people who know Jira
+It is customizable.
+
+------------------------------------------------------------------
+
+Team-managed projects and Company-managed projects:
+
+The main difference between them is the level of control and customization that can be achieved with each type of project.
+
+Team-managed projects are designed to be more lightweight and flexible. They are typically used by smaller teams or teams with less complex projects. In this type of project, users have more autonomy to create and manage their own boards, workflows, and settings without the need for administrative access.
+
+Company-managed projects, on the other hand, provide more control and customization options for larger teams or more complex projects. This type of project is managed by a Jira administrator who has access to more advanced features and can control the project settings, permissions, and access.
+
+In summary, Team-managed projects offer more flexibility and autonomy for smaller, less complex projects, while Company-managed projects provide more control and customization options for larger teams or more complex projects.
+
+-----------------------------------------------------------------
+
+JIRA Terms:
+
+Issue
+
+Projects
+
+Workflow
+
+Versions
+
+Components
+
+Other common agile terms
+
+-----------------------------------------
+Issue:
+
+Issue is the essence of JIRA. It basically represents a work item or anything that requires an action from a person.
+When you create a ticket in JIRA, you are essentially creating an issue.
+In other words, epics, stories, bugs, features quests, tasks, all of these are issues of different issue type.
+When you create an issue, you can create an issue of an epic issue type or a story issue type or a task issue type, etc.
+
+We can create our own issue types in JIRA as well, but ultimately every ticket created in JIRA is reffered to as an issue.
+It contains basic fields such as title, descriptions, due dates, priorities, status, etc. We can also make our own custom fields as well.
+
+Project:
+
+A project represents the normal term or meaning of the word. It is basically a collection of issues.
+It can be a software dev project, helpdesk system, general task manager, etc.
+If you are going to use JIRA software or JIRA agile, you are most likely engaging in the software development projects.
+Everything can be customized within a project, including who gets access to it, the issue types available in the project, the workflows used and many more.
+
+Workflow:
+
+A workflow is a set of statuses that an issue in a project can have. Along with the transitions between the statuses that the issue can go through.
+
+Versions:
+
+Versions basically help track release of software. When at the end of the sprint, you have a shippable product,so for tracking purpose, JIRA allows you to create a version and add whatever the issues that are going to be released into that version.
+You can create the version at the end of the sprint if you are releasing that often or you can create a version over a set of sprints.
+If you have already identified the stages a which you want to release the software, you can create different versions well in advance and assign the respective issues to each version.
+In Scrum, a version is usually a pre-planned and is released when the planned work is complete. 
+Whereas, in Kanban, a version can be released at any time and will contain all the issues that are complete or in the done state at that time.
+
+Components:
+
+JIRA components are just a feature that JIRA offers to create subsections of a project. They are basically used to group issues within a project.
+
+Example: if your project is broken into backend and frontend development. You can create both of these as components and be able to group your issues accordingly.
+It is like a category of work and an advantage of having components it that uou can configure issues created under a component to have a default assignee so that when created, it's automatically assigned to that person.
+
+So, if you want all your backend issues to be assigned to your lead backend developer, who can then delegate it out to the other developers. You can do this through component configuration.
+
+
+Other common agile terms:
+
+Jira also uses the other common agile terms that we have discussed. Like Scrum, Kanban, backlog, sprints, etc.
+
+Useful links:
+
+https://www.atlassian.com/
+
+go to products tab and click on JIRA software.
+
+JIRA software.
+
+https://www.atlassian.com/software/jira
+
+click on 'Get it free'
+
+-----------------------------------
+
+create board with sample data so you have ready made data to work on
+
+----------------
+
+create issue:
+
+press c on the keyboard or click on create button.
+
+----------------------
+
+Design Thinking:
+
+https://medium.com/swlh/heres-how-design-thinking-can-change-your-life-81873740f2ff

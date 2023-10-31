@@ -1,0 +1,217 @@
+		
+	Algorithm working notes
+	-----------------------------------------
+		
+		
+		as a developer, your main job is to create a way to store data in the most optimized way
+		
+			in any application, data is vital
+			
+			what is data? record, collection of information, structured information
+			
+			Bank -> customers (1000) , account details (1500) , loan details (500) , staff details (50) , transaction details (1500*30*12)
+			
+			
+			when transaction takes place:
+				paid xyz shop 500
+				
+				DR - 500
+				balance 
+				
+				
+				if(transactionType=="CR") {
+					
+					balance = balance+amount
+				
+				}
+				
+				
+				data will be inserted (new data is created)
+				data will be updated (existing data is changed)
+				data can be deleted (data can be deleted)
+				data can be read (data can be viewed)
+				
+				Create	Read	Update	Delete
+
+					CRUD operations
+					
+					
+				staff details (50) arrays (1 data structure)
+				
+	emplist		emp1[0]
+				emp10[1]
+				emp2[2]
+				emp3[3]
+				emp4[4]
+				.
+				.
+				.
+				.emp
+				emp50
+					
+				
+				
+				emplist[3] = emp4	
+				
+			What is data structure?
+			
+			Data which is stored, retrieved, manipulated in the most effective way.
+			
+			
+			The effectiveness = 
+			
+			Arrays - good for retrival purpose
+			LinkedList
+			Stack
+			Queue
+					
+					
+		
+		authentication / login:
+		
+		username:peter@gmail.com__________
+		password:_123456_________
+		
+			SUBMIT
+		
+		String username
+		String password
+		
+		user = getUser(username) / null
+		
+		
+		algorithm - 6 set of steps
+		
+		if(user==null) {
+		
+			"No user found, please check your email ID or register"
+		
+		} else if (password != "abc@123") {
+		
+			"Incorrect password"
+		
+		} else {
+		
+			"Login successful"
+		}
+		
+		
+		every algorithm available in the SI -> worst case scenerio
+		
+		
+		1. take the username and password from the user
+		2. check if the username exists
+		3. if not, return the error message - No user found, please check your email ID or register
+		4. go back to the step 1
+		5. check the password is correct
+		6. if the password is incorrect
+		7. show the error message - Incorrect password
+		8. go to step 1
+		10 show the message - Login successful
+		
+		add 2 numbers and display relevant error messages for invalid input
+		
+		write an algorithm for adding 2 numbers (ineffective)
+		1. start
+		2. take input of 2 numbers from the user and assign it to "num1" and "num2"
+		3. Add "num1" and "num2" and store the result in variable "sum"
+		4. Display the value of "sum"
+		5. end
+		
+		
+		write an algorithm for adding 2 numbers which returns error message if it NAN and for negative numbers (effective)
+		1. start
+		2. take input of 2 numbers from the user and assign it to "num1" and "num2"
+			a. if "num1" and "num2" is NAN (not a number) display error "Invalid input" go to step 2
+			b. if num1 or num2 is negative then return error "Invalid input" go to step 2
+			c. if "num1" and "num2" is numeric and positive integer, proceed to step 3
+
+		3. Add "num1" and "num2" and store the result in variable "sum"
+		4. Display the value of "sum"
+		5. end
+		
+		&& - and
+		|| - or
+		== - equal
+		!- - not equal
+		
+		add(num1,num2) {
+		
+		if((num1=="NAN" || num2=="NAN") && (num1 < 0 || num2 < 0)) {
+		
+			return "Invalid input"
+		
+		} else if (num1 < 0 or num2 < 0) {
+		
+			return "Invalid input"
+		
+		} 
+		
+		
+		else {
+		
+			sum=num1+num2;
+			return sum;
+		}
+		
+		}
+		
+		
+		algorithm for adding even numbers until n (input from the user)
+		
+		1. start
+		2. take the input from the user and store it in variable "n"
+		3. declare the variable "sum" to store the addition
+		4. run the loop from 1 to "n"
+		5. for each number, check if the number is even number (divisble by 2 with remainder 0)
+		6. if the number is even, add it to variable "sum"
+		7. Repeat steps 4 to 6 until "n"
+		8. display the value of "sum"
+		9. end
+		
+		n=20
+		sum=0
+		writing a prorgram
+		-----------------------
+		for(a=1;a<=n;a++) {
+		
+			if(a%2==0) {
+				sum=sum+a;
+			}
+		
+		}
+		
+		
+		dry run of the program
+		------------------------------
+		2 -> sum=0+2
+		
+		sum = 2;
+		
+		
+		4 => sum=2+4
+		
+		sum=6
+		
+		6 => sum = 6+6
+		
+		sum = 12
+		
+		8
+		
+		10
+		
+		12
+		
+		14
+		
+		16
+		
+		18
+		
+		20
+		
+		sum
+		
+		
+		

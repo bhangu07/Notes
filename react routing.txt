@@ -1,0 +1,49 @@
+	Steps to add routing in your project
+	--------------------------------------------------
+	
+	create all the below components
+	
+	Header
+	Footer
+	Aboutus
+	ContactUs
+	FAQ
+	Register
+	Login
+	
+	
+	How to add routing in react?
+	
+	1. npm install react-router-dom@6
+	
+	2. create all the components
+	
+	3. To add <BrowserRouter> for all the components
+	  
+	4. To create an element called as <Routes>
+	
+	5. You add all your Route inside the Routes
+	
+	import { BrowserRouter, Routes, Route } from 'react-router-dom';
+	
+	  <BrowserRouter>
+        <Header />
+
+        {/* in between this, now we will add routing and make our app dynamic */}
+
+        <Routes>
+          <Route path='/about' element={<About />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/faq' element={<FAQ />} />
+          <Route path='/' element={<Home />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+	  
+	6. How to add links.
+			
+			import {Link} from 'react-router-dom'
+		
+			<li className="nav-item">
+                   <Link className='nav-link' to="/faq" >FAQ</Link>
+            </li>

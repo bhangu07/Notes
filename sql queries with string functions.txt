@@ -1,0 +1,163 @@
+SQL Queries:
+----------------
+
+CREATE TABLE customers
+(
+    CustomerID NUMBER PRIMARY KEY,
+    FirstName VARCHAR2(20),
+    LastName VARCHAR2(20),
+    Email VARCHAR2(35),
+    Phone VARCHAR2(15),
+    CONSTRAINT check_email CHECK(Email like '%@%.%'),
+    CONSTRAINT check_firstname CHECK(LENGTH(FirstName) >=3)
+    
+);
+
+ALTER TABLE customers
+MODIFY FirstName VARCHAR2(20) NOT NULL;
+
+ALTER TABLE customers
+MODIFY LastName VARCHAR2(20) NOT NULL;
+
+
+
+CREATE TABLE products
+(
+ProductID NUMBER primary key,
+ProductName VARCHAR2(30) NOT NULL,
+Category VARCHAR2(20),
+Price NUMBER(10,2),
+StockQuantity NUMBER,
+CONSTRAINT check_category CHECK(Category IN ('Electronics','Clothing','Footwear','Games'))
+);
+
+CREATE TABLE orders
+(
+OrderID NUMBER primary key,
+CustomerID NUMBER,
+OrderDate DATE,
+TotalAmount NUMBER(10,2),
+CONSTRAINT fk_customerid foreign key (CustomerID) references Customers(CustomerID) ON DELETE CASCADE
+)
+
+-- or use the below syntax
+
+CREATE TABLE orders
+(
+OrderID NUMBER primary key,
+CustomerID NUMBER,
+OrderDate DATE,
+TotalAmount NUMBER(10,2)
+);
+-- ---table created------------
+ALTER TABLE orders
+ADD CONSTRAINT fk_customerid
+FOREIGN KEY (CustomerID) references customers(CustomerID);
+
+
+CREATE TABLE OrderItems
+( 
+	OrderID NUMBER,
+	ProductID NUMBER,
+	Quantity NUMBER,
+	PricePerUnit NUMBER(10,2),
+	TotalPrice NUMBER(10,2),
+	CONSTRAINT fk_OrderID foreign key (OrderID) references orders(OrderID) ON DELETE SET NULL,
+	CONSTRAINT fk_ProductID foreign key (ProductID) references products(ProductID) ON DELETE SET NULL,
+	CONSTRAINT pk_key primary key(OrderID,ProductID)
+)
+
+ -- inserting records
+ INSERT INTO Customers values
+ (101,'Alice','Johnson','abc@gmail.com','+1 555-123-4567');
+ 
+ -- inserting records with specific columns
+ INSERT INTO Customers (customerid, firstname, lastname,email) values(102,'Bob','Smith','bob@example.com');
+ 
+  -- inserting records with specific columns
+INSERT INTO Customers (customerid, firstname,email) values(103,'Charlie','Charlie@example.com'); -- error because lastname cannot be null
+
+ 
+ -- update the record
+ UPDATE customers SET email = 'alice@example.com' WHERE customerid=101;
+ UPDATE customers set phone = '+1 555-987-6543' WHERE customerid=102;
+ -- select
+ SELECT * FROM customers;
+ 
+ -- table structure
+ DESCRIBE customers;
+ 
+ -- delete records
+ DELETE FROM customers where customerid=103;
+ 
+ 
+drop table orderitems;
+drop table orders;
+drop table products;
+drop table customers;
+
+
+ -- inserting multiple records
+ INSERT ALL 
+ INTO Customers (customerid, firstname, lastname,email, phone) values
+ (103,'Alice','Johnson','abc@gmail.com','+1 555-123-4567')
+ INTO Customers (customerid, firstname, lastname,email, phone) values
+ (104,'Alice','Johnson','abc@gmail.com','+1 555-123-4567')
+ SELECT 1 FROM dual;
+ 
+ insert into products values (201,'Laptop','Electronics',1000.00,50);
+ 
+ insert into orders values (301,101,TO_DATE('2023-08-01 02:25:00','YYYY-MM-DD HH:MI:SS'),1200.00);
+  insert into orders values (302,101, DATE '2023-08-01',1200.00);
+ insert into orderitems values (301,201,2,1000.00,2000);
+ 
+ delete from customers where customerid=101;
+ 
+select * from customers;
+select * from orders;
+ 
+ delete from orders where orderid=301;
+ 
+ select * from employees where department_id in (10,20);
+ 
+ select * from departments;
+ 
+ 
+ SELECT * FROM employees
+	WHERE department_id = (SELECT department_id FROM departments WHERE department_name='Marketing');
+            
+        select * from locations;
+        
+-- functions in string (varchar2)
+select first_name, last_name from employees;
+
+--concat function to join 2 or more columns
+select concat(first_name, concat(' ', last_name)) full_name from employees;
+select first_name || ' ' || last_name as complete_name from employees;
+
+-- convert the varchar2 into uppercase
+select upper(first_name) from employees;
+
+--lower case
+select lower(last_name) from employees;
+
+select replace(TRIM(INITCAP('hello    world       ')),' ','') as message from dual;
+
+select 1 from dual;
+
+select SYSDATE from dual;
+
+select ltrim(department_name,4) from departments;
+
+select LPAD(department_name,3) from departments;
+
+select substr(department_name,4,3) from departments;
+
+select employees.*, nvl(commission_pct,0) from employees;
+
+select distinct department_id from employees
+where department_id is not null;
+
+desc employees;
+select * from user_constraints where table_name in( 'PRODUCTS','CUSTOMERS');
+

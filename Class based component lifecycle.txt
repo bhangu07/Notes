@@ -1,0 +1,36 @@
+Class-Based Component Lifecycle:
+
+
+Mounting Phase:
+
+	constructor(props): This is the constructor of the component where you can initialize the state and bind event handlers.
+	static getDerivedStateFromProps(props, state): This method is rarely used and is used to update the state based on changes in props.
+	render(): This method returns the JSX that represents the component's UI.
+	componentDidMount(): This method is called after the component is rendered for the first time in the DOM. It's often used for initialization tasks and side effects like data fetching.
+	
+Updating Phase:
+
+	static getDerivedStateFromProps(props, state): Similar to the mounting phase, but called when the component receives new props.
+	shouldComponentUpdate(nextProps, nextState): This method allows you to control if the component should re-render based on changes in props or state.
+	render(): Re-renders the component's UI.
+	getSnapshotBeforeUpdate(prevProps, prevState): Used to capture information from the DOM before it changes, for example, scroll positions.
+	componentDidUpdate(prevProps, prevState, snapshot): Called after the component has been updated in the DOM. Used for side effects like updating external libraries or making network requests.
+
+Unmounting Phase:
+
+	componentWillUnmount(): Called just before the component is removed from the DOM. Used for cleanup tasks like unsubscribing from events or clearing intervals.
+
+-----------------------------------------------------------------	
+
+Function Component Lifecycle with Hooks (Modern Approach):
+	
+	
+With the introduction of React Hooks, the lifecycle methods are replaced with various built-in hooks that provide similar functionalities in a more concise and flexible manner.
+
+	useState: Allows you to add state to your function component.
+	useEffect: Handles side effects, like data fetching and DOM manipulation, replacing componentDidMount, componentDidUpdate, and componentWillUnmount.
+	useContext: Allows you to consume context in your function component.
+	useReducer: An alternative to useState for managing more complex state logic.
+	useCallback and useMemo: Performance optimization hooks to memoize functions and values.
+	useRef: Provides a way to access and manage DOM elements directly.
+	useLayoutEffect: Similar to useEffect, but runs synchronously after all DOM mutations.

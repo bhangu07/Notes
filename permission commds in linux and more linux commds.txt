@@ -1,0 +1,92 @@
+permissions in linux
+	
+	3 kind of permissions which ubuntu has
+	
+	chmod - to give permissions
+	chown - to change the owner of the file
+	chgrp - to change the group of the file
+	
+	
+	d rwx rwx r-x - d stands for directory 
+		r - read
+		w - write
+		x - execute
+		
+		u - user - the owner of the file
+		g - group - group of users who have access to this file
+		o - others - others 
+		a - all users
+		
+		
+		+ to add permissions
+		- to remoke permissions
+		= to replace the old permission with new permissions
+		
+	
+		chmod u+w = rw (read and write to the owner) 
+		chmod u-w = r (removing write from the owner)
+		
+		rwx
+		chmod u=w (replacing old permissions with write permission to the owner)
+		
+		numeric code
+		
+		4 for read permission
+		2 for write permission
+		1 for execute permission
+		
+		chmod 700 file1 (giving all permissions to the owner and removing all permissions from group and others)
+		chmod u+rwx file1 (giving permission to the owner )
+		
+		
+examples:
+
+ubuntu@ip-172-31-36-32:~/payal$ chmod u+x file2
+ubuntu@ip-172-31-36-32:~/payal$ chmod o+w file2
+ubuntu@ip-172-31-36-32:~/payal$ chmod u=rwx,g=r,o=x file4
+ubuntu@ip-172-31-36-32:~/payal$ ls -l
+total 52
+drwxrwxr-x 5 ubuntu ubuntu 4096 Jul 12 13:29  Assignment
+drwxrwxr-x 3 ubuntu ubuntu 4096 Jul 12 09:44  day2
+drwxrwxr-x 3 ubuntu ubuntu 4096 Jul 12 09:46  day3
+drwxrwxr-x 2 ubuntu ubuntu 4096 Jul 13 05:56  dummy1
+drwxrwxr-x 2 ubuntu ubuntu 4096 Jul 13 05:56  dummy2
+drwxrwxr-x 2 ubuntu ubuntu 4096 Jul 13 05:56  dummy3
+drwxrwxr-x 2 ubuntu ubuntu 4096 Jul 13 05:56  dummy4
+-rwx-----x 1 ubuntu ubuntu 3340 Jul 13 09:25  file1
+-rw-rw-r-- 1 ubuntu ubuntu  136 Jul 13 09:23  file10
+-rwxrw-rw- 1 ubuntu ubuntu   46 Jul 13 07:02  file2
+-rw-rw-r-- 1 ubuntu ubuntu    0 Jul 13 05:56  file3
+-rwxr----x 1 ubuntu ubuntu    0 Jul 13 05:56  file4
+drwxrwxr-x 5 ubuntu ubuntu 4096 Jul 13 05:37  linux-day2
+-rw-rw-r-- 1 ubuntu ubuntu  113 Jul 13 09:36  linux-notes
+drwxrwxr-x 3 ubuntu ubuntu 4096 Jul 12 10:34  linuxcommands
+-rw-rw-r-- 1 ubuntu ubuntu    0 Jul 13 06:04  myfile1.txt
+-rw-rw-r-- 1 ubuntu ubuntu    0 Jul 13 06:04  myfile2.txt
+-rw-rw-r-- 1 ubuntu ubuntu    0 Jul 13 06:04  myfile3.txt
+-rw-rw-r-- 1 ubuntu ubuntu    0 Jul 13 06:04  myfile4.txt
+-rw-rw-r-- 1 ubuntu ubuntu    0 Jul 13 09:29 'shell commands'
+ubuntu@ip-172-31-36-32:~/payal$ 
+
+more linux commands
+clear 			remove everything from your terminal
+cd / 			to go to the root directory
+cd ~ 			(tilde)-  take you to ubuntu home
+ps 				to see the process which are running
+ps -f 			to see the detailed view of the processes which are running
+ps -aux 		to see all the processes of all the users in detailed way
+kill pid		to kill the process
+man <command>	it will give you a detailed manual about the command
+whatis <command> it will give you brief defination about the command
+
+sudo apt list 	it will give you the list of applications available (sudo stands for admin)
+
+sudo apt search vlc   it will search in all the applications for vlc
+
+sudo apt install vlc 	it will install vlc in your system
+sudo apt install ncal	it will install the calander
+
+cal --> print the current month calander
+cal -y 2022 --> print the yearly calander of 2022
+cal -m august --> print the august month calander for current year
+cal -m august 2020 ---> print the august month calander for 2020

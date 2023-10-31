@@ -1,0 +1,37 @@
+Mock Hackathon – Bootstrap & JavaScript
+
+In this case study you will implement a website which shows the home page for the
+Employee.
+
+Design:
+
+	Register & Login: Employees should be able to register and login to the system.
+	
+	
+Employees should register
+
+• While registering, employee need to provide the following information
+	a) Email-id – (@Id)
+	b) Name
+	c) Password
+	
+You should implement the validation for the above fields in which email id should accept
+only valid email id format (xxx@xx.com), password should have minimum 6 characters and maximum 9 characters. 
+
+(Additional validation you can give on other fields as well if you have time)
+Display the validation message above the field.
+
+• Once successfully entered the details it displays “Registration completion” and redirect the user to the login page.
+
+Login
+a) Email-id
+b) Password
+
+• Once successfully entered the details it should redirect to home page.
+
+Tools and Technologies to be used
+1. Bootstrap
+2. HTML5, CSS3
+3. Javascript
+
+You need to ensure the website is responsive.

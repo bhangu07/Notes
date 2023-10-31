@@ -1,0 +1,80 @@
+	
+	
+	Script examples
+-----------------------------------------------	
+	
+	arr=(apple banana Gauva)
+	
+	len=${#arr[@]} (3)
+	
+	echo ${arr[0]}
+	echo ${arr[1]}
+	echo ${arr[2]}
+	echo ${arr[3]}
+	echo ${arr[4]}
+	
+	
+	for((x=0;x<len;x++))
+	do
+		for(())
+	done
+	
+	------------------------
+	
+	for((x=1;x<=5;x++))
+	do
+		for((y=1;y<=x;y++))
+		do
+			echo -n "$y"
+		done
+		echo " "
+	done
+	
+	
+	
+	.1
+	.1 2
+	.1 2 3
+	.1 2 3 4
+	.1 2 3 4 5
+	
+	
+	str="Hello\n world"
+	num1="ten"
+	
+	${#num1}
+	
+	
+	companyname - string
+	employees - array
+	
+	what are boolean type of variables - true / false
+	
+	
+	echo "Enter a number?"
+	read num (1)
+	
+	if [ $num -lt 2 ]
+	then
+		echo "$num is not a prime number"
+	else
+		isPrime=true
+		for((x=2;x<=$num;x++))
+		do
+			if [ $((num%x)) -eq 0 ]
+			then
+				isPrime=false
+				break #break is used to terminate the loop
+			fi
+		done
+	
+		
+		if $isPrime 
+		then
+			echo "$num = it is a prime number"
+		else 
+			echo "$num = is not a prime number"
+		fi
+	fi
+		
+		

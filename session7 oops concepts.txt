@@ -1,0 +1,179 @@
+Object Oriented programming:
+
+Object-oriented programming (OOP) is a programming paradigm that is based on the concept of objects, which can contain data.
+It is a computer programming model that organizes software design around data, or objects, rather than functions and logic.
+An object can be defined as a data field that has unique attributes and behavior.
+OOP focuses on the objects that developers want to manipulate rather than the logic required to manipulate them. This approach to programming is well-suited for programs that are large, complex and actively updated or maintained.
+
+The first step in OOP is to collect all of the objects a programmer wants to manipulate and identify how they relate to each other -- an exercise known as data modeling.
+
+What is the structure of object-oriented programming?
+The structure, or building blocks, of object-oriented programming include the following:
+
+	Classes are user-defined data types that act as the blueprint for individual objects, attributes and methods.
+
+	Objects are instances of a class created with specifically defined data. Objects can correspond to real-world objects or an abstract entity. When class is defined initially, the description is the only object that is defined.
+
+	Methods are functions that are defined inside a class that describe the behaviors of an object. Each method contained in class definitions starts with a reference to an instance object. Additionally, the subroutines contained in an object are called instance methods. Programmers use methods for reusability or keeping functionality encapsulated inside one object at a time.
+
+	Attributes are defined in the class template and represent the state of an object. Objects will have data stored in the attributes field. Class attributes belong to the class itself.
+	
+	
+	
+There are four main principles of OOP:
+
+	Encapsulation: 
+		Encapsulation is the process of hiding the internal details of an object from the outside world. This is achieved by using access modifiers like public, private, and protected.
+		
+		Promote modular design and maintainability: Encapsulation allows a programmer to define clear boundaries between different parts of a program, making it easier to modify, test, and debug code. This helps to reduce the likelihood of bugs and errors, and makes the code more maintainable over time.
+
+		Improve code security and reliability: Encapsulation allows a programmer to control access to certain parts of a program, preventing unauthorized or unintended changes to data or behavior. This helps to improve code security and reliability, making it less prone to hacking, data corruption, or other forms of attack.
+
+		Increase code reuse and flexibility: Encapsulation allows a programmer to create reusable components that can be used in multiple programs or projects. By hiding the implementation details of a class, encapsulation also allows a programmer to modify or refactor the code without affecting the rest of the program.
+		
+		The two main aspects of encapsulation are data hiding and abstraction.
+
+			Data hiding refers to the idea that an object's internal data should be hidden from the outside world, and should only be accessed through well-defined interfaces. 
+			In OOP, this is typically achieved by declaring certain variables or methods as private, which means they can only be accessed by other methods within the same class.
+
+			Abstraction refers to the idea that a class should provide a simplified interface for interacting with its data and functions, without exposing its underlying implementation details. 
+			Abstraction can be achieved by defining public methods that provide access to a class's data or behavior, while hiding the details of how those methods are implemented.
+
+
+
+	Inheritance: 
+		Inheritance is the process of creating new classes from existing ones. The new class inherits the properties and methods of the existing class, and can add new properties and methods of its own.
+		
+		What is Inheritance?
+			Inheritance is a mechanism in which one class, called the subclass or derived class, inherits properties and behavior from another class, called the superclass or base class. The subclass can then extend or modify the behavior of the superclass, or add new behavior of its own.
+
+			Inheritance is often represented as an "is-a" relationship, where a subclass is a more specific type of its superclass. For example, a Car class could be a superclass, and a SportsCar class could be a subclass that inherits from it. In this case, we could say that a SportsCar is-a Car.
+			
+			Types of Inheritance
+
+				Single Inheritance: In single inheritance, a subclass inherits from a single superclass. This is the most common type of inheritance.
+
+				Multiple Inheritance: In multiple inheritance, a subclass can inherit from multiple superclasses. This can be useful for combining the properties and behavior of different classes, but can also lead to complex and hard-to-maintain code.
+
+				Multilevel Inheritance: In multilevel inheritance, a subclass inherits from a superclass, which in turn inherits from another superclass, and so on. This allows for more complex inheritance hierarchies.
+
+				Hierarchical Inheritance: In hierarchical inheritance, multiple subclasses inherit from a single superclass. This can be useful for creating a common set of properties and behavior that multiple classes share.
+
+				Hybrid Inheritance: Hybrid inheritance is a combination of multiple inheritance and multilevel inheritance. This allows for even more complex inheritance hierarchies, but can also lead to even more complex and hard-to-maintain code.
+
+
+
+	Polymorphism: 
+		Polymorphism is the ability of an object to take on many forms. In OOP, this is achieved by using method overloading and method overriding.
+		
+		Polymorphism is a fundamental concept in object-oriented programming that allows objects of different classes to be treated as if they were of the same class. It comes from two Greek words, "poly" meaning "many" and "morph" meaning "form".
+
+		In simple terms, polymorphism means the ability of an object to take on many forms. There are two types of polymorphism:
+
+		Compile-time polymorphism: This is also known as static polymorphism or method overloading. It occurs when there are multiple methods with the same name in a class, but they have different parameters. The compiler determines which method to call based on the number, type, and order of the parameters passed to it.
+		
+		add(int a, int b)
+		add(int a, double b)
+		add(double a, int b)
+		add(double a, double b)
+
+		Run-time polymorphism: This is also known as dynamic polymorphism or method overriding. It occurs when a subclass overrides a method defined in its superclass. When an object of the subclass is instantiated and the overridden method is called, the overridden method in the subclass is executed instead of the superclass method.
+
+		Polymorphism is useful in many ways. It allows for code reusability, as well as making it easier to create flexible and extensible code. It also helps to reduce code complexity and improve readability.
+
+		In order to use polymorphism, you need to use inheritance. The subclass must inherit from the superclass in order to override its methods. The superclass must also have a method that the subclass can override.
+		
+
+
+
+Abstraction: 
+		Abstraction is the process of simplifying complex systems by breaking them down into smaller, more manageable pieces. In OOP, this is achieved by defining abstract classes and interfaces.
+		
+
+Some other important concepts and features that are associated with OOPs:
+
+Classes: A class is a blueprint for creating objects. It defines the properties and methods that the objects will have. In some programming languages, classes are used to create objects directly, while in others, objects are created using constructors or factory functions.
+
+Objects: An object is an instance of a class. It has its own state (stored in properties) and behavior (implemented using methods).
+
+Methods: A method is a function that is associated with an object. It can access the object's properties and modify them.
+
+Inheritance: Inheritance is a way of creating new classes from existing ones. The new class (called the subclass or derived class) inherits the properties and methods of the existing class (called the superclass or base class).
+
+Polymorphism: Polymorphism is the ability of an object to take on multiple forms. This can be achieved through method overloading (having multiple methods with the same name but different parameters) or method overriding (redefining a method that is already defined in a superclass).
+
+Encapsulation: Encapsulation is the practice of hiding the internal details of an object from the outside world. This is achieved by using access modifiers like public, private, and protected.
+
+Abstraction: Abstraction is the process of simplifying complex systems by breaking them down into smaller, more manageable pieces. In OOP, this is achieved by defining abstract classes and interfaces.
+
+What are the benefits of OOP?
+
+
+	Modularity. Encapsulation enables objects to be self-contained, making troubleshooting and collaborative development easier.
+	Reusability. Code can be reused through inheritance, meaning a team does not have to write the same code multiple times.
+	Productivity. Programmers can construct new programs quicker through the use of multiple libraries and reusable code.
+	Easily upgradable and scalable. Programmers can implement system functionalities independently.
+	Interface descriptions. Descriptions of external systems are simple, due to message passing techniques that are used for objects communication.
+	Security. Using encapsulation and abstraction, complex code is hidden, software maintenance is easier and internet protocols are protected.
+	Flexibility. Polymorphism enables a single function to adapt to the class it is placed in. Different objects can also pass through the same interface.
+
+-----------------------------------------------------------------------
+
+Case study 1:
+
+
+Suppose we are developing a car rental system, where users can rent cars from a rental agency. The system should be able to handle different types of cars, including sedans, SUVs, and luxury cars. Each car should have a unique ID, a make and model, a year, and a rental price per day. Here's how we could implement this system using OOP concepts:
+
+Objects: We will create objects for each car and rental agency.
+
+Classes: We will create two classes, one for the car and one for the rental agency. The car class will have attributes such as ID, make, model, year, and rental price per day. The rental agency class will have attributes such as name, location, and a list of available cars.
+
+Encapsulation: We will encapsulate the car class by making its attributes private and providing public methods to access and modify them.
+
+Abstraction: We will abstract the system by creating a rental system that handles the car rental process and hides the details of how the cars are stored and managed.
+
+Inheritance: We can create different types of cars by inheriting from the car class. For example, we can create a luxury car class that inherits from the car class and adds additional attributes such as leather seats and GPS.
+
+Polymorphism: We can use polymorphism to handle different types of cars in the rental system. For example, we can define a rental method in the car class, which can be overridden in the luxury car class to include additional charges.
+
+Overloading: We can define multiple constructors in the car class to handle different ways of initializing a car object, such as passing in all the attributes or just the make and model.
+
+Overriding: We can override the rental method in the luxury car class to include additional charges for its extra features.
+
+
+Case study 2:
+--------------------------
+Case Study: Building a Library Management System
+
+You are tasked with building a library management system for a public library. The system should allow users to search for and borrow books, as well as manage their accounts and view their borrowing history. The following requirements have been identified:
+
+The system should be able to handle different types of users, including library staff and members.
+The system should have a collection of books with the ability to search and filter by title, author, and genre.
+The system should allow users to borrow and return books, with a limit on the number of books that can be borrowed at any one time.
+The system should maintain a borrowing history for each user.
+The system should send notifications to users when books are overdue or when their borrowing limit is reached.
+To build this system, you will need to use a range of object-oriented programming concepts, including:
+
+Inheritance: You can define a base class called "User" which will have common properties and methods for all types of users. Then, you can create two derived classes, "LibraryStaff" and "Member", which will inherit from the "User" class and add their own unique properties and methods.
+
+Encapsulation: You can use encapsulation to hide the implementation details of your classes from other parts of the program. For example, you can create a private method called "calculateDueDate" within the "Borrow" class that is only accessible within that class.
+
+Polymorphism: You can use polymorphism to define a common interface for related objects. For example, you can create an interface called "LibraryItem" that has methods such as "checkOut" and "checkIn". Then, you can implement this interface in classes such as "Book" and "DVD", which will have their own implementation of the interface methods.
+
+Abstraction: You can use abstraction to simplify complex systems by hiding unnecessary details. For example, you can create a class called "Borrow" that encapsulates the process of borrowing a book, including checking the user's borrowing limit and updating the borrowing history. This class can be used by other parts of the program without needing to know the details of how borrowing works.
+
+Composition: You can use composition to combine multiple objects into a single object. For example, you can create a class called "Library" that has a collection of "Book" objects and "DVD" objects. This class can then have methods for searching and filtering the collection.
+
+User {} //class
+
+Member extends User {} //class
+
+LibraryStaff extends User {}
+
+Library implements LibraryItem { Book books[] , DVD dvds[] checkOut(); checkIn()}
+
+Book {checkOut(); checkIn()}
+
+DVD {checkOut(); checkIn()}
+
+LibraryItem {checkOut(); checkIn()} // interface

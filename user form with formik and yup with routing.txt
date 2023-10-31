@@ -1,0 +1,449 @@
+
+Example of user creation with formik and yup.
+
+phase 1 --> to add the values in the form and display in the console
+------------------------------------------------------------------------------
+
+import { useFormik } from 'formik'
+import React from 'react'
+
+export default function User() {
+
+    const formik = useFormik({
+        //initial values
+        initialValues: {
+            firstname:'',
+            lastname:'',
+            phone:'',
+            email:'',
+            password:''
+        },
+
+        //on submit
+        onSubmit:values => {
+            console.log(values)
+        }
+    })
+
+    return (
+        <div className='container'>
+            <div className="row">
+                <div className="col-md-4 offset-md-4 text-center mb-3 mt-3">
+                    <h4>Registration Form</h4>
+                </div>
+            </div>
+            <form onSubmit={formik.handleSubmit}>
+                <div className="row">
+                    <div className="col-md-4 offset-md-4">
+                        <input
+                            type="text"
+                            name='firstname'
+                            onChange={formik.handleChange}
+                            value={formik.values.firstname}
+                            className='form-control form-control-sm'
+                            placeholder='First Name' />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 offset-md-4">
+                        <input
+                            type="text"
+                            name='lastname'
+                            onChange={formik.handleChange}
+                            value={formik.values.lastname}
+                            className='form-control form-control-sm'
+                            placeholder='Last Name' />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 offset-md-4">
+                        <input
+                            type="text"
+                            name='phone'
+                            onChange={formik.handleChange}
+                            value={formik.values.phone}
+                            className='form-control form-control-sm'
+                            placeholder='Phone no' />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 offset-md-4">
+                        <input
+                            type="text"
+                            name='email'
+                            onChange={formik.handleChange}
+                            value={formik.values.email}
+                            className='form-control form-control-sm'
+                            placeholder='Email ID' />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 offset-md-4">
+                        <input
+                            type="text"
+                            name='password'
+                            onChange={formik.handleChange}
+                            value={formik.values.password}
+                            className='form-control form-control-sm'
+                            placeholder='Password' />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 offset-md-4 text-center mt-2">
+                       <input type="submit" value="Register" className='btn btn-primary' />
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    )
+}
+
+
+
+
+phase 2 --> to add the validations
+
+
+	if(formik.errors.firstname && formik.touched.firstname) {
+	
+		<span>{formik.errors.firstname}</span>
+	
+	} else {
+	
+		null;
+	}
+
+-----------------------------------------------------------------------
+import { useFormik } from 'formik'
+import React from 'react'
+import * as yup from 'yup'
+
+export default function User() {
+
+    const formik = useFormik({
+        //initial values
+        initialValues: {
+            firstname:'',
+            lastname:'',
+            phone:'',
+            email:'',
+            password:''
+        },
+
+        //on submit
+        onSubmit:values => {
+            console.log(values)
+        },
+
+        //add validations
+        validationSchema:yup.object().shape({
+            firstname: yup.string()
+                            .min(3,'Minimum length for first name should be 3')
+                            .required('First name cannot be empty')
+                            ,
+            lastname: yup.string()
+                            .min(3,'Minimum length for last name should be 3')
+                            .required('Last name cannot be empty')
+                            ,
+            phone: yup.string()
+                            .min(10,'Phone number cannot be less than 10 digits')
+                            .max(10,'Phone number cannot be more than 10 digits')
+                            .required('Phone no cannot be empty')
+                            ,
+            email: yup.string()
+                            .email('Invalid email format')
+                            .required('Email cannot be empty')
+                            ,
+            password: yup.string()
+                            .matches(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/,'Password not meeting the conditions')
+                            .required('Password cannot be empty')
+
+        })
+    })
+
+    return (
+        <div className='container'>
+            <div className="row">
+                <div className="col-md-4 offset-md-4 text-center mb-3 mt-3">
+                    <h4>Registration Form</h4>
+                </div>
+            </div>
+            <form onSubmit={formik.handleSubmit}>
+                <div className="row">
+                    <div className="col-md-4 offset-md-4">
+                        <input
+                            type="text"
+                            name='firstname'
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.firstname}
+                            className='form-control form-control-sm'
+                            placeholder='First Name' />
+                        {
+                            formik.errors.firstname && formik.touched.firstname?<span className='text-danger'>{formik.errors.firstname}</span>:null
+                        }
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 offset-md-4">
+                        <input
+                            type="text"
+                            name='lastname'
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.lastname}
+                            className='form-control form-control-sm'
+                            placeholder='Last Name' />
+                        {
+                            formik.errors.lastname && formik.touched.lastname?<span className='text-danger'>{formik.errors.lastname}</span>:null
+                        }
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 offset-md-4">
+                        <input
+                            type="text"
+                            name='phone'
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.phone}
+                            className='form-control form-control-sm'
+                            placeholder='Phone no' />
+                        {
+                            formik.errors.phone && formik.touched.phone?<span className='text-danger'>{formik.errors.phone}</span>:null
+                        }
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 offset-md-4">
+                        <input
+                            type="text"
+                            name='email'
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.email}
+                            className='form-control form-control-sm'
+                            placeholder='Email ID' />
+                        {
+                            formik.errors.email && formik.touched.email?<span className='text-danger'>{formik.errors.email}</span>:null
+                        }
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 offset-md-4">
+                        <input
+                            type="text"
+                            name='password'
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.password}
+                            className='form-control form-control-sm'
+                            placeholder='Password' />
+                        {
+                            formik.errors.password && formik.touched.password?<span className='text-danger'>{formik.errors.password}</span>:null
+                        }
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 offset-md-4 text-center mt-2">
+                       <input type="submit" value="Register" className='btn btn-primary' />
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    )
+}
+
+
+-------------------------------------
+phase 3 --> where you store the data
+
+import { useFormik } from 'formik'
+import React from 'react'
+import * as yup from 'yup'
+import { useNavigate } from 'react-router-dom'
+
+export default function User() {
+    
+    const navi = useNavigate();
+
+    const formik = useFormik({
+        //initial values
+        initialValues: {
+            firstname:'',
+            lastname:'',
+            phone:'',
+            email:'',
+            password:''
+        },
+
+        //on submit
+        onSubmit:values => {
+            console.log(values)
+            fetch('http://localhost:3001/users',{
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify(values)
+            })
+                .then(success => {
+                    alert('User registered successfully')
+                    navi('/displayuser')
+                }).catch(error => alert('Error with the server, please check the db.json'))
+        },
+
+        //add validations
+        validationSchema:yup.object().shape({
+            firstname: yup.string()
+                            .min(3,'Minimum length for first name should be 3')
+                            .required('First name cannot be empty')
+                            ,
+            lastname: yup.string()
+                            .min(3,'Minimum length for last name should be 3')
+                            .required('Last name cannot be empty')
+                            ,
+            phone: yup.string()
+                            .min(10,'Phone number cannot be less than 10 digits')
+                            .max(10,'Phone number cannot be more than 10 digits')
+                            .required('Phone no cannot be empty')
+                            ,
+            email: yup.string()
+                            .email('Invalid email format')
+                            .required('Email cannot be empty')
+                            ,
+            password: yup.string()
+                            .matches(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/,'Password not meeting the conditions')
+                            .required('Password cannot be empty')
+
+        })
+    })
+
+    return (
+        <div className='container'>
+            <div className="row">
+                <div className="col-md-4 offset-md-4 text-center mb-3 mt-3">
+                    <h4>Registration Form</h4>
+                </div>
+            </div>
+            <form onSubmit={formik.handleSubmit}>
+                <div className="row">
+                    <div className="col-md-4 offset-md-4">
+                        <input
+                            type="text"
+                            name='firstname'
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.firstname}
+                            className='form-control form-control-sm'
+                            placeholder='First Name' />
+                        {
+                            formik.errors.firstname && formik.touched.firstname?<span className='text-danger'>{formik.errors.firstname}</span>:null
+                        }
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 offset-md-4">
+                        <input
+                            type="text"
+                            name='lastname'
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.lastname}
+                            className='form-control form-control-sm'
+                            placeholder='Last Name' />
+                        {
+                            formik.errors.lastname && formik.touched.lastname?<span className='text-danger'>{formik.errors.lastname}</span>:null
+                        }
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 offset-md-4">
+                        <input
+                            type="text"
+                            name='phone'
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.phone}
+                            className='form-control form-control-sm'
+                            placeholder='Phone no' />
+                        {
+                            formik.errors.phone && formik.touched.phone?<span className='text-danger'>{formik.errors.phone}</span>:null
+                        }
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 offset-md-4">
+                        <input
+                            type="text"
+                            name='email'
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.email}
+                            className='form-control form-control-sm'
+                            placeholder='Email ID' />
+                        {
+                            formik.errors.email && formik.touched.email?<span className='text-danger'>{formik.errors.email}</span>:null
+                        }
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 offset-md-4">
+                        <input
+                            type="text"
+                            name='password'
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.password}
+                            className='form-control form-control-sm'
+                            placeholder='Password' />
+                        {
+                            formik.errors.password && formik.touched.password?<span className='text-danger'>{formik.errors.password}</span>:null
+                        }
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 offset-md-4 text-center mt-2">
+                       <input type="submit" value="Register" className='btn btn-primary' />
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    )
+}
+
+-----------------------------------------------
+Routing
+--------
+
+import logo from './logo.svg';
+import './App.css';
+import {BrowserRouter , Routes, Route} from 'react-router-dom'
+import Header from './components/Header';
+import Footer from './components/Footer';
+import User from './components/User';
+import UserList from './components/UserList';
+
+function App() {
+  return (
+    <div>
+        <BrowserRouter>
+            <Header />
+
+              <Routes>
+                <Route path='/user' element={<User />} />
+                <Route path='/displayuser' element={<UserList />} />
+                <Route path='/' element={<User />} />
+              </Routes>
+
+            <Footer />
+        </BrowserRouter>
+    </div>
+  );
+}
+
+export default App;
+

@@ -1,0 +1,182 @@
+
+Props and state in React
+-----------------------------------------
+
+In React, both props and state are fundamental concepts that allow you to manage and update the data that your components display. They play a crucial role in building dynamic and interactive user interfaces.
+
+Props (Properties):
+Props are short for "properties." They are the mechanism by which you can pass data from a parent component to a child component. Props are read-only and cannot be modified by the child component that receives them. They are used to make components reusable and to provide them with the necessary data to render.
+Here's how you can pass props from a parent component to a child component:
+
+Example 1:
+===============
+// ParentComponent.js
+import React from 'react';
+import ChildComponent from './ChildComponent';
+
+const ParentComponent = () => {
+  const data = "Hello from parent!";
+  
+  return (
+	
+		<ChildComponent message={data} />
+  
+  );
+};
+
+export default ParentComponent;
+
+---------------------------------------
+// ChildComponent.js
+import React from 'react';
+
+const ChildComponent = (props) => {
+  return <div>{props.message}</div>;
+};
+
+export default ChildComponent;
+
+
+
+Example 2:
+=================
+// ParentComponent.js
+import React from 'react';
+import ListComponent from './ListComponent';
+
+const ParentComponent = () => {
+  const items = ['Apple', 'Banana', 'Orange'];
+  
+  return <ListComponent items={items} />;
+};
+
+export default ParentComponent;
+
+
+-------------------------------------
+
+// ListComponent.js
+import React from 'react';
+
+const ListComponent = (props) => {
+  const itemsList = props.items.map((item, index) => (
+    <li key={index}>{item}</li>
+  ));
+  
+  return <ul>{itemsList}</ul>;
+};
+
+export default ListComponent;
+
+
+-----------------------------------------------------------
+
+State:
+State is a mechanism for managing and storing data within a component. Unlike props, state is mutable and can be changed by the component that owns it. State is primarily used for creating interactive components that can change their behavior or appearance in response to user actions, events, or other factors.
+To use state in a component, you typically use the useState hook in functional components or the this.state object in class components (prior to React 16.8):
+
+// Using state with functional components
+import React, { useState } from 'react';
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+};
+
+export default Counter;
+
+---------------------------------------
+
+import React, { useState } from 'react';
+
+const ToggleSwitch = () => {
+  const [isOn, setIsOn] = useState(false);
+
+  const toggle = () => {
+    setIsOn(!isOn);
+  };
+
+  return (
+    <div>
+      <p>Toggle is {isOn ? 'On' : 'Off'}</p>
+      <button onClick={toggle}>Toggle</button>
+    </div>
+  );
+};
+
+export default ToggleSwitch;
+
+------------------------------------------
+import React, { useState } from 'react';
+
+const TodoList = () => {
+  const [todos, setTodos] = useState([]);
+  const [newTodo, setNewTodo] = useState('');
+
+  const addTodo = () => {
+    if (newTodo.trim() !== '') {
+      setTodos([...todos, newTodo]);
+      setNewTodo('');
+    }
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={newTodo}
+        onChange={(e) => setNewTodo(e.target.value)}
+        placeholder="Add a new todo"
+      />
+      <button onClick={addTodo}>Add</button>
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>{todo}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default TodoList;
+
+
+---------------------------------------
+
+// Using state with class components (prior to React 16.8)
+import React, { Component } from 'react';
+
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+  }
+
+  increment = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button onClick={this.increment}>Increment</button>
+      </div>
+    );
+  }
+}
+
+export default Counter;
+

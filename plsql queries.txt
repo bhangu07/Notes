@@ -1,0 +1,197 @@
+SET SERVEROUTPUT ON
+
+-- print hello world message
+BEGIN
+    DBMS_OUTPUT.put_line('Hello world!');
+END;
+/
+
+-- hello world but I want to store it in a variable
+
+DECLARE
+    message VARCHAR2(50);
+BEGIN
+    message := 'Good Morning';
+    DBMS_OUTPUT.put_line(message);
+END;
+/
+
+-- taking value from the server / end user
+DECLARE
+    message VARCHAR2(50) := '&message';
+BEGIN
+    DBMS_OUTPUT.put_line(message);
+END;
+/
+
+--checking for exceptions
+DECLARE
+      v_result NUMBER;
+BEGIN
+   v_result := 1 / 1;
+   DBMS_OUTPUT.PUT_LINE( v_result );
+   EXCEPTION
+      WHEN ZERO_DIVIDE THEN
+         DBMS_OUTPUT.PUT_LINE( SQLERRM );
+END;
+/
+
+/* take the first name and last name and salary from the prompt
+and calculating the bonus
+*/
+-- adding single line of comment
+DECLARE
+	fname VARCHAR2(20) := '&fname';
+	lname VARCHAR2(20) := '&lname';
+	salary NUMBER(5) := &salary;
+	bonus NUMBER;
+BEGIN
+	DBMS_OUTPUT.put_line(fname ||' ' || lname);
+	bonus := salary * 0.10;
+    DBMS_OUTPUT.put_line('The salary is: ' || salary || ' and the bonus is: ' || bonus);
+END;
+/
+
+-- anchored declarations
+DECLARE
+	empname employees.first_name%TYPE;
+	sal employees.salary%TYPE;
+
+BEGIN
+	SELECT
+		first_name, salary
+	INTO
+		empname,sal
+    FROM
+        employees
+	WHERE
+		employee_id = 100;
+	
+	DBMS_OUTPUT.put_line('The emp name is: ' || empname || ' and the salary is: ' || sal);
+END;
+/
+
+
+-- get the min, max, avg of salary. We will declare a variable empid and take the empid from the prompt
+DECLARE
+    sal employees.salary%TYPE;
+    maxsal sal%TYPE;
+    minsal sal%TYPE;
+    avgsal sal%TYPE;
+	empid employees.employee_id%TYPE := &empid;
+BEGIN
+	SELECT MAX(salary),MIN(salary),AVG(salary)
+	INTO maxsal,minsal,avgsal
+	FROM employees;
+	
+	SELECT salary
+	INTO sal
+	FROM employees
+	WHERE employee_id = empid;
+	
+	DBMS_OUTPUT.put_line('The minimum salary paid is: ' || minsal);
+	DBMS_OUTPUT.put_line('The maximum salary paid is: ' || maxsal);
+	DBMS_OUTPUT.put_line('The average salary paid is: ' || avgsal);
+	DBMS_OUTPUT.put_line('The salary of empid: ' || empid || ' is: ' || sal);
+END;
+/
+
+-- get the min, max, avg of salary. We will declare a variable empid and take the empid from the prompt
+DECLARE
+    sal employees.salary%TYPE;
+    maxsal sal%TYPE;
+    minsal sal%TYPE;
+    avgsal sal%TYPE;
+	empid employees.employee_id%TYPE := &empid;
+BEGIN
+-- first blcok
+	SELECT MAX(salary),MIN(salary),AVG(salary)
+	INTO maxsal,minsal,avgsal
+	FROM employees;
+	
+	SELECT salary
+	INTO sal
+	FROM employees
+	WHERE employee_id = empid;
+	
+	DBMS_OUTPUT.put_line('The minimum salary paid is: ' || minsal);
+	DBMS_OUTPUT.put_line('The maximum salary paid is: ' || maxsal);
+	DBMS_OUTPUT.put_line('The average salary paid is: ' || avgsal);
+	DBMS_OUTPUT.put_line('The salary of empid: ' || empid || ' is: ' || sal);
+
+-- second block
+    IF (sal = maxsal) THEN	
+        DBMS_OUTPUT.put_line('You have maximum salary');
+	ELSIF (sal = minsal) THEN
+        DBMS_OUTPUT.put_line('You have minimum salary');
+	ELSIF (sal<avgsal) THEN
+        DBMS_OUTPUT.put_line('You have lesser salary than average');
+	ELSE
+        DBMS_OUTPUT.put_line('You have greater salary than average');
+	END IF;
+
+-- third block   
+    -- this is used to handle the exceptions which occur in our program
+    EXCEPTION -- used to start the exception
+        WHEN NO_DATA_FOUND THEN -- check if that exception is occured
+            DBMS_OUTPUT.put_line('Sorry, the employee_id does not exist'); -- handle the exception
+        WHEN TOO_MANY_ROWS THEN
+            DBMS_OUTPUT.put_line(SQLERRM);
+END;
+/
+
+--SELECT department_name 
+--from employees e 
+--join departments d 
+--using (department_id)
+--where employee_id = '120';
+
+DECLARE
+    empid employees.employee_id%TYPE := &empid;
+    deptnm departments.department_name%TYPE;
+    empname employees.first_name%TYPE;
+BEGIN
+    SELECT department_name
+    INTO deptnm
+    FROM employees e join departments d
+    ON (e.department_id = d.department_id)
+    WHERE employee_id = empid;
+    
+    CASE deptnm
+        WHEN 'Administration' THEN
+            DBMS_OUTPUT.put_line('You are in Admin department');
+        WHEN 'Executive' THEN
+            DBMS_OUTPUT.put_line('You are in Executive department');
+        WHEN 'Shipping' THEN
+            DBMS_OUTPUT.put_line('You are in Shipping department');
+        WHEN 'Sales' THEN
+            DBMS_OUTPUT.put_line('You are in Sales department');
+        ELSE
+            DBMS_OUTPUT.put_line('You are in some other department');
+    END CASE;
+    
+    EXCEPTION -- used to start the exception
+        WHEN NO_DATA_FOUND THEN -- check if that exception is occured
+            DBMS_OUTPUT.put_line('Sorry, the employee_id does not exist'); -- handle the exception
+        WHEN TOO_MANY_ROWS THEN
+            DBMS_OUTPUT.put_line('Returned more than 1 row of output');
+END;
+/
+
+-- out of 3 numbers, which is greater
+
+DECLARE
+    num1 NUMBER := &num1;
+    num2 NUMBER := &num2;
+    num3 NUMBER := &num3;
+BEGIN
+    IF (num1 > num2 and num1>num3) THEN
+        DBMS_OUTPUT.put_line('num1 is greater');
+    ELSIF (num2>num3 and num2>num1) THEN
+        DBMS_OUTPUT.put_line('num2 is greater');
+    ELSE
+        DBMS_OUTPUT.put_line('num3 is greater');
+    END IF;
+END;
+/
+

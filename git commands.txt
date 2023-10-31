@@ -1,0 +1,45 @@
+Process of git clone and push
+---------------------------------
+go to gitlab.stackroute.in
+
+create a new project (linux-ex)
+
+git clone url (it will clone the cloud repo in your local system)
+
+go to the folder
+add a new file -> linux.txt
+
+mkdir - create a new folder
+ls - list of the folder
+
+save the file
+
+git status (it will check and compare your cloud repo with your local folder)
+git add . (it will add the untracked files to the cloud repo but it will not push)
+git commit -m "first commit" (commit your changes to the cloud repo with the message)
+git push origin master (push command will finally push your files to the cloud repo. Origin is the url)
+git remote show origin (your local git repo is connected with which cloud repo)
+
+
+Process of git init and push
+--------------------------------------------------------------------------------
+There should be a way of converting a folder into a git repository
+rather than doing git clone and creating a new folder
+
+go inside the folder which you want to convert into a git repo
+open cmd over there
+
+1. create a new project on gitlab - git-demo-2
+2. come to your file explorer -> create a folder -> add some file -> save the file
+3. go inside that folder -> open cmd
+
+git init (this folder is now a git repository)
+git remote add origin https://gitlab.stackroute.in/Payal/12-july-session-notes.git
+
+git remote show origin
+
+git status (it will check and compare your cloud repo with your local folder)
+git add . (it will add the untracked files to the cloud repo but it will not push)
+git commit -m "first commit" (commit your changes to the cloud repo with the message)
+git push origin master (push command will finally push your files to the cloud repo. Origin is the url)
+git remote show origin (your local git repo is connected with which cloud repo)

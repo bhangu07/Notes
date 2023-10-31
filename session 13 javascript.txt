@@ -1,0 +1,452 @@
+
+Learning outcome:
+
+1. JavaScript
+2. Uses of JavaScript
+3. Datatypes in JavaScript
+4. Programming constructs using JavaScript
+5. Object oriented programming using JavaScript
+
+
+What is JavaScript?
+	Client side scripting language
+	It is used to make static HTML page as interactive webpage.
+	Validations done on the client side using JavaScript
+	
+	JavaScript is a lightweight , interpreted programming language.
+	It is an object based scripting language
+	It is designed to create network-centric applications
+	It is complimentary to and integrated with Java
+	Easy to implement because it is integrated with HTML
+	It is open and cross platform
+	
+	
+	Uses of JavaScript:
+		Client side validation
+		Dynamic drop down menus
+		Displaying date and time
+		Displaying pop-up windows and dialog boxes, alert, prompt
+		Displaying clocks etc.
+
+How to add Javascript in your code?
+
+To add JavaScript code to an HTML document, you can use the <script> tag.
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Web Page</title>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+
+    <script>
+      // Your JavaScript code goes here
+      console.log("Hello, world!");
+    </script>
+  </body>
+</html>
+
+Alternatively, you can also link to an external JavaScript file using the src attribute of the <script> tag.
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Web Page</title>
+    <script src="myscript.js"></script>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+  </body>
+</html>
+
+------------------------------------------------------
+
+Dialog boxes:
+
+In JavaScript, alert(), prompt(), and confirm() are three built-in functions that allow you to interact with the user through dialog boxes.
+
+// alert() is used to display a message to the user in an alert box.
+
+alert("Hello, world!");
+
+// prompt() is used to prompt the user to enter a value.
+
+let name = prompt("What is your name?");
+
+// confirm() is used to prompt the user to confirm or cancel an action.
+let result = confirm("Are you sure you want to delete this item?");
+
+
+------------------------
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#declarations
+
+Defining variables in javascript.
+
+JavaScript is a dynamically typed language. 
+This means you don't have to specify the data type of a variable when you declare it. 
+It also means that data types are automatically converted as-needed during script execution. 
+Because JavaScript is dynamically typed, this assignment does not cause an error message.
+
+Declarations
+JavaScript has three kinds of variable declarations.
+
+var
+Declares a variable, optionally initializing it to a value. Variables declared with var can be redeclared within the same scope, and they can be assigned a new value at any time.
+
+let 
+Declares a block-scoped, local variable, optionally initializing it to a value. This can be reassigned a new value but not redeclared within the same scope.
+
+const
+Declares a block-scoped, read-only named constant. The value of a const variable can't be changed once it's assigned.
+
+
+---------------------------
+
+In JavaScript, == and === are comparison operators used to compare values.
+
+The main difference between them is that == performs type coercion, while === does not.
+
+== compares values after converting them to a common type. For example, if you compare the string "1" with the number 1 using ==, JavaScript will convert the string to a number and then compare them. So, "1" == 1 will return true.
+
+On the other hand, === compares values without any type conversion. It checks if the values are of the same type and have the same value. If the types are different, the comparison will return false. For example, "1" === 1 will return false.
+
+In general, it is recommended to use === for comparisons because it avoids unexpected results due to type coercion. However, there may be situations where == is more appropriate, such as when checking for null or undefined values.
+
+--------------------------------
+
+//difference between undefined and null
+var studentName;
+console.log("value is: "+studentName);
+
+var studentName=null;
+console.log("value is: "+studentName);
+
+
+//comparing null and undefined
+var studentName;
+console.log("studentName is: "+studentName);
+
+var studentName1=null;
+console.log("studentName1 is: "+studentName1);
+
+//compare the values, use ==
+console.log("compare: "+studentName == studentName1);
+
+//compare the type, use ===
+console.log("compare: "+studentName === studentName1);
+
+var str1=null;
+var str2;
+console.log(str1==str2); //comparison between two variables irrespective of the datatype of variable
+console.log(str1===str2); //comparision between two variables but this will check strict type, which means it will check datatype and compare two values
+
+
+//ternary operator
+var userName = "sr";
+var password = "sr";
+var result = (userName==password)?true:false;
+console.log("Using ternary op, res is: "+result);
+
+
+//programming constructs in javascript
+var num1=10;
+var num2=11;
+
+if(num1>num2) {
+    console.log(num1 + " is greater than " + num2);
+} else{
+    console.log(num2 + " is greater than " + num1);
+}
+
+//highest of three numbers
+var num1=40;
+var num2=50;
+var num3=30;
+
+if(num1>num2) {
+    if (num1>num3) {
+        console.log("The highest num: " + num1);
+    }
+    else {
+        console.log("The highest num: "+num3);
+    }
+} else {
+    if(num2>num3) {
+        console.log("The highest num:"+num2);
+    } else {
+        console.log("The highest num: "+num3);
+    }
+}
+//switch case in javascript
+function getState1(city) {
+
+    switch(city) {
+        case "Mumbai":
+            console.log("The State is Maharashtra");
+            break;
+        case "Pune":
+            console.log("The State is Maharashtra");
+            break;
+        case "Bangalore":
+            console.log("The State is Karnataka");
+            break;
+        default:
+            console.log("Unknown");
+    }
+
+}
+getState1("Bangalore");
+
+//switch case in javascript
+var x='a';
+
+switch(x) {
+    case 'a':
+        console.log("Travel by air");
+        break;
+    case 'b':
+        console.log("Travel by bus");
+        break;
+    default:
+        console.log("Undefined");
+}
+
+---------------------------------------------------------
+
+//iterative statement
+for (var num=1; num<=10; num++) {
+    console.log("Using for loop: "+num);
+}
+
+//iterative statement
+var num=1;
+while(num<=10) {
+    console.log("Using while loop: "+num);
+    num++;
+}
+
+//iterative statement
+var num=1;
+do{
+    console.log("Using do-while loop: "+num);
+    num++
+} while(num<=10)
+
+----------------------------------------------------
+
+//writing a function in javascript
+function myFun(x,y) {
+    return x+y;
+}
+var res = myFun(10,20);
+console.log(res);
+
+
+Array
+=================
+In JavaScript, an array is a collection of values, which can be of any data type, such as numbers, strings, or objects. Arrays are used to store and manipulate data in a structured way, and they are one of the most commonly used data structures in programming. Here's everything you need to know about arrays in JavaScript:
+
+Creating an Array:
+You can create an array in JavaScript by using the [] square brackets or the Array() constructor.
+
+let arr1 = [1, 2, 3]; // using square brackets
+let arr2 = new Array(4, 5, 6); // using Array constructor
+
+------------------------------------------------------------------
+Accessing Elements in an Array:
+You can access elements in an array using the index number, which starts from 0.
+
+let arr = [1, 2, 3];
+console.log(arr[0]); // output: 1
+console.log(arr[1]); // output: 2
+console.log(arr[2]); // output: 3
+
+
+let arr = [1, 2, 3];
+arr[1] = 4;
+console.log(arr); // output: [1, 4, 3]
+
+
+let arr = [[1, 2], [3, 4], [5, 6]];
+console.log(arr[0][0]); // output: 1
+console.log(arr[1][1]); // output: 4
+console.log(arr[2][0]); // output: 5
+
+Objects in JavaScript
+--------------------------
+
+//create an object using a function
+function person(fn, ln) {
+    this.fn=fn;
+    this.ln=ln;
+}
+
+let p1 = new person("Anuja","Mehta");
+let p2 = new person("Rishi","Kapoor");
+
+console.log("Person 1: ",p1);
+console.log("Person 2: ",p2);
+
+
+--------------------------------------------------
+
+//creating object using classes
+class Customer {
+    constructor(id,nm,phno) {
+        this.id=id;
+        this.nm=nm;
+        this.phno=phno;
+    }
+}
+let obj1 = new Customer(1,"Maria",98998989);
+console.log(obj1);
+
+let obj2 = new Customer(2,"Grishma",88778983);
+console.log(obj2);
+
+-------------------------------------------------
+
+//creating objects using JSON format
+var employee = {
+    id:101,
+    nm:"abc",
+    email:"abc@gmail.com"
+};
+console.log("Employe:",employee);
+//object created
+console.log(typeof employee);
+	
+------------------------------------
+Methods in Array
+--------
+
+push() - Adds one or more elements to the end of an array and returns the new length of the array.
+
+let arr = [1, 2, 3];
+arr.push(4);
+console.log(arr); // output: [1, 2, 3, 4]
+
+
+pop() - Removes the last element from an array and returns that element.
+
+let arr = [1, 2, 3];
+let removed = arr.pop();
+console.log(removed); // output: 3
+console.log(arr); // output: [1, 2]
+
+
+shift() - Removes the first element from an array and returns that element.
+
+let arr = [1, 2, 3];
+let removed = arr.shift();
+console.log(removed); // output: 1
+console.log(arr); // output: [2, 3]
+
+
+unshift() - Adds one or more elements to the beginning of an array and returns the new length of the array.
+
+let arr = [1, 2, 3];
+arr.unshift(4, 5);
+console.log(arr); // output: [4, 5, 1, 2, 3]
+
+
+slice() - Returns a new array that contains a portion of the original array.
+
+let arr = [1, 2, 3, 4, 5];
+let sliced = arr.slice(1, 4);
+console.log(sliced); // output: [2, 3, 4]
+console.log(arr); // output: [1, 2, 3, 4, 5]
+
+
+splice() - Adds or removes elements from an array at a specified index.
+
+let arr = [1, 2, 3, 4, 5];
+arr.splice(2, 1, 'a', 'b');
+console.log(arr); // output: [1, 2, 'a', 'b', 4, 5]
+
+
+concat() - Joins two or more arrays and returns a new array.
+
+let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+let concatenated = arr1.concat(arr2);
+console.log(concatenated); // output: [1, 2, 3, 4, 5, 6]
+
+
+forEach() - Calls a function for each element in an array.
+
+let arr = [1, 2, 3];
+arr.forEach(function(element) {
+  console.log(element);
+});
+// output: 
+// 1
+// 2
+// 3
+
+
+map() - Creates a new array with the results of calling a function for each element in an array.
+
+let arr = [1, 2, 3];
+let mapped = arr.map(function(element) {
+  return element * 2;
+});
+console.log(mapped); // output: [2, 4, 6]
+
+filter() - Creates a new array with all elements that pass the test implemented by a provided function.
+
+let arr = [1, 2, 3, 4, 5];
+let filtered = arr.filter(function(element) {
+  return element % 2 === 0;
+});
+console.log(filtered); // output: [2, 4]
+
+
+find() - Returns the value of the first element in the array that satisfies the provided testing function.
+
+let arr = [1, 2, 3, 4, 5];
+let found = arr.find(function(element) {
+  return element > 3;
+});
+console.log(found); // output: 4
+
+
+findIndex() - Returns the index of the first element in the array that satisfies the provided testing function.
+
+let arr = [1, 2, 3, 4, 5];
+let foundIndex = arr.findIndex(function(element) {
+  return element > 3;
+});
+console.log(foundIndex); // output: 3
+
+
+indexOf() - Returns the first index at which a given element can be found in the array, or -1 if it is not present.
+
+let arr = [1, 2, 3, 4, 5];
+let index = arr.indexOf(3);
+console.log(index); // output: 2
+
+
+lastIndexOf() - Returns the last index at which a given element can be found in the array, or -1 if it is not present.
+
+let arr = [1, 2, 3, 4, 5, 3];
+let lastIndex = arr.lastIndexOf(3);
+console.log(lastIndex); // output: 5
+
+
+reverse() - Reverses the order of the elements in an array.
+
+let arr = [1, 2, 3, 4, 5];
+arr.reverse();
+console.log(arr); // output: [5, 4, 3, 2, 1]
+
+
+sort() - Sorts the elements of an array in place and returns the sorted array.
+
+let arr = [3, 2, 5, 1, 4];
+arr.sort();
+console.log(arr); // output: [1, 2, 3, 4, 5]
+
+

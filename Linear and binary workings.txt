@@ -1,0 +1,42 @@
+		
+		linear search
+		
+		int [] arr = new int[10];
+		arr[0]=
+		
+		
+		int [] nums = {10,34,76,55,99,22,55,77};
+		
+		searchKey = 10;
+		
+		System.out.println("Element not present in the array")
+		
+		for(int i=0;i<nums.length;i++) {
+			
+			if(99 == 99) {
+				
+				
+			
+			}
+		
+		}
+		
+		rules of binary search:
+		1. array should be sorted
+		
+	arr[] = {1,2,3,4,5,6,7}
+	
+	search = 2;
+	
+	1. sorted array
+	2. mid position (length/2) = 3
+	
+	arr[mid] == search
+	
+	1,2,3
+	
+	mid = 1
+	
+	arr[mid] ==search
+	
+		

@@ -1,0 +1,1 @@
+mvn clean verify sonar:sonar -Dsonar.projectKey=userapi -Dsonar.projectName='userapi' -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_271b2d212c9c00c32d7176d6c3d875363d87c804

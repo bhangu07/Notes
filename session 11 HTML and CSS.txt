@@ -1,0 +1,250 @@
+HTML and CSS
+--------------------------
+HTML (HyperText Markup Language) is a standard markup language used to create web pages. It consists of a series of tags that define the structure and content of a web page.
+
+The history of HTML (HyperText Markup Language) goes back to the early days of the World Wide Web, and has evolved significantly over the years.
+
+	HTML 1.0: The first version of HTML was released in 1991 by Tim Berners-Lee, the inventor of the World Wide Web. HTML 1.0 was a simple language that provided basic formatting and linking capabilities.
+
+	HTML 2.0: HTML 2.0 was released in 1995 and added support for tables, images, and form elements. It also introduced the concept of Cascading Style Sheets (CSS), which allowed for more advanced control of the layout and design of web pages.
+
+	HTML 3.2: HTML 3.2 was released in 1997 and added support for frames, which allowed for more complex page layouts. It also introduced new features like the <font> tag for text styling, and the <marquee> tag for animated text.
+
+	HTML 4.01: HTML 4.01 was released in 1999 and added support for style sheets, scripting, and multimedia content like audio and video. It also introduced the <div> and <span> tags for more precise page layout and design.
+
+	XHTML: XHTML (Extensible HyperText Markup Language) was released in 2000 as a reformulation of HTML using XML syntax. XHTML aimed to make web pages more structured, modular, and compatible with other XML-based technologies.
+
+	HTML5: HTML5 was released in 2014 as the latest version of HTML. It introduced many new features and improvements, including better support for multimedia, semantic markup, offline storage, and responsive design. It is now the standard markup language for web development.
+
+Here are some of the key features of HTML:
+
+	Structure: HTML provides a structured way to create web pages, using tags to define headings, paragraphs, lists, tables, and other elements.
+
+	Links: HTML allows you to create links between different web pages and resources. This makes it possible to navigate between different parts of a website or to link to external resources such as images, videos, and other websites.
+
+	Images and multimedia: HTML allows you to embed images, videos, and other multimedia content directly into web pages.
+
+	Forms: HTML provides a way to create forms, which allow users to input data such as text, numbers, and files. This is useful for collecting information from users, such as contact details or login credentials.
+
+	Accessibility: HTML provides features that allow web pages to be made more accessible to users with disabilities, such as the use of alt attributes to describe images, and the ability to use ARIA attributes to provide additional context for screen readers.
+
+Some of the advantages of using HTML include:
+
+	Compatibility: HTML is supported by all major web browsers, making it a reliable and widely used standard for web development.
+
+	Easy to learn: HTML has a simple syntax and is easy to learn, making it a good starting point for beginners in web development.
+
+	Flexibility: HTML can be used to create a wide range of web page designs and layouts, and can be combined with other technologies such as CSS and JavaScript to create more advanced web applications.
+
+	Accessibility: HTML provides features that allow web pages to be made more accessible to users with disabilities, helping to ensure that everyone can access and use the web.
+
+
+HTML5 is the latest version of the HTML markup language. Here are some of its key features:
+
+Semantic elements: HTML5 introduced several new semantic elements like <header>, <footer>, <nav>, <article>, <aside>, <section>, etc. These elements help in better structuring and understanding of the content.
+
+Audio and Video Support: HTML5 has native support for playing audio and video files without requiring additional plugins like Flash. The <audio> and <video> tags are used to embed audio and video content into web pages.
+
+Canvas: HTML5 introduced the <canvas> element, which allows for dynamic graphics and animations to be drawn using JavaScript. It is commonly used for creating games, visualizations, and interactive graphics.
+
+Geolocation: HTML5 introduced the Geolocation API, which allows web applications to access the user's location information. This feature is used by various location-based services like maps and navigation.
+
+Responsive Design: HTML5 has better support for responsive web design, which enables websites to adapt to different screen sizes and devices.
+
+Web Storage: HTML5 introduced two new APIs - localStorage and sessionStorage, which allow web applications to store data locally on the user's device. This can be used to improve performance and provide offline functionality.
+
+Web Workers: HTML5 introduced the Web Workers API, which allows for background processing in web applications. This can help improve the performance of complex applications.
+
+Drag and Drop: HTML5 introduced a native drag and drop API, which allows for easy dragging and dropping of elements within a web page.
+
+Form Controls: HTML5 introduced several new form controls like <input type="date">, <input type="time">, <input type="email">, <input type="url">, <input type="search">, etc. These controls provide better user experience and validation.
+
+Accessibility: HTML5 has better support for accessibility, including ARIA (Accessible Rich Internet Applications) attributes, which can help make web applications more accessible to users with disabilities.
+
+-----------------------------------------------------
+CSS (Cascading Style Sheets) 
+
+It is a language used to define the visual appearance and layout of web pages. It allows web developers to separate the content of a web page from its presentation, and provides a way to apply styles consistently across multiple pages and websites.
+
+Here are some of the key features of CSS:
+
+Selectors: CSS uses selectors to target specific elements in a web page, allowing developers to apply styles selectively based on the element's class, ID, or other attributes.
+
+Cascading: CSS allows styles to cascade from parent elements to child elements, making it possible to apply styles consistently across multiple pages and websites.
+
+Box model: CSS uses a box model to define the layout and dimensions of elements on a web page, including padding, borders, and margins.
+
+Responsive design: CSS provides features like media queries and flexbox to create responsive web designs that can adapt to different screen sizes and devices.
+
+Some of the advantages of using CSS include:
+
+Separation of concerns: CSS allows web developers to separate the content and structure of a web page from its presentation, making it easier to maintain and update the design of a website.
+
+Consistency: CSS allows developers to apply styles consistently across multiple pages and websites, helping to create a unified look and feel.
+
+Flexibility: CSS provides a wide range of styling options, including color, typography, layout, and animation, allowing developers to create unique and engaging designs.
+
+Accessibility: CSS can be used to create more accessible web designs, with features like the ability to apply alternative text to images and the ability to adjust font sizes for improved readability.
+
+
+Three ways of adding CSS
+1. Inline -  <img src="/images/profile.jpg" alt="profile image" style="width: 250px; height: 300px;">
+
+2. Internal - adding the style tag in the head tag
+
+<style>
+        img {
+            width: 250px;
+            height: 300px;
+            
+        }
+        div {
+            text-align: left;
+        }
+</style>
+
+3. External
+
+create a style.css
+
+add it to your html page by using <link rel="stylesheet" href="/css/style.css" />
+
+----------------------------------
+
+examples:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My HTML Page</title>
+  </head>
+  <body>
+    <h1>My Heading</h1>
+    <p>This is a paragraph of text.</p>
+    <h2>My Subheading</h2>
+    <ul>
+      <li>List item 1</li>
+      <li>List item 2</li>
+      <li>List item 3</li>
+    </ul>
+    <h3>My Sub-subheading</h3>
+    <ol>
+      <li>Ordered list item 1</li>
+      <li>Ordered list item 2</li>
+      <li>Ordered list item 3</li>
+    </ol>
+    <img src="myimage.jpg" alt="My Image" width="200" height="150">
+    <video width="400" height="300" controls>
+      <source src="myvideo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </body>
+</html>
+
+-------------------------------------------
+
+<table border="1" cellspacing="10" cellpadding="5">
+  <tr>
+    <td colspan="2" rowspan="2">Header cell</td>
+    <td>Header cell</td>
+  </tr>
+  <tr>
+    <td>Header cell</td>
+  </tr>
+  <tr>
+    <td>Cell</td>
+    <td>Cell</td>
+    <td>Cell</td>
+  </tr>
+  <tr>
+    <td colspan="2">Cell</td>
+    <td>Cell</td>
+  </tr>
+  <tr>
+    <td>Cell</td>
+    <td rowspan="2">Cell</td>
+    <td>Cell</td>
+  </tr>
+  <tr>
+    <td>Cell</td>
+    <td>Cell</td>
+  </tr>
+</table>
+
+---------------------------------------
+units of measurement in HTML
+---------------------------------------
+px = pixels (1px = 1/96th of inch)
+
+Units of fonts, images are measured in :
+	Absolute length
+	Relative length
+	
+	Absolute length :
+		1. Asolute length Units are fixed. It appears in the same size irrespective of the window size.
+		2. Not recommended.
+		3. pt, cm
+	Relative length : 
+		1. Relative length units are not fixed. It changes as per the window size.
+		2. It is recommended.
+		3. em, vw, vh, px
+		4. em - Relative to the font size of the element.
+				2em means two times to the font-size of the current font.
+		5. viewport:
+			The users visiblility area of the webpage.
+			It varies according to the device the page is accessed.
+			For eg: Mobile device to the computer screen.
+			vw - viewport width. Relative to 1% of the width of the viewport.
+			vh - viewport height. Relative to the 1% of the height of the viewport.
+	
+Semantic Elements: 
+	The tags that descirbes its meaning to both the browser and the developer.
+	Introduced in HTML5.0
+	Prior to the semantic elements, we used the div tag to differentiate and group the elements.
+	When we try to implement multiple div tags, nested div tags, the opening and closing of the tags creates confusion.
+	
+	Semantic tags:
+		<header>
+		<main>
+		<section>
+		<footer>
+		<article>
+
+Parallax scrolling : 
+		is a web site trend where the background content (i.e. an image) is moved at a different speed than the foreground content while scrolling.
+
+------------------------------------------
+UI Module
+	User Interface: Any application that requires user interaction is called as UI.
+	Front-end tool: Client application
+					HTML5.0 , CSS3.0 , Javascript, Bootstrap.
+
+What is web application?
+	Any application that will run on a server and display required information on the web browser.
+	Ex: Amazon, Flipkart, Gmail, Internet banking.
+
+Webpage / Website:
+	Page that is displayed on the browser. Collection of web pages is called as a website.
+
+Web Application is made of 2 resources:
+	1. Passive resource: Does not have its own processing capablity. (Eg - HTML, Image file)
+						Static content. Dependent on other resource for processing capablity.
+	2. Active resource: Has its own processing capablity. (Eg - Servlets, JSP, Spring Framework)
+	
+Functionality of Web Application:
+	Request: Client/user requests a page.
+	Response: repoonse by the server
+	Protocol: set of rules followed during the transmission of data.
+	HTTP: Hypertext Transfer Protocol (HTTP) is an application-layer protocol for transmitting hypermedia documents, such as HTML.
+			The state information cannot be retained by the client.
+			HTTP is a stateless protocol. Once the transaction ends, the connection between the browser and server is lost.	
+	
+	client				server
+		open connection	
+		
+		request
+		------------->
+		response -> display the home page to the user
+		<-------------
+		
+		close connection

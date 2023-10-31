@@ -1,0 +1,1039 @@
+Shell Scripting:
+
+In Linux, shells like bash and korn support programming construct which are saved as scripts. These scripts become shell commands and hence many Linux commands are script.
+
+A system administrator should have a little knowledge about scripting to understand how their servers and applications are started, upgraded, maintained or removed and to understand how a user environment is built.
+
+Shell scripts are just set of commands that you write in a file and run them together. For anyone who has worked with DOS’s bat files, it’s almost the same concept. 
+You just put a series of commands into a text file and run them together. The difference comes from the fact that bash scripts can do a lot more than batch files.
+
+“A shell script is a computer program designed to be run by the Unix shell, a command-line interpreter. The various dialects of shell scripts are considered to be scripting languages. Typical operations performed by shell scripts include file manipulation, program execution, and printing text.”
+
+• Types of shells
+https://www.digitalocean.com/community/tutorials/different-types-of-shells-in-linux
+
+Bourne Shell (sh): The original Unix shell, which provides a simple command-line interface and basic scripting capabilities.
+
+Bourne-Again Shell (bash): A more advanced version of the Bourne shell, with additional features such as command history, tab completion, and more powerful scripting capabilities.
+
+Korn Shell (ksh): A more advanced shell, with many features similar to bash, but with a different syntax and some additional features such as command-line editing and a built-in regular expression engine.
+
+C Shell (csh): A shell with a syntax similar to the C programming language, with features such as history expansion, job control, and command-line editing.
+
+TC Shell (tcsh): A more advanced version of the C shell, with additional features such as file name completion and a more powerful command-line editing system.
+
+Z Shell (zsh): A powerful shell with many features similar to bash, but with additional features such as advanced command-line editing, spelling correction, and globbing.
+
+-----------------------------------------
+How to determine Shell
+
+$ echo $SHELL
+/usr/bin/bash
+
+------------------------------------------
+
+/bin/bash is the default shell on most Unix and Linux systems. It is a command-line interpreter or shell that provides a powerful and flexible interface for interacting with the operating system.
+
+Here are some key features and aspects of /bin/bash:
+
+Command line interface: /bin/bash provides a command line interface that allows you to enter commands and interact with the operating system.
+
+Scripting: /bin/bash can also be used as a scripting language, allowing you to write scripts that automate repetitive tasks or perform complex operations.
+
+Interactive shell: When you open a terminal, /bin/bash is typically started as an interactive shell, which allows you to enter commands and see the output immediately.
+
+Environment variables: /bin/bash allows you to set and manipulate environment variables, which are used to store information about the current shell environment, such as the current working directory, the path to executable files, and other configuration options.
+
+PATH: This variable specifies a colon-separated list of directories in which to search for executable files.
+HOME: This variable specifies the user's home directory.
+USER: This variable specifies the username of the current user.
+PWD: This variable specifies the current working directory.
+
+	export MY_VAR="hello world"
+
+	echo $MY_VAR
+
+	to delete environment variable:
+
+	unset MY_VAR
+	env
+	echo $PATH
+
+
+----------------------------------------------------
+
+Example Script:
+
+Assume we create a test.sh script. Note all the scripts would have .sh extension. Before you add anything else to your script, you need to alert the system that a shell script is being started. This is done using the shebang construct. For example:
+
+#!/bin/sh
+This tells the system that the commands that follow are to be executed by the Bourne shell. It's called a shebang because the # symbol is called a hash, and the ! symbol is called a bang.
+
+The sign #! is called she-bang and is written at top of the script. It passes instruction to program /bin/sh.
+
+To run your script in a certain shell (shell should be supported by your system), start your script with #! followed by the shell name.
+
+Now you save the above content and make this script executable as follows:
+
+$chmod +x test.sh
+
+test.sh
+-----------
+#!/bin/bash
+
+# Script follows here:
+pwd #pwd stands for Print Working Directory
+ls #listing contents inside a directory
+
+execute ./test.sh
+
+---------------------------------------------------
+example 2:
+
+#!/bin/sh
+
+echo "What is your name?"
+read PERSON
+echo "Hello, $PERSON"
+
+Output:
+---------
+$./test.sh
+What is your name?
+Peter
+Hello, Peter
+$
+
+--------------------------------------------------------
+Using variables, special variables, operators, decision making
+
+
+System variables — Created and maintained by Linux itself. This type of variable defined in CAPITAL LETTERS.
+User-defined variables — Created and maintained by the user. This type of variable defined in lower letters.
+
+System variables can be used in the script to show any information these variables are holding. Like few important System variables are:
+
+BASH — Holds our shell name
+BASH_VERSION — Holds our shell version name
+HOME — Holds home directory path
+OSTYPE — Holds OS type
+USERNAME – Holds username who is currently logged in to the machine
+
+$ echo $BASH
+/usr/bin/bash
+
+$ echo $BASH_VERSION
+4.4.23(2)-release
+
+Variable Names
+The name of a variable can contain only letters (a to z or A to Z), numbers ( 0 to 9) or the underscore character ( _).
+
+By convention, Unix shell variables will have their names in UPPERCASE.
+
+The following examples are valid variable names −
+
+	_ALI
+	TOKEN_A
+	VAR_1
+	VAR_2
+
+Following are the examples of invalid variable names −
+
+	2_VAR
+	-VARIABLE
+	VAR1-VAR2
+	VAR_A!
+
+The reason you cannot use other characters such as !, *, or - is that these characters have a special meaning for the shell.
+
+--------------------------------------------------------------
+
+Defining Variables
+Variables are defined as follows −
+
+variable_name=variable_value
+For example −
+
+NAME="Zara Ali"
+
+Accessing Values
+To access the value stored in a variable, prefix its name with the dollar sign ($) −
+
+For example, the following script will access the value of defined variable NAME and print it on STDOUT −
+
+
+$ name=stackroute
+
+
+$ readonly name
+
+
+$ name=NIIT
+bash: name: readonly variable
+
+echo $name
+
+output: stackroute
+
+---------------------------------------------------------------
+echo "What is your name?"
+read PERSON
+echo "You work at which company?"
+read COMPANY
+echo "Hello, $PERSON. Good to know you work at $COMPANY"
+
+---------------------------------------------
+
+Special variables:
+
+Special Variable	Description
+
+$0					The filename of the current script.
+
+$n					"n" refers to a positive number that represents the nth argument passed to the script. For example, $1 represents the first argument.
+
+$#					Represents the number of arguments passed to the script.
+
+$*					Represents all the arguments passed to the script.
+
+$?					Returns the exit status of the last command that was executed. 
+
+$!					Holds the process ID of the last background command.
+
+$$					Represents the process ID of the current shell. For shell scripts, this is the process ID under which the scripts run.
+
+$@					Represents all the arguments passed to the script.
+
+
+example:
+
+echo "File Name: $0"
+echo "First Parameter : $1"
+echo "Second Parameter : $2"
+echo "Quoted Values: $@"
+echo "Quoted Values: $*"
+echo "Total Number of Parameters : $#"
+
+# Special Parameters $* and $@
+# There are special parameters that allow accessing all the command-line arguments at once. $* and $@ both will act the same unless they are enclosed in double quotes, "".
+
+# Both the parameters specify the command-line arguments. However, the "$*" special parameter takes the entire list as one argument with spaces between and the "$@" special parameter takes the entire list and separates it into separate arguments.
+
+output:
+
+$ ./script2.sh Payal D
+File Name: ./script2.sh
+First Parameter : Payal
+Second Parameter : D
+Quoted Values: Payal D
+Quoted Values: Payal D
+Total Number of Parameters : 2
+
+$@ behaves like $* except that when quoted the arguments are broken up properly if there are spaces in them.
+
+-------------------------------------------------------------
+example for $@ and $*
+
+#!/bin/bash
+
+for arg in "$@"
+do
+  echo "Argument passed: $arg"
+done
+
+#!/bin/bash
+
+for arg in "$*"
+do
+  echo "Argument passed: $arg"
+done
+
+output:
+
+ubuntu@ip-172-31-42-113:~/Documents/payal/demos_shellscripting$ ./script4.sh 3 4 5
+Argument passed: 3
+Argument passed: 4
+Argument passed: 5
+Argument passed: 3 4 5
+
+----------------------------------------
+Operators:
+
+val=`expr 2 + 2`
+echo "Total value : $val"
+
+The following points need to be considered while adding −
+
+	There must be spaces between operators and expressions. For example, 2+2 is not correct; it should be written as 2 + 2.
+
+	The complete expression should be enclosed between ‘ ‘, called the backtick.
+
+Operator			Description												Example
++ (Addition)		Adds values on either side of the operator				`expr $a + $b` will give 30
+- (Subtraction)		Subtracts right hand operand from left hand operand		`expr $a - $b` will give -10
+* (Multiplication)	Multiplies values on either side of the operator		`expr $a \* $b` will give 200
+/ (Division)		Divides left hand operand by right hand operand				`expr $b / $a` will give 2
+% (Modulus)			Divides left hand operand by right hand operand and returns remainder	`expr $b % $a` will give 0
+= (Assignment)		Assigns right operand in left operand						a = $b would assign value of b into a
+== (Equality)		Compares two numbers, if both are same then returns true.	[ $a == $b ] would return false.
+!= (Not Equality)	Compares two numbers, if both are different then returns true.	[ $a != $b ] would return true.
+
+
+Operator	Description													Example
+-eq			Checks if the value of two operands are equal or not; if yes, then the condition becomes true.															[ $a -eq $b ] is not true.
+-ne			Checks if the value of two operands are equal or not; if values are not equal, then the condition becomes true.												[ $a -ne $b ] is true.
+-gt			Checks if the value of left operand is greater than the value of right operand; if yes, then the condition becomes true.								[ $a -gt $b ] is not true.
+-lt			Checks if the value of left operand is less than the value of right operand; if yes, then the condition becomes true.										[ $a -lt $b ] is true.
+-ge			Checks if the value of left operand is greater than or equal to the value of right operand; if yes, then the condition becomes true.					[ $a -ge $b ] is not true.
+-le			Checks if the value of left operand is less than or equal to the value of right operand; if yes, then the condition becomes true.					[ $a -le $b ] is true.
+
+&& - add multiple conditions
+
+---------------------------------------
+
+The (( )) is a syntax construct in Bash that allows you to perform arithmetic operations and comparisons within your shell scripts.
+
+The double parentheses (( )) is called the arithmetic expansion and it evaluates the arithmetic expression inside it and returns the result. For example, the following command will print the result of the arithmetic expression 2 + 3:
+
+echo $((2+3))
+
+-----------------------------------------------------
+
+Example:
+
+#!/bin/sh
+
+read -p "enter num1" a
+read -p "enter num2" b
+
+val=`expr $a + $b`
+echo "a + b : $val"
+
+val=`expr $a - $b`
+echo "a - b : $val"
+
+val=`expr $a \* $b`
+echo "a * b : $val"
+
+val=`expr $b / $a`
+echo "b / a : $val"
+
+val=`expr $b % $a`
+echo "b % a : $val"
+
+echo $((a+b))
+echo $((a-b))
+echo $((a/b))
+echo $((a*b))
+
+if [ $a != $b ]
+then
+   echo "a is not equal to b"
+fi
+
+if [ $a -eq $b ]
+then
+  echo "a is equal to b"
+fi
+
+-------------------------------------
+
+Decision-making statements in shell scripting allow the script to make decisions based on certain conditions. The two most commonly used decision-making statements in shell scripting are the if statement and the case statement.
+
+If statement: The if statement allows the script to execute a set of commands based on a certain condition. The basic syntax of the if statement is as follows:
+
+if [ condition ]
+then
+   command1
+   command2
+   ...
+else
+   command3
+   command4
+   ...
+fi
+
+Unix Shell supports following forms of if…else statement −
+
+if...fi statement
+if...else...fi statement
+if...elif...else...fi statement
+
+Example 1:
+-------------
+
+#!/bin/sh
+
+a=10
+b=20
+
+if [ $a -eq $b ]
+then
+   echo "$a -eq $b : a is equal to b"
+else
+   echo "$a -eq $b: a is not equal to b"
+fi
+
+if [ $a -ne $b ]
+then
+   echo "$a -ne $b: a is not equal to b"
+else
+   echo "$a -ne $b : a is equal to b"
+fi
+
+if [ $a -gt $b ]
+then
+   echo "$a -gt $b: a is greater than b"
+else
+   echo "$a -gt $b: a is not greater than b"
+fi
+
+if [ $a -lt $b ]
+then
+   echo "$a -lt $b: a is less than b"
+else
+   echo "$a -lt $b: a is not less than b"
+fi
+
+if [ $a -ge $b ]
+then
+   echo "$a -ge $b: a is greater or  equal to b"
+else
+   echo "$a -ge $b: a is not greater or equal to b"
+fi
+
+if [ $a -le $b ]
+then
+   echo "$a -le $b: a is less or  equal to b"
+else
+   echo "$a -le $b: a is not less or equal to b"
+fi
+
+-----------------------------------------------
+
+Case statement: The case statement allows the script to test multiple conditions and execute commands based on each condition. The basic syntax of the case statement is as follows:
+
+case expression in
+pattern1 )
+   command1 ;;
+pattern2 )
+   command2 ;;
+...
+esac
+
+
+Example 2
+--------------------
+#!/bin/bash
+echo "Enter a character"
+read char
+case $char in
+   [aeiouAEIOU] )
+      echo "The character is a vowel" ;;
+   [a-zA-Z] )
+      echo "The character is a consonant" ;;
+   * )
+      echo "The character is not a letter" ;;
+esac
+
+Example3
+
+echo "What is your Age?"
+read Age
+if [ "$Age" -ge 18 ]; then
+    echo "You can vote"
+elif [ "$Age" -eq 17 ]; then
+    echo "You can vote after one year"
+else
+    echo "You cannot vote"    
+fi
+
+--------------------
+Example 4
+
+echo "Enter the City"
+read city
+case "$city" in
+    #case 1
+    "Mumbai") echo "$city is in Maharashtra" ;;
+    
+    #case 2
+    "Bangalore") echo "$city is in Karnataka" ;;
+    
+    #case 3
+    "Baroda") echo "$city is in Gujarat" ;;
+esac
+
+
+--------------------------------------------
+
+
+Example 5:
+---------
+# !/bin/bash
+ 
+# Take user Input
+echo "Enter Two numbers : "
+read a
+read b
+ 
+# Input type of operation
+echo "Enter Choice :"
+echo "1. Addition"
+echo "2. Subtraction"
+echo "3. Multiplication"
+echo "4. Division"
+read ch
+ 
+# Switch Case to perform
+# calculator operations
+case $ch in
+  1)res= $(($a+$b)) 
+  ;;
+  2)res=$(($a-$b))
+  ;;
+  3)res=$(($a*$b))
+  ;;
+  4)res=$(($a/$b))
+  ;;
+esac
+echo "Result : $res"
+
+
+Example 6
+------------------------------------
+#!/bin/bash 
+
+echo "Enter number 1"
+read a
+
+echo "Enter number 2"
+read b
+
+c=$(($a+$b))
+d=$(($a-$b))
+e=$(($a*$b))
+f=$(($a/$b))
+g=$(($a%$b))
+echo  "the sum of two numbers :" $c
+echo "the substraction of two numbers :" $d
+echo "the multiplication of two numbers :" $e
+echo "the division of two numbers :" $f
+echo "the Modulus of two numbers :" $g
+
+
+Example 7:
+------------------------------------------
+#!/bin/bash
+
+day=$(date +%u)
+
+case $day in
+    1)
+        echo "Today is Monday" ;;
+    2)
+        echo "Today is Tuesday" ;;
+    3)
+        echo "Today is Wednesday" ;;
+    4)
+        echo "Today is Thursday" ;;
+    5)
+        echo "Today is Friday" ;;
+    6|7)
+        echo "It's the weekend!" ;;
+    *)
+        echo "Invalid day of the week" ;;
+esac
+
+--------------------------------------
+
+Looping statements are an essential part of shell scripting, which allow the script to execute a set of commands repeatedly. There are two types of looping statements in shell scripting: for loop and while loop.
+
+For loop: The for loop allows the script to execute a set of commands for a specified number of times. The basic syntax of the for loop is as follows:
+
+for var in list
+do
+   command1
+   command2
+   ...
+done
+
+Example
+----------------------
+#!/bin/bash
+for i in 1 2 3 4 5
+do
+   echo $i
+done
+
+----------------------------
+
+While loop: The while loop allows the script to execute a set of commands repeatedly as long as a certain condition is true. The basic syntax of the while loop is as follows:
+
+while [ condition ]
+do
+   command1
+   command2
+   ...
+done
+
+--------------------------
+Example:
+
+#!/bin/bash
+i=1
+while [ $i -le 5 ]
+do
+   echo $i
+   i=$((i+1))
+done
+
+Find the largest number of the input arguments
+--------------------------------------------
+
+#Check if the number of arguments passed is zero
+if [ "$#" = 0 ]
+then
+    #Script exits if no
+    #arguments passed
+    echo "No arguments passed."
+    exit 1
+fi
+  
+#Initialize maxEle with 
+#the first argument
+maxEle=$1
+  
+#Loop that compares maxEle with the 
+#passed arguments and updates it
+for arg in "$@"
+do
+    if [ "$arg" -gt "$maxEle" ]
+    then
+        maxEle=$arg
+    fi
+done
+echo "Largest value among the arguments passed is: $maxEle"
+
+-----------------------------------------------------
+
+Example:
+
+for a in 1 2 3 4 5 6 7 8 9 10
+do
+    # if a = 5 then continue the loop and
+    # don't move to line 8
+    if [ $a == 5 ]
+    then
+        continue
+    fi
+    echo "Iteration no $a"
+done
+-----------------------------------
+
+COLORS="red green blue"
+ 
+# the for loop continues until it reads all the values from the COLORS
+   
+for COLOR in $COLORS
+do
+    echo "COLOR: $COLOR"
+done
+
+
+----------------------------------------
+
+Arrays:
+
+Array in Shell Scripting
+An array is a systematic arrangement of the same type of data. But in Shell script Array is a variable which contains multiple values may be of same type or different type since by default in shell script everything is treated as a string. An array is zero-based ie indexing start with 0.
+
+How to Declare Array in Shell Scripting?
+We can declare an array in a shell script in different ways.
+
+1. Indirect Declaration
+In Indirect declaration, We assigned a value in a particular index of Array Variable. No need to first declare.
+
+ARRAYNAME[INDEXNR]=value
+
+2. Explicit Declaration
+In Explicit Declaration, First We declare array then assigned the values.
+
+declare -a ARRAYNAME
+
+3. Compound Assignment
+In Compound Assignment, We declare array with a bunch of values. We can add other values later too.
+
+ARRAYNAME=(value1 value2  .... valueN)
+
+or
+[indexnumber=]string
+
+ARRAYNAME=([1]=10 [2]=20 [3]=30)
+
+Example:
+--------------------
+#!/bin/sh
+
+NAME[0]="Zara"
+NAME[1]="Qadir"
+NAME[2]="Mahnaz"
+NAME[3]="Ayan"
+NAME[4]="Daisy"
+echo "First Method: ${NAME[*]}"
+echo "Second Method: ${NAME[@]}"
+
+
+Example:
+---------------------
+
+$ declare -a NAME
+
+$ NAME[0]=1
+
+$ NAME[1]=2
+
+$ NAME[2]=3
+
+$ echo ${NAME[*]}
+1 2 3
+
+Example:
+--------------------
+# To declare static Array 
+arr=(prakhar ankit 1 rishabh manish abhinav)
+ 
+# To print all elements of array
+echo ${arr[@]}       
+echo ${arr[*]}  
+echo ${arr[@]:0}      
+echo ${arr[@]:2}    
+echo ${arr[*]:3}  
+
+----------------------------------------------
+
+Functions:
+
+Function
+A function is a collection of statements that execute a specified task. Its main goal is to break down a complicated procedure into simpler subroutines that can subsequently be used to accomplish the more complex routine.For the following reasons, functions are popular:
+
+Assist with code reuse.
+Enhance the program’s readability.
+Modularize the software.
+Allow for easy maintenance.
+
+function function_name {
+  command1
+  command2
+  ...
+}
+
+--------------
+
+function_name() {
+  command1
+  command2
+  ...
+}
+
+-----------------
+Example 1:
+
+#!/bin/bash
+function print_message {
+  echo "Hello, world!"
+}
+print_message  # Output: Hello, world!
+
+---------------------
+Example 2:
+
+#!/bin/bash
+function print_args {
+  echo "Argument 1: $1"
+  echo "Argument 2: $2"
+}
+print_args "hello" "world"  # Output: Argument 1: hello \n Argument 2: world
+
+----------------------------
+Example 3:
+
+#!/bin/bash
+function add_numbers {
+  sum=$(( $1 + $2 ))
+  return $sum
+}
+add_numbers 5 10
+result=$?
+echo "The result is: $result"  # Output: The result is: 15
+
+--------------------------------
+
+Example 4:
+
+#!/bin/bash
+function print_numbers {
+  local num=0
+  for ((i=1; i<=$1; i++))
+  do
+    num=$(( $num + 1 ))
+    echo $num
+  done
+}
+print_numbers 5  # Output: 1 \n 2 \n 3 \n 4 \n 5
+
+
+-----------------------------------
+
+Example 5:
+
+#!/bin/bash
+function check_number {
+  if (( $1 > 0 ))
+  then
+    echo "The number is positive"
+  elif (( $1 < 0 ))
+  then
+    echo "The number is negative"
+  else
+    echo "The number is zero"
+  fi
+}
+check_number 5  # Output: The number is positive
+check_number -2  # Output: The number is negative
+check_number 0  # Output: The number is zero
+
+------------------------------------
+function add {
+    local arg1=$1
+    local arg2=$2
+    local sum=$((arg1 + arg2))
+    echo $sum
+}
+
+result=$(add $1 $2)
+echo "The result is $result"
+
+---------------------------------------
+
+Commands like shift, set, quotes
+------------------------------------
+
+shift: This command is used to shift the positional parameters (i.e. the arguments passed to a shell script) to the left. For example, if you call shift once, $2 becomes $1, $3 becomes $2, and so on. This can be useful when you want to process a variable number of arguments in a loop.
+
+set: This command is used to set or modify the positional parameters in a shell script. For example, you can use the set command to set the positional parameters to a specific set of values, or to modify specific positional parameters. You can also use the set command to enable or disable certain shell options.
+
+Quotes: In shell scripting, quotes are used to control the interpretation of special characters and whitespace. There are three types of quotes: single quotes ('), double quotes ("), and backticks (`). Single quotes preserve the literal value of all characters within the quotes, while double quotes allow for variable expansion and command substitution. Backticks are used for command substitution, which allows you to substitute the output of a command into a string.
+
+create a file:  nano script7.sh
+----------------------------------
+
+add the below content:
+
+# Using shift to process a variable number of arguments
+while [ "$#" -gt 0 ]
+do
+    echo "Argument: $1"
+    shift
+done
+
+# Using set to set positional parameters
+set "hello" "world"
+echo "$1 $2"    # Output: "hello world"
+
+# Using quotes to control whitespace and special characters
+echo 'Single quotes: $HOME'         # Output: "Single quotes: $HOME"
+echo "Double quotes: $HOME"         # Output: "Double quotes: /home/user"
+echo "Command substitution: `date`" # Output: "Command substitution: Wed Mar 31 14:23:45 PDT 2023"
+
+
+---------------------
+make it executable one:
+chmod +x script7.sh
+
+---------------------
+execute: ./script7.sh hello world
+
+you can add set -x to on the debug mode.
+
+-----------------------
+# Using shift to process a variable number of arguments
+
+# set -x is a command in Unix-like operating systems that enables the shell's debug mode. 
+set -x
+
+while [ "$#" -gt 0 ]
+do
+    echo "Argument: $1"
+    shift
+done
+
+# Using set to set positional parameters
+set "hello" "world"
+echo "$1 $2"    # Output: "hello world"
+
+# Using quotes to control whitespace and special characters
+echo 'Single quotes: $HOME'         # Output: "Single quotes: $HOME"
+echo "Double quotes: $HOME"         # Output: "Double quotes: /home/user"
+echo "Command substitution: `date`" # Output: "Command substitution: Wed Mar 31 14:23:45 PDT 2023"
+
+-----------------------------------------
+the console output:
+
+ubuntu@ip-172-31-42-113:~/Documents/payal/demos_shellscripting$ ./script8.sh hello Pune
+++ '[' 2 -gt 0 ']'
+++ echo 'Argument: hello'
+Argument: hello
+++ shift
+++ '[' 1 -gt 0 ']'
+++ echo 'Argument: Pune'
+Argument: Pune
+++ shift
+++ '[' 0 -gt 0 ']'
+++ set hello world
+++ echo 'hello world'
+hello world
+++ echo 'Single quotes: $HOME'
+Single quotes: $HOME
+++ echo 'Double quotes: /home/ubuntu'
+Double quotes: /home/ubuntu
++++ date
+++ echo 'Command substitution: Fri Mar 31 06:54:31 UTC 2023'
+Command substitution: Fri Mar 31 06:54:31 UTC 2023
+
+
+
+.bash_profile
+-----------------------
+.bash_profile is a configuration file that is executed whenever a user logs in to a Bash shell on a Unix or Linux system. It is used to set environment variables, define aliases, and execute commands or scripts.
+
+Some common uses of .bash_profile include:
+
+Setting the PATH variable to include directories where executable files are located.
+Defining aliases for commonly used commands.
+Setting environment variables for applications or scripts to use.
+Running scripts or commands at login, such as configuring the system or displaying a welcome message.
+
+Example:
+
+1. ubuntu@ip-172-31-42-113:~$ nano ~/.bash_profile #creating a file
+
+2. write the path inside the file to any of your bash scripts.
+
+		export PATH=$PATH:/home/user/my_scripts
+
+3. save the file and close
+
+
+4. ubuntu@ip-172-31-42-113:~$ source ~/.bash_profile # To apply the changes to the current terminal session
+
+5. ubuntu@ip-172-31-42-113:~$ chmod +x /home/ubuntu/Documents/payal/demos_shellscripting/script1.sh
+
+6. ubuntu@ip-172-31-42-113:~$ script1.sh
+
+	what is your name?
+	Paul
+	Good morning, Paul
+	
+The above script executes.
+
+
+
+debugging
+---------------
+Troubleshooting a shell script involves identifying and fixing errors or unexpected behavior in the script. Here are some steps you can follow to troubleshoot a shell script:
+
+Check the syntax: Make sure that the syntax of the script is correct by running it through a syntax checker, such as shellcheck or bash -n. Syntax errors are the most common cause of shell script failures.
+
+Debug the script: Add debugging statements, such as echo commands or set -x, to the script to print out information about what the script is doing and where it might be failing. You can also use the trap command to catch errors and print out diagnostic messages.
+
+Check the input and output: Verify that the input to the script is correct and that the output is what you expect. 
+If the script is reading from a file or a pipe, make sure that the input is in the correct format. 
+If the script is writing to a file or a pipe, make sure that the output is going where you intended.
+
+Verify the environment: Check that the environment variables used in the script are set correctly. Use the env command to print out the environment variables or use the set command to display all shell variables.
+
+Test the script with different inputs: Try running the script with different input data and parameters to see if the script behaves differently. This can help you identify edge cases or corner cases that the script might not have been designed to handle.
+
+Use logging: Add logging statements to the script to record information about its behavior. This can help you diagnose problems that might not be immediately apparent during script execution.
+
+using shellcheck
+-------------------
+
+use command: shellcheck example.sh
+
+if shellcheck is not installed, you can install it by using the command:
+sudo apt install shellcheck
+
+
+
+By expanding bash command with -x, shell allows us to see commands that the shell is executing.
+---------------------------------
+$ bash -x textfile.txt
+
+
+----------------------------------
+another way:
+--------------
+
+#!/bin/bash
+
+# Set the x option
+set -x
+
+# Set the e option
+set -e
+
+# Define a function with an error
+myfunc() {
+    echo "Function running..."
+    somecommandthatdoesntexist
+    echo "Function complete."
+}
+
+# Use trap to handle errors
+trap 'echo "Error occurred in script"; exit 1' ERR
+
+# Call the function
+myfunc
+
+-----------------------------------------------
+
+example 2:
+
+#!/bin/bash
+set -x
+
+echo "Starting script"
+
+for i in {1..5}; do
+    echo "Count: $i"
+done
+
+echo "Script complete"
+
+
+output
+--------
++ echo 'Starting script'
+Starting script
++ for i in '{1..5}'
++ echo 'Count: 1'
+Count: 1
++ for i in '{1..5}'
++ echo 'Count: 2'
+Count: 2
++ for i in '{1..5}'
++ echo 'Count: 3'
+Count: 3
++ for i in '{1..5}'
++ echo 'Count: 4'
+Count: 4
++ for i in '{1..5}'
++ echo 'Count: 5'
+Count: 5
++ echo 'Script complete'
+Script complete
+
+
+

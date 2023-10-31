@@ -1,0 +1,44 @@
+SQL Queries
+-----------------------
+ 
+ -- see all my employee data
+ 
+ SELECT * FROM employees;
+ 
+ -- projection (display only specific columns)
+ SELECT first_name, last_name, salary FROM employees;
+ 
+ -- restriction (eliminate the data according to the condition)
+ 
+ SELECT * FROM employees
+ WHERE salary < 2500 and first_name like '%a%';
+ 
+ -- retrieve the records of employees in dept id 50 and who have salary more than 2500
+  SELECT * FROM employees
+  WHERE department_id = 50 and salary > 2500;
+  
+  -- department
+  SELECT * from departments;
+  select * from employees;
+  
+  -- display the employee name with their dept names
+SELECT employees.first_name, employees.last_name, departments.department_name
+FROM 
+employees
+JOIN
+departments
+on (employees.department_id = departments.department_id)
+and rownum <= 10;
+
+select * from locations;
+
+-- display the employee name and the city
+SELECT first_name, last_name, city
+FROM
+employees e
+join
+departments d
+on (e.department_id = d.department_id)
+join
+locations l
+on (d.location_id = l.location_id);

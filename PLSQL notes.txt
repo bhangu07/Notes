@@ -1,0 +1,750 @@
+Introduction to PL/SQL
+PL/SQL stands for “Procedural Language extensions to the Structured Query Language”. 
+SQL is a popular language for both querying and updating data in the relational database management systems (RDBMS). 
+PL/SQL adds many procedural constructs to SQL language to overcome some limitations of SQL. Besides, PL/SQL provides a more comprehensive programming language solution for building mission-critical applications on Oracle Databases.
+
+PL/SQL is a highly structured and readable language. Its constructs express the intent of the code clearly. Also, PL/SQL is a straightforward language to learn.
+
+PL/SQL is a standard and portable language for Oracle Database development. If you develop a program that executes on an Oracle Database, you can quickly move it to another compatible Oracle Database without any changes.
+
+PL/SQL is an embedded language. PL/SQL only can execute in an Oracle Database. It was not designed to use as a standalone language like Java, C#, and C++. In other words, you cannot develop a PL/SQL program that runs on a system that does not have an Oracle Database.
+
+PL/SQL Anonymous Block
+
+PL/SQL is a block-structured language whose code is organized into blocks. A PL/SQL block consists of three sections: declaration, executable, and exception-handling sections. In a block, the executable section is mandatory while the declaration and exception-handling sections are optional.
+
+A PL/SQL block has a name. Functions or Procedures is an example of a named block. A named block is stored into the Oracle Database server and can be reused later.
+
+A block without a name is an anonymous block. An anonymous block is not saved in the Oracle Database server, so it is just for one-time use. However, PL/SQL anonymous blocks can be useful for testing purposes.
+
+1) Declaration section
+
+A PL/SQL block has a declaration section where you declare variables, allocate memory for cursors, and define data types.
+
+2) Executable section
+
+A PL/SQL block has an executable section. An executable section starts with the keyword BEGIN and ends with the keyword END. The executable section must have a least one executable statement, even if it is the NULL statement which does nothing.
+
+3) Exception-handling section
+
+A PL/SQL block has an exception-handling section that starts with the keyword EXCEPTION. The exception-handling section is where you catch and handle exceptions raised by the code in the execution section.
+
+SET SERVEROUTPUT ON
+
+BEGIN
+   DBMS_OUTPUT.put_line ('Hello World!');
+END;
+/
+
+First, connect to the Oracle Database server using a username and password.
+
+Second, turn on the server output using the SET SERVEROUTPUT ON command so that the DBMS_OUTPUT.PUT_LINE procedure will display text on the screen.
+
+Third, type the code of the block and enter a forward slash ( /) to instruct SQL*Plus to execute the block. Once you type the forward-slash (/), SQL*Plus will execute the block and display the Hello World message on the screen as shown in the illustrations.
+
+Note that you must execute SET SERVEROUTPUT ON command in every session that you connect to the Oracle Database in order to show the message using the DBMS_OUTPUT.PUT_LINE procedure.
+-----------------------------------------------
+
+More PL/SQL anonymous block examples
+In this example, we first declare a variable l_message that holds the greeting message. And then, in the execution section, we use the DBMS_OUTPUT.PUTLINE procedure to show the content of this variable instead of using a literal string.
+
+DECLARE
+  l_message VARCHAR2( 255 ) := 'Hello World!';
+BEGIN
+  DBMS_OUTPUT.PUT_LINE( l_message );
+END;
+
+The next anonymous block example adds an exception-handling section which catches ZERO_DIVIDE exception raised in the executable section and displays an error message.
+
+DECLARE
+      v_result NUMBER;
+BEGIN
+   v_result := 1 / 0;
+   EXCEPTION
+      WHEN ZERO_DIVIDE THEN
+         DBMS_OUTPUT.PUT_LINE( SQLERRM );
+END;
+
+Output
+----------------
+The error mesage is:
+
+ORA-01476: divisor is equal to zero
+
+--------------------------------------------
+PL/SQL Data Types
+
+Introduction to PL/SQL data types
+Each value in PL/SQL such as a constant, variable and parameter has a data type that determines the storage format, valid values, and allowed operations.
+
+PL/SQL has two kinds of data types: scalar and composite. The scalar types are types that store single values such as number, Boolean, character, and datetime whereas the composite types are types that store multiple values, for example, record and collection.
+
+This tutorial explains the scalar data types that store values with no internal components.
+
+PL/SQL divides the scalar data types into four families:
+
+Number
+Boolean
+Character
+Datetime
+A scalar data type may have subtypes. A subtype is a data type that is a subset of another data type, which is its base type. A subtype further defines a base type by restricting the value or size of the base data type.
+
+Note that PL/SQL scalar data types include SQL data types and its own data type such as Boolean.
+
+Numeric data types
+The numeric data types represent real numbers, integers, and floating-point numbers. They are stored as NUMBER, IEEE floating-point storage types (BINARY_FLOAT and BINARY_DOUBLE), and PLS_INTEGER.
+
+The data types NUMBER, BINARY_FLOAT, and BINARY_DOUBLE are SQL data types.
+
+The PLS_INTEGER datatype is specific to PL/SQL. It represents signed 32 bits integers that range from -2,147,483,648 to 2,147,483,647.
+
+Because PLS_INTEGER datatype uses hardware arithmetic, they are faster than NUMBER operations, which uses software arithmetic.
+
+In addition, PLS_INTEGER values require less storage than NUMBER. Hence, you should always use PLS_INTEGER values for all calculation in its range to increase the efficiency of programs.
+
+The PLS_INTEGER datatype has the following predefined subtypes:
+
+PLS_INTEGER subtypes	Description
+ NATURAL	Represents nonnegative PLS_INTEGER values
+ NATURALN	Represents nonnegative PLS_INTEGER values with NOT NULL constraint
+ POSITIVE	Represents positive PLS_INTEGER values
+ POSITIVEN	Represents positive PLS_INTEGER value with NOT NULL constraint
+ SIGNTYPE	Represents three values -1, 0, or 1, which are useful for tri-state logic programming
+ SIMPLE_INTEGER	Represents PLS_INTEGER values with NOT NULL constraint.
+ 
+Boolean data type
+The BOOLEAN datatype has three data values: TRUE, FALSE, and NULL. Boolean values are typically used in control flow structure such as IF-THEN, CASE, and loop statements like LOOP, FOR LOOP, and WHILE LOOP.
+
+SQL does not have the BOOLEAN data type, therefore, you cannot:
+
+Assign a BOOLEAN value to a table column.
+Select the value from a table column into a BOOLEAN variable.
+Use a BOOLEAN value in a SQL function.
+Use a BOOLEAN expression in a SQL statement.
+Use a BOOLEAN value in the DBMS_OUTPUT.PUTLINE and DBMS_OUTPUT.PUT subprograms.
+Character data types
+The character data types represent alphanumeric text. PL/SQL uses the SQL character data types such as CHAR, VARCHAR2, LONG, RAW, LONG RAW, ROWID, and UROWID.
+
+ CHAR(n) is a fixed-length character type whose length is from 1 to 32,767 bytes.
+ VARCHAR2(n) is varying length character data from 1 to 32,767 bytes.
+Datetime data types
+The datetime data types represent dates, timestamp with or without time zone and intervals. PL/SQL datetime data types are DATE, TIMESTAMP, TIMESTAMP WITH TIME ZONE, TIMESTAMP WITH LOCAL TIME ZONE, INTERVAL YEAR TO MONTH, and INTERVAL DAY TO SECOND.
+
+
+----------------------------------------
+Declaring variables
+The syntax for a variable declaration is as follows:
+
+variable_name datatype [NOT NULL] [:= initial_value];
+Code language: SQL (Structured Query Language) (sql)
+In this syntax:
+
+First, specify the name of the variable. The name of the variable should be as descriptive as possible, e.g., l_total_sales, l_credit_limit, and l_sales_revenue.
+Second, choose an appropriate data type for the variable, depending on the kind of value which you want to store, for example, number, character, Boolean, and datetime.
+By convention, local variable names should start with l_ and global variable names should have a prefix of g_ .
+
+The following example declares three variables l_total_sales, l_credit_limit, and l_contact_name:
+
+DECLARE
+    l_total_sales NUMBER(15,2);
+    l_credit_limit NUMBER (10,0);    
+    l_contact_name VARCHAR2(255);
+BEGIN
+    NULL;
+END;
+
+-------------------------
+Default values
+PL/SQL allows you to set a default value for a variable at the declaration time. To assign a default value to a variable, you use the assignment operator (:=) or the DEFAULT keyword.
+
+The following example declares a variable named l_product_name with an initial value 'Laptop':
+
+DECLARE
+  l_product_name VARCHAR2( 100 ) := 'Laptop';
+BEGIN
+  NULL;
+END;
+/
+---------------------------
+NOT NULL constraint
+If you impose the NOT NULL constraint on a value, then the variable cannot accept a NULL value. Besides, a variable declared with the NOT NULL must be initialized with a non-null value. Note that PL/SQL treats a zero-length string as a NULL value.
+
+The following example first declares a variable named l_shipping_status with the NOT NULL constraint. Then, it assigns the variable a zero-length string.
+
+DECLARE
+  l_shipping_status VARCHAR2( 25 ) NOT NULL := 'Shipped';
+BEGIN
+  l_shipping_status := '';
+END;
+
+------------------------------
+Variable assignments
+To assign a value to a variable, you use the assignment operator (:=), for example:
+
+DECLARE
+    l_customer_group VARCHAR2(100) := 'Silver';
+BEGIN
+    l_customer_group := 'Gold';
+    DBMS_OUTPUT.PUT_LINE(l_customer_group);
+END;
+
+-------------------------
+You can assign a value of a variable to another as shown in the following example:
+
+DECLARE
+    l_business_parter VARCHAR2(100) := 'Distributor';
+    l_lead_for VARCHAR2(100);
+BEGIN
+    l_lead_for := l_business_parter; 
+    DBMS_OUTPUT.PUT_LINE(l_lead_for);
+END;
+
+--------------------------
+Anchored declarations
+Typically, you declare a variable and select a value from a table column to this variable. If the data type of the table column changes, you must adjust the program to make it work with the new type.
+
+PL/SQL allows you to declare a variable whose data type anchor to a table column or another variable. Consider the following example:
+
+DECLARE
+  l_customer_name employees.first_name%TYPE;
+  l_salary employees.salary%TYPE;
+BEGIN
+  SELECT
+    first_name, salary
+  INTO
+    l_customer_name, l_salary
+  FROM
+    employees
+  WHERE
+    employee_id = 100;
+
+  DBMS_OUTPUT.PUT_LINE(l_customer_name || ':' || l_salary );
+END;
+/
+
+------------------------------------
+DECLARE
+    l_salary   employees.salary%TYPE;
+    l_average_salary l_salary%TYPE;
+    l_max_salary     l_salary%TYPE;
+    l_min_salary     l_salary%TYPE;
+BEGIN
+    -- get credit limits
+    SELECT 
+        MIN(salary), 
+        MAX(salary), 
+        AVG(salary)
+    INTO 
+        l_min_salary,
+        l_max_salary, 
+        l_average_salary
+    FROM employees;
+    
+    
+    SELECT 
+        salary
+    INTO 
+        l_salary
+    FROM 
+        employees
+    WHERE 
+        employee_id = 100;
+
+    -- show the credits     
+    dbms_output.put_line('Min Credit: ' || l_max_salary);
+    dbms_output.put_line('Max Credit: ' || l_max_salary);
+    dbms_output.put_line('Avg Credit: ' || l_average_salary);
+
+    -- show customer credit    
+    dbms_output.put_line('Customer Credit: ' || l_salary);
+END;
+
+----------------------------------
+Single-line comments
+A single-line comment starts with a double hyphen ( --) that can appear anywhere on a line and extends to the end of the line.
+
+For example, the following single-line comment explains the meaning of the co_vat_rate constant:
+
+-- valued added tax 10%
+DECLARE co_vat_rate CONSTANT NUMBER := 0.1; 
+
+------------------------------------
+Multi-line comments
+A multi-line comment starts with a slash-asterisk ( /* ) and ends with an asterisk-slash ( */ ), and can span multiple lines:
+
+/*
+  This is a multi-line comment
+  that can span multiple lines
+*/
+
+------------------------------------
+Introduction to PL/SQL constants
+Unlike a variable, a constant holds a value that does not change throughout the execution of the program.
+
+PL/SQL constant examples
+The following example declares two constants co_payment_term and co_payment_status:
+
+DECLARE
+    co_payment_term   CONSTANT NUMBER   := 45; -- days 
+    co_payment_status CONSTANT BOOLEAN  := FALSE; 
+BEGIN
+    NULL;
+END;
+Code language: SQL (Structured Query Language) (sql)
+If you attempt to change the co_payment_term in the execution section, PL/SQL will issue an error, for example:
+
+DECLARE
+    co_payment_term   CONSTANT NUMBER   := 45; -- days 
+    co_payment_status CONSTANT BOOLEAN  := FALSE; 
+BEGIN
+    co_payment_term := 30; -- error
+END;
+
+---------------------------------------
+PL/SQL IF Statement
+
+The IF statement allows you to either execute or skip a sequence of statements, depending on a condition. The IF statement has the three forms:
+
+– IF THEN
+– IF THEN ELSE
+– IF THEN ELSIF
+
+--------------------
+IF(boolean_expression 1)THEN  
+   S1; -- Executes when the boolean expression 1 is true  
+ELSIF( boolean_expression 2) THEN 
+   S2;  -- Executes when the boolean expression 2 is true  
+ELSIF( boolean_expression 3) THEN 
+   S3; -- Executes when the boolean expression 3 is true  
+ELSE  
+   S4; -- executes when the none of the above condition is true  
+END IF; 
+
+--------------------
+
+
+PL/SQL IF THEN statement example
+In the following example, the statements between THEN and END IF execute because the sales revenue is greater than 100,000.
+
+DECLARE n_sales NUMBER := 2000000; 
+BEGIN 
+   IF n_sales > 100000 THEN 
+      DBMS_OUTPUT.PUT_LINE( 'Sales revenue is greater than 100K ' ); 
+   END IF; 
+END;
+
+------------
+DECLARE
+  n_sales NUMBER := 300000;
+  n_commission NUMBER( 10, 2 ) := 0;
+BEGIN
+  IF n_sales > 200000 THEN
+    n_commission := n_sales * 0.1;
+  ELSE
+    n_commission := n_sales * 0.05;
+  END IF;
+  dbms_output.put_line('Commission: ' || n_commission);
+END;
+
+------------------------------
+DECLARE
+  c_grade CHAR( 1 );
+  c_rank  VARCHAR2( 20 );
+BEGIN
+  c_grade := 'B';
+  CASE c_grade
+  WHEN 'A' THEN
+    c_rank := 'Excellent' ;
+  WHEN 'B' THEN
+    c_rank := 'Very Good' ;
+  WHEN 'C' THEN
+    c_rank := 'Good' ;
+  WHEN 'D' THEN
+    c_rank := 'Fair' ;
+  WHEN 'F' THEN
+    c_rank := 'Poor' ;
+  ELSE
+    c_rank := 'No such grade' ;
+  END CASE;
+  DBMS_OUTPUT.PUT_LINE( c_rank );
+END;
+
+--------------------------------------
+Loop syntax
+------
+DECLARE
+  l_counter NUMBER := 0;
+BEGIN
+  LOOP
+    l_counter := l_counter + 1;
+    IF l_counter > 3 THEN
+      EXIT;
+    END IF;
+    dbms_output.put_line( 'Inside loop: ' || l_counter )  ;
+  END LOOP;
+  -- control resumes here after EXIT
+  dbms_output.put_line( 'After loop: ' || l_counter );
+END;
+
+------------------------------------
+taking value from the user
+
+SET SERVEROUTPUT ON
+DECLARE 
+   a number(3) := &a; 
+BEGIN 
+   IF ( a = 10 ) THEN 
+      dbms_output.put_line('Value of a is 10' ); 
+   ELSIF ( a = 20 ) THEN 
+      dbms_output.put_line('Value of a is 20' ); 
+   ELSIF ( a = 30 ) THEN 
+      dbms_output.put_line('Value of a is 30' ); 
+   ELSE 
+       dbms_output.put_line('None of the values is matching'); 
+   END IF; 
+   dbms_output.put_line('Exact value of a is: '|| a );  
+END;
+/
+
+-------------------------------
+
+DECLARE
+    l_salary   employees.salary%TYPE;
+    l_average_salary l_salary%TYPE;
+    l_max_salary     l_salary%TYPE;
+    l_min_salary     l_salary%TYPE;
+    l_eid employees.employee_id%TYPE := &employee_id;
+BEGIN
+    -- execute functions
+    SELECT 
+        MIN(salary), 
+        MAX(salary), 
+        AVG(salary)
+    INTO 
+        l_min_salary,
+        l_max_salary, 
+        l_average_salary
+    FROM employees;
+    
+    
+    SELECT 
+        salary
+    INTO 
+        l_salary
+    FROM 
+        employees
+    WHERE 
+        employee_id = l_eid;
+
+    -- show the Salary     
+    dbms_output.put_line('Min Salary: ' || l_max_salary);
+    dbms_output.put_line('Max Salary: ' || l_max_salary);
+    dbms_output.put_line('Avg Salary: ' || l_average_salary);
+
+    -- show employee salary   
+    dbms_output.put_line('Customer Credit: ' || l_salary);
+END;
+
+-------------------------
+exception occured
+
+----------
+DECLARE
+    l_salary   employees.salary%TYPE;
+    l_average_salary l_salary%TYPE;
+    l_max_salary     l_salary%TYPE;
+    l_min_salary     l_salary%TYPE;
+    l_eid employees.employee_id%TYPE := &employee_id;
+BEGIN
+    -- get credit limits
+    SELECT 
+        MIN(salary), 
+        MAX(salary), 
+        AVG(salary)
+    INTO 
+        l_min_salary,
+        l_max_salary, 
+        l_average_salary
+    FROM employees;
+    
+    
+    SELECT 
+        salary
+    INTO 
+        l_salary
+    FROM 
+        employees
+    WHERE 
+        employee_id = l_eid;
+
+    -- show the credits     
+    dbms_output.put_line('Min Credit: ' || l_max_salary);
+    dbms_output.put_line('Max Credit: ' || l_max_salary);
+    dbms_output.put_line('Avg Credit: ' || l_average_salary);
+
+    -- show customer credit    
+    dbms_output.put_line('Customer Credit: ' || l_salary);
+    
+    EXCEPTION 
+        WHEN NO_DATA_FOUND THEN
+            dbms_output.put_line('ID ' || l_eid ||  ' does not exist');
+END;
+
+--------------------------------------------
+DECLARE
+    l_salary   employees.salary%TYPE;
+    l_average_salary l_salary%TYPE;
+    l_max_salary     l_salary%TYPE;
+    l_min_salary     l_salary%TYPE;
+    l_eid employees.employee_id%TYPE := &employee_id;
+BEGIN
+    -- get credit limits
+    SELECT 
+        MIN(salary), 
+        MAX(salary), 
+        AVG(salary)
+    INTO 
+        l_min_salary,
+        l_max_salary, 
+        l_average_salary
+    FROM employees;
+    
+    
+    SELECT 
+        salary
+    INTO 
+        l_salary
+    FROM 
+        employees;
+
+
+    -- show the salary     
+    dbms_output.put_line('Min Credit: ' || l_max_salary);
+    dbms_output.put_line('Max Credit: ' || l_max_salary);
+    dbms_output.put_line('Avg Credit: ' || l_average_salary);
+
+    -- show customer credit    
+    dbms_output.put_line('Customer Credit: ' || l_salary);
+    
+    EXCEPTION 
+        WHEN NO_DATA_FOUND THEN
+            dbms_output.put_line('ID ' || l_eid ||  ' does not exist');
+        WHEN TOO_MANY_ROWS THEN
+            dbms_output.put_line('The database returns more than one customer');
+END;
+
+
+
+
+-------------------------
+Procedure:
+
+PL/SQL procedure syntax
+A PL/SQL procedure is a reusable unit that encapsulates specific business logic of the application. Technically speaking, a PL/SQL procedure is a named block stored as a schema object in the Oracle Database.
+
+The following illustrates the basic syntax of creating a procedure in PL/SQL:
+
+CREATE [OR REPLACE ] PROCEDURE procedure_name (parameter_list)     
+IS
+    
+Code language: SQL (Structured Query Language) (sql)
+[declaration statements]
+
+BEGIN
+
+[execution statements]
+
+EXCEPTION
+
+[exception handler]
+
+END [procedure_name ];
+
+PL/SQL procedure header
+A procedure begins with a header that specifies its name and an optional parameter list.
+
+Each parameter can be in either IN, OUT, or INOUT mode. The parameter mode specifies whether a parameter can be read from or write to.
+
+IN
+
+An IN parameter is read-only. You can reference an IN parameter inside a procedure, but you cannot change its value. Oracle uses IN as the default mode. It means that if you don’t specify the mode for a parameter explicitly, Oracle will use the IN mode.
+
+OUT
+
+An OUT parameter is writable. Typically, you set a returned value for the OUT parameter and return it to the calling program. Note that a procedure ignores the value that you supply for an OUT parameter.
+
+INOUT
+
+An INOUT parameter is both readable and writable. The procedure can read and modify it.
+
+Note that OR REPLACE option allows you to overwrite the current procedure with the new code.
+
+Create Procedure 
+The syntax for creating a procedure:
+
+CREATE [OR REPLACE] PROCEDURE name
+[(parameter_name [IN | OUT | IN OUT] type [, ...])]
+{IS | AS}
+BEGIN
+   Block of code
+ EXCEPTION
+     Exception handling
+ END name;
+Here,
+‘name’ is the procedure name.
+‘OR REPLACE’ keyword informs the compiler about updating a procedure.
+‘AS’ keyword is used if the procedure is standalone.
+‘IS’ keyword is used if the procedure is a nested one.
+‘Block of code’ is the actual implementation logic of the program.
+‘Exception handling’ contains error checking at the runtime.
+
+example:
+---------------------------
+CREATE OR REPLACE PROCEDURE welcome_msg (p_name IN VARCHAR2) 
+IS
+BEGIN
+dbms_output.put_line (‘Welcome '|| p_name);
+END;
+/
+EXEC welcome_msg (‘Guru99’);
+
+-------------------------------------
+
+CREATE OR REPLACE PROCEDURE firstprocedure 
+  AS
+BEGIN
+        dbms_output.put_line('Software Testing Help!'); 
+END; 
+/
+
+
+Coding implementation:
+
+BEGIN
+    firstprocedure; 
+END; 
+/
+
+DROP PROCEDURE <<procedure-name>>;
+---------------------------------------
+
+CREATE OR REPLACE PROCEDURE print_data(
+    in_employee_id NUMBER 
+)
+IS
+  r_contact employees%ROWTYPE;
+BEGIN
+  -- get contact based on customer id
+  SELECT *
+  INTO r_contact
+  FROM employees
+  WHERE employee_id = in_employee_id;
+
+  -- print out contact's information
+  dbms_output.put_line( r_contact.first_name || ' ' ||
+  r_contact.last_name || '<' || r_contact.email ||'>' );
+
+EXCEPTION
+   WHEN OTHERS THEN
+      dbms_output.put_line( SQLERRM );
+END;
+
+execute print_data(101);
+
+---------------------------------------------
+
+Table creation:
+
+create table user(id number(10) primary key,name varchar2(100));  
+Now write the procedure code to insert record in user table.
+
+Procedure Code:
+
+create or replace procedure "INSERTUSER"    
+(id IN NUMBER,    
+name IN VARCHAR2)    
+is    
+begin    
+insert into user values(id,name);    
+end;    
+/       
+Output:
+
+Procedure created.
+Oracle program to call procedure
+Let's see the code to call above created procedure.
+
+BEGIN    
+   insertuser(101,'Rahul');  
+   dbms_output.put_line('record inserted successfully');    
+END;    
+/    
+
+---------------------------------------------
+
+PL SQL Functions
+The functions are similar to procedures in PL/SQL except for the fact that it has the ability to return a value (specified with keyword RETURN) and performs computation tasks. It has a unique name and acts as an independent block of code.
+
+The data type of a function is set at the time of the creation of function. A function may contain a nested block or describe inside other packages or blocks.
+
+A function can return values with the help of the RETURN keyword and OUT parameter.
+
+Create Function
+The syntax for creating a function:
+
+CREATE [OR REPLACE] FUNCTION name
+[(parameter_name [IN | OUT | IN OUT] type [, ...])]
+RETURN statement with data type
+{IS | AS}
+BEGIN
+   Block of code
+EXCEPTION
+   Exception handling
+END name;
+Here,
+‘name’ is the function name.
+‘OR REPLACE’ keyword informs the compiler about updating a function.
+‘AS’ keyword is used if the function is standalone.
+‘IS’ keyword is used if the function is a nested one.
+‘Block of code’ is the actual implementation logic of the program.
+‘Exception handling’ contains error checking at the runtime.
+
+We have created a table with the SQL statement given below:
+
+CREATE TABLE TURORIAL(
+CODE INT NOT NULL,
+SUBJECT VARCHAR(15) NOT NULL,
+PRICE INT NOT NULL,
+REVIEWS VARCHAR (10) NOT NULL,
+PRIMARY KEY (CODE)
+);
+Then we have inserted values to this table with SQL statements given below:
+
+INSERT INTO TURORIAL (CODE,SUBJECT,PRICE,REVIEWS)
+VALUES (1, 'Automation', 150, 'five stars');
+INSERT INTO TURORIAL (CODE,SUBJECT,PRICE,REVIEWS)
+VALUES (2,'Manual',100, 'four stars');
+INSERT INTO TURORIAL (CODE,SUBJECT,PRICE,REVIEWS)
+VALUES (3, 'PLSQL', 200, 'five stars');
+
+CREATE OR REPLACE FUNCTION sumPrice
+RETURN number IS
+   addition number(4) := 0; 
+BEGIN
+   SELECT sum(PRICE) into addition
+   FROM TURORIAL; 
+   RETURN addition; 
+END; 
+/
+
+
+Code implementation to show function calling of sumPrice():
+
+BEGIN
+dbms_output.put_line('Addition of price :' || sumPrice()); 
+END; 
+/
+
+----------------------------------
+DROP FUNCTION <<function-name>>;
+

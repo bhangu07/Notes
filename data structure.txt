@@ -1,0 +1,593 @@
+
+
+Data Structure:
+
+
+Data needs to be stored, worked on it. There has to be a structure to it to make it possible to store and fetch the data in the most optimize way smoothly. That is data structure. It helps you store the data in proper structure and format for effectiently fetching and modifying it. Data Structure is the foundation for working on any data.
+
+Why data structure is required?
+
+1. Efficiency: using proper data structure will enable the programmers to write code that consumes less time and space, making it memory friendly.
+
+2. Reusablity: Using standard data structures helps the developers to absract the basic operations which are performed over various data structures.
+
+3. Optimization: Writing optimized code is important. Using data structure and algorithm you write the optimized solution in terms of time and space. You can choose the appropriate data structure according to the requirement.
+
+
+Basic operations on data structures
+There are 6 basic operations that can be performed on any data structure. They are:
+
+Search: Finding an element inside the data structure.
+Sort: Rearranging all the elements in an ascending or descending order.
+Traverse: Printing all the elements in a particular manner.
+Insertion: Inserting an element in a data structure at any Position.
+Deletion: Deleting any element from the data structure.
+Update: Updating any element from the data structure.
+
+Type of Data structures:
+
+Linear															
+When the elements are arranged in sequence, one after the other, the elements are arranged in particular order are called as Linear data structure.
+Examples: Arrays, stacks, queues, LinkedList
+
+
+Non Linear:
+When the elements are not in sequence but arranged in hierarical manner, that type of data structure is called as non-linear data structure. When the data gets complex, we shift from linear to non-linear data structure.
+Examples: Graphs, Trees
+
+-------------------------------------------
+How to determine the algorithm is efficient?
+Asymptotic Notation is used to describe the running time of an algorithm - how much time an algorithm takes with a given input, n. There are three different notations: big O, big Theta (Θ), and big Omega (Ω).
+They are the mathemetical notations used to descrie the running time of an algorithm.
+Performance may vary according to the different size of input. With the increase in the input size, the performance will change. The study of change in performance of the algorithm with the change of the order of the input size is called as Asymptotic analysis.
+
+	Big-O notation
+	Omega notation
+	Theta notation
+	
+	Big-O notation is one of the most fundamental tool for developers to analyze the cost of an algorithm. Developers need to have complete knowledge of the same.
+	Big-O notation describes the complexcity of your code using algebric terms.
+	
+	
+	Big O is sometimes referred to as the algorithm’s upper bound, meaning that it deals with the worst-case scenario.
+	The best-case scenario doesn’t really tell us anything — it will be finding our item in the first pass. We use worst-case to remove uncertainty — the algorithm will never perform worse than we expect.
+	
+	When we write Big O notation, we look for the fastest-growing term as the input gets larger and larger. We can simplify the equation by dropping constants and any non-dominant terms. 
+
+So what is Big-O?
+Big-O notation is the language we use for talking about how long an algorithm takes to run (time complexity) or how much memory is used by an algorithm (space complexity). Big-O notation can express the best, worst, and average-case running time of an algorithm. For our purposes here, we are going to focus primarily on Big-O as it relates to time complexity.
+
+As a software engineer, you’ll find that most discussions of Big-O focus on the “upper-bound” running time of an algorithm, which is often termed the worst-case. An important piece to note is the “running time” when using Big-O notation does not directly equate to time as we know it (e.g., seconds, milliseconds, microseconds, etc.). 
+Analysis of running times does not take certain things into account, such as the processor, the language, or the run time environment. Instead, we can think of time as the number of operations or steps it takes to complete a problem of size n. 
+
+In other words, Big-O notation is a way to track how quickly the runtime grows relative to the size of the input.
+
+When we are thinking about the worst-case, the question becomes — what are the most operations/steps that could happen for an input of size n?
+
+O(1) → Constant Time
+O(1) means that it takes a constant time to run an algorithm, regardless of the size of the input.
+
+Bookmarks are a great example of how constant time would play out in the “real world.” Bookmarks allow a reader to find the last page that you read in a quick, efficient manner. It doesn’t matter if you are reading a book that has 30 pages or a book that has 1000 pages. As long as you’re using a bookmark, you will find that last page in a single step.
+
+In programming, a lot of operations are constant. Here are some examples:
+
+	math operations
+	accessing an array via the index
+	accessing a hash via the key
+	pushing and popping on a stack
+	insertion and removal from a queue
+	returning a value from a function
+	
+Take a look at findFirstIndex, listed below. Passing smallCollection or giganticCollection will produce the same runtime of O(1) when accessing the 0 index. The return of firstIndex is also a constant time operation. Regardless of the size of n, both of these operations will take a constant amount of time.
+
+
+O(n) → Linear Time
+O(n) means that the run time increases at the same pace as the input.
+
+The act of reading a book is an example of how linear time would play out in the “real world.” Let’s assume that it takes me exactly 1 minute to read a single page of a large print book. Given that, a book that has 30 pages will take me 30 minutes to read. Likewise, a book that has 1000 pages = 1000 minutes of reading time. Now, I don’t force myself to finish books that aren’t great — so there is always a chance that I won’t get through that 1,000-page book. However, before I start reading it, I can know that my worst-case reading time is 1000 minutes for a 1000 page book.
+
+In programming, one of the most common linear-time operations is traversing an array. In JavaScript, methods like forEach, map, and reduce run through the entire collection of data, from start to finish.
+
+Take a look at our printAllValues function below. The number of operations that it will take to loop through n is directly related to the size of n. Generally speaking (but not always), seeing a loop is a good indicator that the particular chunk of code you’re examining has a run time of O(n).
+
+O(n²) → Quadratic Time
+O(n²) means that the calculation runs in quadratic time, which is the squared size of the input data.
+
+In programming, many of the more basic sorting algorithms have a worst-case run time of O(n²):
+
+	Bubble Sort
+	Insertion Sort
+	Selection Sort
+Let’s look at countOperations below. Here we have two nested loops that are incrementing the operations variable after each iteration. If n is our smallCollection, we will end up with a count of 16 operations. Not horrible. But what about if n is our gigantic collection? A billion times a billion is a quintillion — or 1,000,000,000,000,000,000. Yikes. 😬 That’s a LOT of operations. Even an array with as little as 1,000 elements would end up creating a million operations.
+
+
+
+O(log N) is a common runtime complexity. Examples include binary searches, finding the smallest or largest value in a binary search tree, and certain divide and conquer algorithms.
+
+The most common attributes of logarithmic running-time function are that:
+
+the choice of the next element on which to perform some action is one of several possibilities, and
+only one will need to be chosen.
+or
+
+the elements on which the action is performed are digits of n
+This is why, for example, looking up people in a phone book is O(log n). You don't need to check every person in the phone book to find the right one; instead, you can simply divide-and-conquer by looking based on where their name is alphabetically, and in every section you only need to explore a subset of each section before you eventually find someone's phone number.
+
+
+------------------------------------------------
+
+Big O notation is a mathematical notation used to describe the efficiency of an algorithm in terms of its input size. It helps us understand how the running time of an algorithm increases as the size of its input grows larger.
+
+In simpler terms, Big O notation gives us an idea of how quickly an algorithm's running time grows as we increase the size of its input. It's like a measure of how hard an algorithm has to work as the problem it solves gets bigger.
+
+For example, an algorithm with O(n) time complexity means that its running time grows linearly with the size of its input. So if we double the input size, the running time will roughly double as well. An algorithm with O(n^2) time complexity means that its running time grows quadratically with the size of its input, so if we double the input size, the running time will roughly increase by a factor of four.
+
+By understanding the Big O notation of an algorithm, we can choose the most efficient algorithm for a given problem or optimize an existing algorithm to make it faster.
+
+There are several types of time complexity in Big O notation, each representing a different rate of growth of an algorithm's running time with respect to the size of its input. Here are some common types of time complexity:
+
+O(1): This represents constant time complexity, meaning the algorithm's running time is constant and does not depend on the size of the input. Examples of algorithms with O(1) time complexity include accessing an element of an array or performing a single arithmetic operation.
+
+O(log n): This represents logarithmic time complexity, meaning the algorithm's running time grows logarithmically with the size of the input. Examples of algorithms with O(log n) time complexity include binary search and certain types of tree traversal.
+
+O(n): This represents linear time complexity, meaning the algorithm's running time grows linearly with the size of the input. Examples of algorithms with O(n) time complexity include iterating over an array or performing a linear search.
+
+O(n log n): This represents quasilinear time complexity, meaning the algorithm's running time grows at a rate slightly faster than linear with the size of the input. Examples of algorithms with O(n log n) time complexity include certain types of sorting algorithms, such as merge sort and quicksort.
+
+O(n^2): This represents quadratic time complexity, meaning the algorithm's running time grows at a rate proportional to the square of the size of the input. Examples of algorithms with O(n^2) time complexity include certain types of sorting algorithms, such as selection sort and insertion sort, and nested loops that iterate over the input.
+
+O(2^n): This represents exponential time complexity, meaning the algorithm's running time grows exponentially with the size of the input. Examples of algorithms with O(2^n) time complexity include certain types of brute-force search algorithms, such as generating all possible combinations of a set.
+
+----------------------------------
+
+Arrays:
+---------------
+
+Arrays are a fundamental data structure that can hold a fixed-size sequence of elements of the same type.
+Each element is identified by an index or a subscript that represents its position in the array.
+
+Properties of Arrays
+
+
+Homogeneous: All elements of an array must be of the same data type.
+Fixed-size: Once an array is created, its size cannot be changed.
+Contiguous: All elements of an array are stored in adjacent memory locations.
+Random-access: Elements of an array can be accessed using their index.
+
+
+Advantages of Arrays
+
+Random access: Elements of an array can be accessed using their index, which makes array access very fast.
+Memory efficiency: Arrays use contiguous memory locations, which make them very memory efficient.
+Easy to implement: Arrays are easy to implement and use.
+
+Disadvantages of Arrays
+
+Fixed size: Once an array is created, its size cannot be changed, which makes it difficult to manage dynamic data.
+Wasted space: If the array size is larger than the number of elements it contains, then there is a wastage of memory.
+No automatic resizing: Arrays do not automatically resize when new elements are added or removed.
+
+Accessing an element at a given index: O(1)
+
+This operation retrieves an element from a specific index in the array. It has a constant time complexity since the index is used to compute the memory address of the element in constant time.
+Searching for an element: O(n)
+
+This operation searches for an element in the array by sequentially comparing each element until the target is found. In the worst case, where the target element is not present in the array, it may require examining every element in the array, which takes O(n) time.
+Inserting an element at the end of the array: O(1)
+
+This operation inserts an element at the end of the array by setting the element at the next available index. It has a constant time complexity since the next available index is easily computed in constant time.
+Inserting an element at a specific index: O(n)
+
+This operation inserts an element at a specific index in the array. It requires shifting all elements to the right of the index by one position to make room for the new element. In the worst case, where the element is inserted at the beginning of the array, it may require shifting all n elements in the array, which takes O(n) time.
+Deleting an element at a specific index: O(n)
+
+This operation deletes an element at a specific index in the array. It requires shifting all elements to the right of the index by one position to fill the gap created by the deleted element. In the worst case, where the element is deleted at the beginning of the array, it may require shifting all n elements in the array, which takes O(n) time.
+
+----------------------------------------
+
+Linked List:
+-----------------
+A linked list is a linear data structure where elements are stored in nodes, and each node is linked to the next node using a pointer. 
+The first node is called the head, and the last node is called the tail. 
+A linked list is dynamic and can grow or shrink in size during runtime. Here is some more information about linked lists:
+
+Types of Linked Lists: There are three types of linked lists:
+
+a. Singly Linked List: In a singly linked list, each node has a data field and a pointer to the next node in the list.
+
+b. Doubly Linked List: In a doubly linked list, each node has a data field and two pointers, one to the next node and one to the previous node in the list.
+
+c. Circular Linked List: In a circular linked list, the last node is linked to the first node, creating a circular structure.
+
+Advantages of Linked Lists: Linked lists have several advantages over arrays and other data structures:
+
+a. Dynamic size: Linked lists can grow or shrink in size during runtime.
+
+b. Efficient insertion and deletion: Inserting or deleting an element from a linked list is faster than an array because only the links need to be updated, not the entire list.
+
+c. Easy implementation: Linked lists are easy to implement in any programming language.
+
+Disadvantages of Linked Lists: Linked lists also have some disadvantages:
+
+a. Slow access time: Random access of elements in a linked list is slower than an array because each element must be accessed sequentially.
+
+b. Extra memory space: Linked lists require extra memory space to store the pointers.
+
+Common Operations on Linked Lists: Some of the common operations on a linked list include:
+
+a. Insertion: Adding a new node to the list.
+
+b. Deletion: Removing a node from the list.
+
+c. Traversal: Visiting all nodes in the list.
+
+d. Searching: Finding a specific node in the list.
+
+Time Complexity: The time complexity of operations on a linked list depends on the implementation and the type of linked list. Here are the time complexities for some common operations:
+
+a. Insertion at the beginning: O(1)
+
+b. Insertion at the end: O(n)
+
+c. Deletion at the beginning: O(1)
+
+d. Deletion at the end: O(n)
+
+e. Searching: O(n)
+
+f. Traversal: O(n)
+
+-----------------------------------------------------------------------
+Use an array when:
+
+Random access is required: If you need to access elements at random positions in the data structure, an array is a better choice because it provides constant-time access to any element.
+
+Memory efficiency is important: Arrays are more memory-efficient than linked lists because they store elements in contiguous memory locations, which reduces the overhead of storing pointers.
+
+The size of the data is known: If the size of the data is fixed and known in advance, an array is a good choice because it can be allocated in a single block of memory.
+
+Insertion and deletion operations are infrequent: Arrays are not efficient for inserting or deleting elements in the middle of the data structure because it requires shifting all the elements to accommodate the change.
+
+Use a linked list when:
+
+Dynamic size is required: If the size of the data structure is not known in advance or changes frequently during runtime, a linked list is a better choice because it can grow or shrink as needed.
+
+Insertion and deletion operations are frequent: Linked lists are more efficient than arrays for inserting or deleting elements in the middle of the data structure because it only requires updating the links between nodes.
+
+Memory allocation and deallocation is important: If memory allocation and deallocation are critical performance factors, a linked list is a good choice because it can allocate and deallocate nodes independently.
+
+Sequential access is sufficient: If you only need to access elements in a sequential manner, a linked list is a good choice because it provides constant-time access to the next element.
+
+In summary, arrays are better suited for problems that require random access and have a fixed size, while linked lists are better suited for problems that require dynamic size and frequent insertion and deletion operations.
+
+-------------------------------------------------------------------
+
+ArrayList uses a dynamic array to store elements, while LinkedList uses a doubly linked list.
+
+Random access: ArrayList provides fast random access to elements using an index. LinkedList, on the other hand, has to traverse the list sequentially to access an element at a specific index.
+
+Insertion and deletion: Inserting or deleting elements in the middle of an ArrayList requires shifting the elements, which can be time-consuming for large arrays. In contrast, LinkedList provides faster insertion and deletion because it only requires updating a few pointers.
+
+Memory usage: ArrayList generally uses less memory than LinkedList, as it doesn't need to store pointers to each element.
+
+Iteration: Iterating over an ArrayList is faster than iterating over a LinkedList, because ArrayList elements are stored contiguously in memory.
+
+Performance: The performance of ArrayList is better for accessing and modifying elements at random indexes, while LinkedList performs better for inserting and deleting elements in the middle of the list.
+
+In summary, ArrayList is a good choice for applications that require fast random access and modification of elements, while LinkedList is a better choice when frequent insertion and deletion of elements are required.
+
+Here are some real-world examples where LinkedList is used:
+
+Browser History: Browsers use a linked list to store the history of visited web pages. Each node in the linked list contains information about the visited web page and a pointer to the next and previous pages in the list.
+
+Music Player: Music players use linked lists to store playlists. Each node in the linked list represents a song and contains information about the song and a pointer to the next and previous songs in the list.
+
+example:
+
+class Node {
+	 data
+	 address
+	 
+	 contructor(data) {
+		this.data=data;
+		this.next=null;
+	}
+}
+
+class LinkedList {
+
+head
+constructor() {
+this.head=null
+}
+
+add(data) {
+
+let newNode = new Node(data);
+if(this.head == null) {
+// if the list is empty, set the new node as the head
+	this.head = newNode;
+} else {
+	let current = this.head
+	
+	while(current.next != null) {
+	// traverse the list until the end
+		current = current.next;
+		
+	}
+	// set the new node as the next node of the last node in the list
+	current.next = newNode
+}
+
+}
+
+remove(data) {
+	if(this.head == null) {
+		return "no nodes available"
+	} else {
+	let current = this.head
+	
+	while(current.next != null) {
+	if(current.next.data == data)
+	//address of the current node will node after the next node.
+	//unlink the deleted node by updating the next propery of the previous node
+		current.next = current.nexr.n
+	}
+}
+----------------------------------------
+
+Queue:
+
+Queue is a linear data structure in which the elements are added at one end, called the rear or tail, and removed from the other end, called the front or head.
+
+The order in which elements are added to the queue is the same order in which they are removed, making it a First-In-First-Out (FIFO) data structure.
+Queues can be implemented using arrays, linked lists, or other data structures.
+
+Queue operations include enqueue (adding an element to the rear), dequeue (removing an element from the front), peek (retrieving the element at the front without removing it), and isEmpty (checking if the queue is empty).
+Queues are used in various computer algorithms such as BFS (Breadth-First Search) and scheduling of tasks in operating systems.
+Queues can also be used to implement a buffer, allowing for communication between processes or threads that are producing or consuming data at different rates.
+Queues have a variety of applications, including job scheduling, messaging systems, and simulations.
+
+Yes, there are several real-world examples where queue data structure is used:
+
+Operating Systems: In operating systems, queues are used to schedule and manage tasks for various processes. The scheduler maintains a queue of processes waiting to be executed, and new processes are added to the queue as they are created.
+
+Printers: Printers often use queues to manage print jobs. As users submit print jobs, they are added to a queue and processed in the order they were received.
+
+Customer Service: In customer service, queues are used to manage customer requests and support tickets. Customers are added to a queue as they submit requests, and support agents work through the queue in the order requests were received.
+
+Traffic Management: Traffic management systems often use queues to manage the flow of vehicles at intersections. Vehicles are added to a queue as they approach an intersection, and are processed in the order they arrived.
+
+Messaging Systems: Messaging systems use queues to manage the flow of messages between applications. Messages are added to a queue as they are generated, and are processed by the receiving application in the order they were received.
+
+// Define the Queue class
+class Queue:
+    // Define the constructor
+    Queue():
+        // Initialize the front and rear pointers
+        front = -1
+        rear = -1
+        size = 5
+        items = new int[size]
+    
+    // Define a function to check if the queue is full
+    isFull():
+        if (front == 0 and rear == size - 1):
+            return true
+        else:
+            return false
+    
+    // Define a function to check if the queue is empty
+    isEmpty():
+        if (front == -1):
+            return true
+        else:
+            return false
+    
+    // Define a function to add an element to the queue
+    enQueue(element):
+        if (isFull()):
+            print "Queue is full"
+        else:
+            if (front == -1):
+                front = 0
+            rear = rear + 1
+            items[rear] = element
+            print "Inserted: ", element
+    
+    // Define a function to remove an element from the queue
+    deQueue():
+        if (isEmpty()):
+            print "Queue is empty"
+            return -1
+        else:
+            element = items[front]
+            if (front >= rear):
+                front = -1
+                rear = -1
+            else:
+                front = front + 1
+            print "Deleted element: ", element
+            return element
+    
+    // Define a function to display the elements in the queue
+    display():
+        if (isEmpty()):
+            print "Queue is empty"
+        else:
+            print "Front index: ", front, " element"
+            for i in range(front, rear + 1):
+                print items[i],
+            print "\nRear end: ", rear, " element"
+    
+// Create an object of the Queue class
+q = new Queue()
+// Display the queue
+q.display() // Queue is empty
+// Add some elements to the queue
+q.enQueue(1)
+q.enQueue(2)
+q.enQueue(3)
+// Display the queue
+q.display()
+// Remove an element from the queue
+q.deQueue()
+// Display the queue
+q.display()
+
+
+-----------------------------------------------------
+Stack
+A stack is a linear data structure that follows the Last-In-First-Out (LIFO) principle. It is like a physical stack or pile of objects, where the last object placed on top is the first one to be removed.
+
+The stack has two main operations: push and pop. The push operation adds an element to the top of the stack, while the pop operation removes the top element from the stack. Other operations include peek, which allows you to look at the top element without removing it, and isEmpty, which checks whether the stack is empty.
+
+A stack can be implemented using an array or a linked list. In an array-based implementation, a fixed-size array is used to store the stack elements, and a variable called top is used to keep track of the top element's index. In a linked list-based implementation, a linked list is used to store the stack elements, and a pointer called top is used to point to the top element.
+
+Stacks are commonly used in computer science and programming, especially in algorithms such as depth-first search, recursive function calls, and expression evaluation.
+
+Web Browsers: Web browsers use a stack to keep track of the history of visited web pages. When the user clicks the "back" button, the browser pops the last visited URL from the stack to return to the previous page.
+
+Function Call Stack: In programming languages such as C, Java, and Python, a stack is used to manage function calls and return addresses. Each time a function is called, its arguments and local variables are pushed onto the stack, and when the function returns, its values are popped from the stack.
+
+Undo/Redo operations: Many applications use a stack to implement undo and redo operations. Each time a user performs an action, such as typing text or deleting a file, the application pushes the action onto the stack. When the user clicks the undo button, the application pops the last action from the stack and undoes it.
+
+Expression Evaluation: Stacks are used to evaluate mathematical expressions, such as infix and postfix notation. For example, a postfix expression "3 4 + 5 *" is evaluated by pushing the numbers onto the stack, and popping them off when an operator is encountered.
+
+Memory Management: In operating systems, stacks are used to manage memory allocation and deallocation. Each process has its own stack, and when a function is called, memory is allocated on the stack to store its variables and return addresses.
+
+
+Stack:
+  MAX_SIZE = 5 //size of my stack
+  top = 0 // the top position
+  items = array[MAX_SIZE] //items inside my stack of size 5
+  
+  //this function will check if the stack is full
+  isStackFull:
+	if top == MAX_SIZE-1
+	
+//if the stack is empty
+	isStackEmpty:
+		if top == -1
+  
+  push(element):
+    if (isStackFull):
+      print "Stack Overflow"
+    else:
+      top++
+      items[top] = element
+      print "Pushed element:", element
+  
+  pop():
+    if (isStackEmpty):
+      print "Stack Underflow"
+      return -1
+    else:
+      element = items[top]
+      top = top - 1
+      print "Popped element:", element
+      return element
+  
+  display():
+    if top == -1:
+      print "Stack is empty"
+    else:
+      print "Stack elements:"
+      for i in range(top, -1, -1):
+        print items[i]
+
+
+Use a queue when:
+
+First-in, first-out (FIFO) ordering is required: A queue is a good choice when you need to maintain elements in the order in which they were added, and process them in that same order.
+
+Order of elements matters: If the order of elements matters and needs to be preserved, a queue is a better choice than a stack.
+
+Elements need to be added at the end and removed from the front: A queue provides constant-time access to the front and back elements, which makes it an efficient choice when elements need to be added at the end and removed from the front.
+
+Multiple processes need to access the data structure concurrently: Queues are a good choice for implementing synchronization mechanisms for concurrent processes because they provide a way to safely manage shared resources.
+
+Use a stack when:
+
+Last-in, first-out (LIFO) ordering is required: A stack is a good choice when you need to maintain elements in the order in which they were added, but process them in the reverse order.
+
+Order of elements doesn't matter: If the order of elements doesn't matter, a stack is a more natural choice than a queue.
+
+Elements need to be added and removed from the same end: A stack provides constant-time access to the top element, which makes it an efficient choice when elements need to be added and removed from the same end.
+
+Recursive algorithms are used: Stacks are used in many recursive algorithms, such as depth-first search and backtracking, because they provide a natural way to keep track of function calls and return addresses.
+
+----------------------------------------------------------
+
+Searching Algorithms:
+
+----------------------------
+
+Linear search:
+
+In this algorithm, each element in the data structure is compared with the target element one by one, until a match is found or all elements have been checked.
+Time complexity: O(n) - linear time
+Example: Searching for a specific value in an unsorted array.
+
+Linear search, also known as sequential search, is a simple searching algorithm that searches an array for a specific element by iterating through the array, one element at a time, until the target element is found or the end of the array is reached.
+
+The linear search algorithm starts at the beginning of the array and compares each element in turn with the target element. If the target element is found, the search terminates and the index of the element is returned. If the end of the array is reached without finding the target element, the search is considered unsuccessful and the algorithm returns a special value (such as -1) to indicate that the element was not found.
+
+
+Start at the first element of the array.
+Compare the current element with the target element.
+If the current element is equal to the target element, return its index and terminate the search.
+If the end of the array is reached without finding the target element, return a special value (such as -1) to indicate that the element was not found.
+If the target element is not found, move to the next element and repeat steps 2-4 until the end of the array is reached.
+
+The time complexity of linear search is O(n), where n is the number of elements in the array. This means that the time taken to search for an element increases linearly with the size of the array. 
+Linear search is a simple and easy-to-implement algorithm, but it may not be efficient for large arrays or when searching for an element near the end of the array.
+
+For very large arrays, this can result in slow search times.
+
+Linear search is best suited for small arrays or for situations where the data is not sorted and the search needs to be performed only once or a few times. It can also be used as a fallback algorithm when other search algorithms fail or when the data is not large enough to justify the use of more complex algorithms.
+
+In summary, linear search is useful when searching small or unsorted arrays, but it may not be the best choice for large, sorted data sets.
+
+function linear_search(arr, target)
+    for i = 0 to length(arr)-1
+        if arr[i] = target
+            return i
+    end for
+    return -1
+end function
+
+
+
+Binary search:
+
+This algorithm only works on sorted data structures (e.g. sorted arrays or binary search trees).
+It starts by comparing the target element with the middle element of the data structure. If they are equal, the search is complete. If the target is less than the middle element, the search is continued in the lower half of the data structure. If the target is greater, the search is continued in the upper half.
+This process is repeated until the target is found or there are no more elements to search.
+Time complexity: O(log n) - logarithmic time
+Example: Searching for a specific value in a sorted array.
+
+function binarySearch(array, target):
+    leftIndex = 0
+    rightIndex = length(array) - 1
+    
+    while leftIndex <= rightIndex:
+        midIndex = floor((leftIndex + rightIndex) / 2)
+        
+        if array[midIndex] == target:
+            return midIndex
+        
+        if target < array[midIndex]:
+            rightIndex = midIndex - 1
+        else:
+            leftIndex = midIndex + 1
+            
+    return -1
+
+Binary search is a very efficient search algorithm that is used to search for an element in a sorted array. 
+It is an ideal choice when we have a large sorted array and we need to search for a single element in it. 
+Binary search is faster than linear search because it divides the search interval in half at each step, reducing the search space by a factor of two with each comparison.
+
+Binary search is commonly used in applications where we need to search for an element in a large database or when we need to search for an item in a sorted list or array. 
+For example, it can be used in web search engines to search for a keyword in a large database of web pages, or in a phone book to find a name quickly. Binary search can also be used in many other applications such as spell-checkers, spell-correction systems, and computer games.
+

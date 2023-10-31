@@ -1,0 +1,126 @@
+DOM
+
+The Document Object Model (DOM) is a programming interface for web documents. 
+It represents the structure of an HTML or XML document as a tree-like structure where each node corresponds to a part of the document, such as elements, attributes, and text. 
+JavaScript can be used to manipulate the DOM, allowing you to dynamically change the content, structure, and style of web pages.
+
+---------------------------------------
+<div id="myDiv">Initial content</div>
+
+const myDiv = document.getElementById('myDiv');
+myDiv.textContent = 'New content';
+
+
+---------------------------------------
+<ul id="myList">
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>
+
+const myList = document.getElementById('myList');
+const newItem = document.createElement('li');
+newItem.textContent = 'Item 3';
+myList.appendChild(newItem);
+
+
+------------------------------------------
+<button id="myButton">Click me</button>
+
+const myButton = document.getElementById('myButton');
+myButton.addEventListener('click', () => {
+  alert('Button clicked!');
+});
+
+-------------------------------------------
+
+<div id="myElement" class="box">Box</div>
+
+const myElement = document.getElementById('myElement');
+myElement.classList.add('highlight');
+myElement.classList.remove('box');
+
+
+----------------------------------------
+
+<form id="myForm">
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+  <button type="submit">Submit</button>
+</form>
+
+
+const myForm = document.getElementById('myForm');
+myForm.addEventListener('submit', (event) => {
+  event.preventDefault(); // Prevent form submission
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+  console.log('Username:', username, 'Password:', password);
+});
+
+
+---------------------------------------------
+Removing element
+
+<ul id="myList">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+
+
+const listItemToRemove = document.querySelector('#myList li:nth-child(2)');
+listItemToRemove.remove();
+
+
+----------------------------------
+<div id="myDiv" style="width: 100px; height: 100px; background-color: red;"></div>
+
+const myDiv = document.getElementById('myDiv');
+myDiv.style.backgroundColor = 'blue';
+myDiv.style.width = '150px';
+myDiv.style.height = '150px';
+
+
+---------------------------------
+
+
+
+Accessing Elements:
+You can access elements in the DOM using various methods, like document.getElementById(), document.querySelector(), and document.querySelectorAll().
+
+// Get an element by its ID
+const elementById = document.getElementById('myElement');
+
+// Get the first element that matches a CSS selector
+const elementBySelector = document.querySelector('.myClass');
+
+// Get all elements that match a CSS selector
+const elementsBySelector = document.querySelectorAll('.myClass');
+
+
+Modifying Elements:
+You can modify elements' properties, attributes, and content using JavaScript.
+
+// Change element content
+elementById.textContent = 'New content';
+
+// Modify attributes
+elementById.setAttribute('class', 'newClass');
+
+// Change inline styles
+elementById.style.backgroundColor = 'blue';
+
+
+Creating and Appending Elements:
+You can create new elements and append them to existing elements.
+
+// Create a new element
+const newElement = document.createElement('div');
+
+// Set its content
+newElement.textContent = 'Newly created element';
+
+// Append it to an existing element
+elementById.appendChild(newElement);
+
+---------------------------------------------

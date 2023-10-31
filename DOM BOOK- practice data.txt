@@ -1,0 +1,88 @@
+class Book {
+    id:number;
+    name:string;
+    genre:string;
+    page:number;
+    author:string;
+    publisheddate:Date
+}
+
+class Library {
+
+    booklist:Book[]=[]
+
+    //add the books
+    addBooks(book:Book):void {
+        this.booklist.push(book);
+        console.log(this.booklist.length);
+    }
+
+    //to display the books
+    displayBooks() {
+        console.log(this.booklist); 
+    }
+    //display book by id
+    displayBookById(i:number) {
+       const b= this.booklist.filter(book => book.id===i);
+       if(b == undefined) {
+        console.log('No book available of the given ID')
+       } else {
+        console.log(b)
+       }
+    }
+
+    displayBooksByGenre(genre:string) {
+        const b= this.booklist.filter(book => book.genre===genre);
+        console.log(b)
+    }
+
+    removeBooks(id:number) {
+
+    }
+}
+
+const l1 = new Library();
+
+const book1 = new Book();
+book1.id=1;
+book1.name='Harry Potter';
+book1.author='JK Rowling';
+book1.genre='Fantasy';
+book1.page=400;
+book1.publisheddate=new Date('2020-01-15');
+
+
+const book2 = new Book();
+book2.id=2;
+book2.name='Java new features';
+book2.author='ABC';
+book2.genre='Non Fiction';
+book2.page=200;
+book2.publisheddate=new Date('2020-12-15');
+
+
+const book3 = new Book();
+book3.id=3;
+book3.name='HTML5';
+book3.author='Peter';
+book3.genre='Non Fiction';
+book3.page=200;
+book3.publisheddate=new Date('2020-01-15');
+
+
+const book4 = new Book();
+book4.id=4;
+book4.name='SQL';
+book4.author='ABC';
+book4.genre='Non Fiction';
+book4.page=200;
+book4.publisheddate=new Date('2020-12-15');
+
+l1.addBooks(book1);
+l1.addBooks(book2);
+l1.addBooks(book3);
+l1.addBooks(book4);
+
+l1.displayBookById(6)
+
+l1.displayBooksByGenre('Non Fiction');
